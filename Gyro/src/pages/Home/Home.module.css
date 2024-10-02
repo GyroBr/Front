@@ -1,0 +1,99 @@
+.home {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .main-header {
+    position: fixed;
+    top: 0;
+    width: 97%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0); 
+    color: white;
+    z-index: 100; 
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+ 
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 10px 0 0 0;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #EA7100;
+  }
+
+  .signup-btn {
+    width: 90px;
+    text-align: center;
+    border: 1px #EA7100;
+    background-color:#EA7100;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #EA7100;
+    font-weight: bold;
+  }
+
+  .login-btn {
+    width: 90px;
+    text-align: center;
+    border: 1px #EA7100;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #EA7100;
+    font-weight: bold;
+    
+  }
+  
+  .banner {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('../assets/banner1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+  .banner-shadow{
+    height: 100vh;
+    width: 100vw;
+    background-color: #ff0000;
+  }
+
+  .banner-content{
+    margin-left: 80px;
+  }
+  
+  .banner-content h1 {
+    font-size: 2.5rem;
+    width: 600px;
+  }
+  
+  .banner-content p {
+    font-size: 1.5rem;
+    width: 360px;
+  }
