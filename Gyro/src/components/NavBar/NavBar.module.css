@@ -2,35 +2,59 @@
     color: rgb(255, 136, 0);
 }
 
-nav{
+.navbar1{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0f172a;
     position: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 10px 100px 0 100px;
+    justify-content: space-between;
 }
 
-nav .logo{
-    height: 50px;
-    width: 50px;
+.navbar1 .logo{
+    height: 70px;
+    width: 70px;
 }
 
-nav .buttonCadastro{
-    background-color: rgb(255, 136, 0);
-    color: rgb(255, 255, 255);
-    height: 100px;
-    width: 50px;
+.navbar1 .buttonCadastro{
+    width: 120px;
+    text-align: center;
+    border: 1px #EA7100;
+    background-color:#EA7100;
+    border-radius: 5px;
+    border: 2px solid #EA7100;
+    font-weight: bold;
 }
 
-nav ul{
+.navbar1 .buttonLogin{
+    width: 170px;
+    text-align: center;
+    border: 1px #EA7100;
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #EA7100;
+    font-weight: bold;
+}
+
+/* .navbar1 .signup-btn {
+    
+  }
+
+  .navbar1 .login-btn {
+    
+  } */
+
+.navbar1 ul{
     display: flex;
+    margin-top: 5px;
 }
 
-nav ul li{
+.navbar1 ul li{
     list-style: none;
 }
 
-nav ul li a{
+.navbar1 ul li a{
     display: block;
     text-decoration: none;
     color: white;
@@ -39,11 +63,11 @@ nav ul li a{
     border-radius: 0.5rem;
 }
 
-nav ul li a:not(.active):hover{
+.navbar1 ul li a:not(.active):hover{
     color: rgba(255, 132, 0, 0.721);
 }
 
-nav .menu{
+.navbar1 .menu{
     display: none;
     position: absolute;
     top: 0.5rem;
@@ -54,7 +78,7 @@ nav .menu{
     height: 2rem;
 }
 
-nav .menu span{
+.navbar1 .menu span{
     height: 0.2rem;
     width: 80%;
     background-color: white;
@@ -62,32 +86,32 @@ nav .menu span{
 }
 
 @media (max-width: 480px) {
-    nav .menu{
+    .navbar1 .menu{
         display: flex;
     }
 
-    nav{
+    .navbar1{
         flex-direction: column;
         align-items: start;
     }
 
-    nav ul{
+    .navbar1 ul{
         display: none;
         flex-direction: column;
         width: 100%;
         margin-bottom: 0.25rem;
     }
 
-    nav ul.open{
+    .navbar1 ul.open{
         display: flex;
     }
 
-    nav ul li{
+    .navbar1 ul li{
         width: 100%;
         text-align: center;
     }
 
-    nav ul li a{
+    .navbar1 ul li a{
         margin: 0.2rem 0.5rem;
     }
 }

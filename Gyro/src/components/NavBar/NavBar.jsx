@@ -1,27 +1,27 @@
 import React, {useState} from 'react';
 
-import{Link, link} from "react-router-dom"
-import logo from './assets/images/logo.svg'
+import{ Link, NavLink } from "react-router-dom"
 
-import './NavBar.module.css';
+import logo from '../../assets/images/logo.svg'
+import styles from './NavBar.module.css';
 
-export const NavBar = () => {
+export const NavBar = ({logoInicio}) => {
 
     const[menuOpen, setMenuOpen] = useState(false)
 
     return(
-        <nav>
+        <nav className={styles.navbar1}>
             <Link to={"/"}>
-            <img src={logo} alt="logo"/>
+            <img src={logo} alt="logo" className={styles.logo}/>
             </Link>
-            <div className='menu' onClick={() => {setMenuOpen(!menuOpen)}}>
+            <div className={styles.menu} onClick={() => {setMenuOpen(!menuOpen)}}>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul className={menuOpen ? "Open" : ""}>
                 <li>
-                    <NavLink to={"/"} className='logo'>Home</NavLink>
+                    <NavLink to={"/"} className={styles.logo}>Home</NavLink>
                 </li>
                 <li>
                     <NavLink to={"/Servicos"}>Serviços</NavLink>
@@ -33,12 +33,14 @@ export const NavBar = () => {
                     <NavLink to={"/Duvidas"}>Dúvidas</NavLink>
                 </li>
                 <li>
-                    <NavLink to={"Login"}>Acessar Conta</NavLink>
+                    <NavLink to={"Login"} className={styles.buttonLogin}>Acessar Conta</NavLink>
                 </li>
                 <li>
-                    <NavLink to={"/Cadastro"} className='buttonCadastro'>Cadastrar</NavLink>
+                    <NavLink to={"/Cadastro"} className={styles.buttonCadastro}>Cadastrar</NavLink>
                 </li>
             </ul>
         </nav>
     )
 }
+
+export default NavBar;
