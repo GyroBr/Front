@@ -59,7 +59,7 @@ export function Home() {
                     <div className={styles.banner_shadow}>
                         <div className={styles.banner_content}>
                             <h1>Visão completa das operações, <b>facilitando</b> o acompanhamento e a gestão eficiente do <b>seu negócio</b><b className={styles.point}> .</b></h1>
-                            <button>Junte-se a nós</button>
+                            <button>Conhecer</button>
                         </div>
                     </div>
                 </section>
