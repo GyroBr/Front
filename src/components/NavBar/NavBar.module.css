@@ -1,5 +1,5 @@
 .active{
-    color: rgb(255, 136, 0);
+    color: #EA7100;
 }
 
 .navbar1{
@@ -7,8 +7,9 @@
     position: fixed;
     width: 100%;
     text-align: center;
-    padding: 10px 100px 0 100px;
+    padding: 0 100px ;
     justify-content: space-between;
+    z-index: 1000; 
 }
 
 .navbar1 .logo{
@@ -64,7 +65,7 @@
 }
 
 .navbar1 ul li a:not(.active):hover{
-    color: rgba(255, 132, 0, 0.721);
+    color: #EA7100;
 }
 
 .navbar1 .menu{

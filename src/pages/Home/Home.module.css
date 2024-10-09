@@ -2,10 +2,26 @@
     width: 100%;
     height: 100vh;
   }
+
+  .home {
+    height: 100vh;              
+    overflow-y: scroll;           
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;      
+  }
+  
+  .banner1, .banner2, .banner3, .banner4, .banner5, .banner6 {
+    height: 100vh;               
+    scroll-snap-align: start;     
+    position: relative;          
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .banner1 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/images/banner1.jpg');
@@ -17,7 +33,7 @@
 
   .banner1 .banner_shadow{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: #0000007a;
   }
 
@@ -85,7 +101,7 @@
 
   .banner2 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/images/banner2.png');
@@ -130,7 +146,7 @@
 
   .banner3 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/images/banner3.jpg');
@@ -157,52 +173,53 @@
 
   .banner3 .banner_shadow{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: #0000007a;
   }
 
   /* banner 4 */
   .banner4 .banner_content{
-    padding: 0 0 0 100px;
     display: flex;
     flex-direction: column;
     text-align: left;
     background-color: rgb(148, 2, 2);
-    width: 500px;
-    height: 500px;
   }
-
-  .banner4 .davi{
-    background-color: rgb(55, 0, 255);
-    height: 500px;
-    width: 500px;
+  .banner4 .banner_content{
+    padding: 0 100px 0 0;
   }
-
+  .banner4 .banner_content h1{
+    width: 20ch;
+  }
   .banner_content h1 {
     font-size: 2.5rem;
     width: 600px;
     font-weight: 400;
     margin-top: 200px;
     background-color: transparent;
+    /* teste */
   }
 
   .banner4 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: white;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: right;
   }
+  .banner4 .banner_content {
+    width: 100%;
+    height: 100%;
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
   .banner4 .davi{
     height: 100%;
   }
-  .banner4 .banner_content
-  {
-    display: flex;
-    height: 100%;
-  }
+  
 
   .banner4 button{
     width: 30vh;
@@ -240,7 +257,7 @@
 
   .banner5 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/images/banner5.jpg');
@@ -250,6 +267,10 @@
     color: rgb(255, 255, 255);
   }
 
+  .banner1{
+
+  }
+  
   .banner5 button{
     width: 30vh;
     height: 2.5rem;
@@ -267,7 +288,7 @@
 
   .banner5 .banner_shadow{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: #0000007a;
   }
 
@@ -297,7 +318,7 @@
 
   .banner6 {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/images/banner6.png');

@@ -20,9 +20,9 @@ export const NavBar = ({logoInicio}) => {
                 <span></span>
             </div>
             <ul className={menuOpen ? "Open" : ""}>
-                <li>
+                {/* <li>
                     <NavLink to={"/"} className={styles.logo}>Home</NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink to={"/Servicos"}>Serviços</NavLink>
                 </li>

@@ -1,10 +1,10 @@
-import React from 'react';
+
 import styles from './Home.module.css';
-import logo from "../../assets/images/logo.svg";
+// import logo from "../../assets/images/logo.svg";
 import NavBar from "../../components/NavBar/NavBar";
 
 
-export default function Home() {
+export function Home() {
     return (
         <>
 
@@ -38,9 +38,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section className={styles.banner4}>
-                    <div className={styles.davi}>
-                        
-                    </div>
+                    
                     <div className={styles.banner_content}>
                         <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                         <p>Desde a gestão diária até análises avançadas.</p>
