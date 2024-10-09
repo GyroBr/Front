@@ -8,7 +8,7 @@
     overflow-y: scroll;           
     scroll-snap-type: y mandatory; 
     scroll-behavior: smooth;      
-  }
+  } 
   
   .banner1, .banner2, .banner3, .banner4, .banner5, .banner6 {
     height: 100vh;               
@@ -182,10 +182,14 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    background-color: rgb(148, 2, 2);
+    background-color: rgb(255, 255, 255);
   }
   .banner4 .banner_content{
     padding: 0 100px 0 0;
+  }
+
+  .teste{
+    background-color: red;
   }
   .banner4 .banner_content h1{
     width: 20ch;
@@ -195,7 +199,6 @@
     width: 600px;
     font-weight: 400;
     margin-top: 200px;
-    background-color: transparent;
     /* teste */
   }
 
@@ -266,10 +269,6 @@
     background-repeat: no-repeat;
     color: rgb(255, 255, 255);
   }
-
-  .banner1{
-
-  }
   
   .banner5 button{
     width: 30vh;
@@ -303,7 +302,7 @@
   .banner6 .banner_content{
     padding: 0 0 0 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: left;
   }
 
@@ -353,4 +352,10 @@
 
   .banner6 .point{
     color: #ffffff;
+  }
+
+  .img360 {
+    width: 500px;
+    height: 500px;
+    background-image: url('../../assets/images/360img.png');
   }

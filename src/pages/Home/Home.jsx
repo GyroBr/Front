@@ -7,7 +7,6 @@ import NavBar from "../../components/NavBar/NavBar";
 export function Home() {
     return (
         <>
-
             <div className={styles.home}>
                 <section className={styles.banner1}>
                     <div className={styles.banner_shadow}>
@@ -38,11 +37,13 @@ export function Home() {
                     </div>
                 </section>
                 <section className={styles.banner4}>
-                    
                     <div className={styles.banner_content}>
+                        <div className={styles.img360}></div>
+                        <div className={styles.teste}>
                         <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                         <p>Desde a gestão diária até análises avançadas.</p>
                         <button>Conhecer</button>
+                        </div>
                     </div>
                 </section>
                 <section className={styles.banner5}>
