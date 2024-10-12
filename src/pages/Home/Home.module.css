@@ -249,7 +249,7 @@
     justify-content: space-around;
   }
 
-  .card{
+  .banner8 .card{
     height: 95%;
     width: 45vh;
     background-color: #ffffff;
@@ -323,6 +323,10 @@
     width: 70vw;
     border-top: 1px solid rgb(72, 72, 72);
     border-bottom: 1px solid rgb(72, 72, 72);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
   }
 
   footer .banner_content_text{
@@ -330,4 +334,62 @@
     height: 5vh;
     width: 70vw;
     color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
+
+  footer .div1{
+    width: 60%;
+  }
+
+  footer .div2{
+    width: 30%;
+  }
+
+  footer .div1 ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 0.8rem;
+    text-decoration: none;
+    list-style: none;
+  }
+
+  footer p{
+    font-size: 0.8rem;
+  }
+
+  .div_icon{
+    width: 25vw;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div_icon .big_icon{
+    height: 45vh;
+  }
+
+  .div_contact{
+    background-color: rgb(89, 178, 255);
+    width: 40vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .div_contact .card{
+    background-color: #f4f8ff;
+    width: 35vw;
+    height: 15vh;
+  }
+
+  .div_contact .card2{
+    background-color: #70ffcb;
+    width: 35vw;
+    height: 5vh;
+  }
+

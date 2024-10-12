@@ -4,6 +4,8 @@ import styles from './Home.module.css';
 import NavBar from "../../components/NavBar/NavBar";
 import visionIcon from "../../assets/images/vision.svg"
 import missionIcon from "../../assets/images/mission.svg"
+import big from "../../assets/images/logo.svg"
+import { Link, NavLink } from "react-router-dom"
 import valueIcon from "../../assets/images/value.svg"
 
 export function Home() {
@@ -96,10 +98,38 @@ export function Home() {
                     <div></div>
                 </section>
                 <footer>
-                    <div className={styles.banner_content}></div>
+                    <div className={styles.banner_content}>
+                        <div className={styles.div_icon}>
+                            <img className={styles.big_icon} src={big} alt="Mission" />
+                        </div>
+                        <div className={styles.div_contact}>
+                            <div className={styles.card}>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div className={styles.card2}></div>
+                        </div>
+                    </div>
                     <div className={styles.banner_content_text}>
-                    ABOUT US - CONTACT US - HELP - PRIVACY POLICY
-                    Gyro © 2024 • All Rights Reserved
+                        <div className={styles.div1}>
+                            <ul>
+                                <li>
+                                    ABOUT US
+                                </li>
+                                <li>
+                                    CONTACT US
+                                </li>
+                                <li>
+                                    HELP
+                                </li>
+                                <li>
+                                    PRIVACY POLICY
+                                </li>
+                            </ul>
+                        </div>
+                        <div className={styles.div2}>
+                            <p>Gyro © 2024 • All Rights Reserved</p>
+                        </div>
                     </div>
                 </footer>
             </div>
