@@ -1,16 +1,12 @@
-  .home {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .home {
-    height: 100vh;              
+  .home {         
+    width: 100vw;
+    height: 100vh;   
     overflow-y: scroll;           
     scroll-snap-type: y mandatory; 
-    scroll-behavior: smooth;      
+    scroll-behavior: smooth;     
   } 
   
-  .banner1, .banner2, .banner3, .banner4, .banner5, .banner6 {
+  .banner1, .banner2, .banner3, .banner4, .banner5, .banner6, .banner7, .banner8, footer {
     height: 100vh;               
     scroll-snap-align: start;     
     position: relative;          
@@ -19,35 +15,35 @@
     align-items: center;
   }
   
+  /* Começo banner 1 */
   .banner1 {
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     background-image: url('../../assets/images/banner1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
   }
 
-  .banner1 .banner_shadow{
+    .banner_shadow{
     height: 100vh;
     width: 100%;
     background-color: #0000007a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
-  .banner_content{
-    padding: 0 0 0 100px;
+  .banner1 .banner_content{
+    height: 45vh;
+    width: 45vw;
+    margin-left: 15vh;
+    color: #ffffff;
   }
-
 
   .banner_content h1 {
     font-size: 2.5rem;
-    width: 600px;
     font-weight: 400;
-    margin-top: 200px;
-    background-color: transparent;
   }
 
   .point{
@@ -58,7 +54,6 @@
     display: flex;
     flex-direction: row;
     font-size: 1.5rem;
-    width: 430px;
   }
 
   .banner_content span {
@@ -82,35 +77,18 @@
   }
 
 
-  /* banner 2 */
-  .banner2 .banner_content{
-    padding: 0 0 0 100px;
-    display: flex;
-    flex-direction: column;
-    text-align: inherit;
-  }
-
-
-  .banner_content h1 {
-    font-size: 2.5rem;
-    width: 600px;
-    font-weight: 400;
-    margin-top: 200px;
-    background-color: transparent;
-  }
-
+  /* Começo banner 2 */
   .banner2 {
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     background-image: url('../../assets/images/banner2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
-    align-items: end;
-  }
+    display: flex;
+    justify-content: right;
+    }
 
   .banner2 button{
     width: 30vh;
@@ -123,209 +101,108 @@
     border: 2px solid #ffffff;
     font-weight: bold;
     font-size: 16px;
-    margin-top: 40px;
-    background-color: transparent;
   }
 
-  /* banner 3 */
-  .banner3 .banner_content{
-    padding: 0 0 0 100px;
-    display: flex;
-    flex-direction: column;
-    text-align: inherit;
+  .banner2 .banner_content{
+    height: 35vh;
+    width: 43vw;
+    margin-right: 10vh;
+    color: #ffffff;
   }
 
-
-  .banner_content h1 {
-    font-size: 2.5rem;
-    width: 600px;
-    font-weight: 400;
-    margin-top: 200px;
-    background-color: transparent;
+  .banner2 .point{
+    color: rgb(6, 6, 79);
   }
 
+  /* Começo banner 3 */
   .banner3 {
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     background-image: url('../../assets/images/banner3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
   }
 
-  .banner3 button{
-    width: 30vh;
-    height: 2.5rem;
-    text-align: center;
-    border: 1px #EA7100;
-    color: aliceblue;
-    text-decoration: none;
-    border-radius: 5px;
-    border: 2px solid #EA7100;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 40px;
-    background-color: transparent;
+  .banner3 .banner_content{
+    height: 45vh;
+    width: 55vw;
+    margin-left: 15vh;
+    color: #ffffff;
   }
 
-  .banner3 .banner_shadow{
-    height: 100vh;
-    width: 100%;
-    background-color: #0000007a;
+  .banner3 .banner_content p{
+    width: 70vh;
   }
 
   /* banner 4 */
+  .banner4{
+    background-color: #ffffff;
+  }
+
   .banner4 .banner_content{
     display: flex;
-    flex-direction: column;
-    text-align: left;
-    background-color: rgb(255, 255, 255);
-  }
-  .banner4 .banner_content{
-    padding: 0 100px 0 0;
-  }
-
-  .teste{
-    background-color: red;
-  }
-  .banner4 .banner_content h1{
-    width: 20ch;
-  }
-  .banner_content h1 {
-    font-size: 2.5rem;
-    width: 600px;
-    font-weight: 400;
-    margin-top: 200px;
-    /* teste */
+    flex-direction: row;
+    width: 80vw;
+    height: 70vh;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .banner4 {
-    height: 100vh;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-  }
-  .banner4 .banner_content {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  .img360{
+    width: 28vw;
+    height: 59vh;
+    background-image: url('../../assets/images/360img.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  .banner4 .davi{
-    height: 100%;
+  .banner4 .banner_content_text{
+    width: 38vw;
+    height: 40vh;
   }
-  
 
   .banner4 button{
-    width: 30vh;
-    height: 2.5rem;
-    text-align: center;
-    border: 1px #EA7100;
     color: black;
-    text-decoration: none;
-    border-radius: 5px;
-    border: 2px solid #EA7100;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 40px;
-    background-color: transparent;
   }
-
 
 
   /* banner 5 */
-  .banner5 .banner_content{
-    padding: 0 0 0 100px;
-    display: flex;
-    flex-direction: column;
-    text-align: inherit;
-  }
-
-
-  .banner_content h1 {
-    font-size: 2.5rem;
-    width: 600px;
-    font-weight: 400;
-    margin-top: 200px;
-    background-color: transparent;
-  }
-
   .banner5 {
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     background-image: url('../../assets/images/banner5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: rgb(255, 255, 255);
-  }
-  
-  .banner5 button{
-    width: 30vh;
-    height: 2.5rem;
-    text-align: center;
-    border: 1px #EA7100;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    border: 2px solid #EA7100;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 40px;
-    background-color: transparent;
   }
 
-  .banner5 .banner_shadow{
-    height: 100vh;
-    width: 100%;
-    background-color: #0000007a;
-  }
-
-  .banner5 .banner_content p {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.5rem;
-    width: 500px;
+  .banner5 .banner_content{
+    height: 45vh;
+    width: 55vw;
+    margin-left: 15vh;
+    color: #ffffff;
   }
 
   /* banner 6 */
-  .banner6 .banner_content{
-    padding: 0 0 0 100px;
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-  }
-
-
-  .banner6 .banner_content h1 {
-    font-size: 2.5rem;
-    width: 750px;
-    font-weight: 400;
-    margin-top: 200px;
-    background-color: transparent;
-  }
-
   .banner6 {
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-image: url('../../assets/images/banner6.png');
+    background-image: url('../../assets/images/teste.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: rgb(255, 255, 255);
-    align-items: end;
+    display: flex;
+    justify-content: right;
+  }
+
+  .banner6 .banner_content{
+    height: 35vh;
+    width: 50vw;
+    margin-right: 10vh;
+    color: #ffffff;
   }
 
   .banner6 button{
@@ -343,19 +220,114 @@
     background-color: transparent;
   }
 
-  .banner6 .banner_content p {
+  /* Começo banner 7 */
+  .banner7{
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .banner7 .banner_content{
+    width: 80vw;
+    height: 80vh;
+    margin-top: 10vh;
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .div_Title{
+    width: 100%;
+    height: 25vh;
+    text-align: center;
+  }
+
+  .div_SubText{
+    width: 100%;
+    height: 55vh;
     display: flex;
     flex-direction: row;
-    font-size: 1.5rem;
-    width: 500px;
+    justify-content: space-around;
   }
 
-  .banner6 .point{
+  .card{
+    height: 95%;
+    width: 45vh;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: solid 1px rgb(49, 49, 49);
+    padding: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .banner7 .card h1{
+    font-size: 25px;
+    color: #000000;
+  }
+
+  .banner7 .card p{
+    font-size: 15px;
+    color: #585858;
+  }
+
+  .card .icons{
+    width: 2vw;
+  }
+
+  /* Começando banner8 */
+  .banner8{
+    background-color: #03042d;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .banner8 .banner_content_text{
+    width: 96vh;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     color: #ffffff;
+    padding: 0 0 0 5vh;
   }
 
-  .img360 {
-    width: 500px;
-    height: 500px;
-    background-image: url('../../assets/images/360img.png');
+  .banner8 .card{
+    background-color: #ffffff;
+    height: 55vh;
+    width: 25vw;
+  }
+
+  .banner8 .banner_content_text h1{
+    font-size: 2.1rem;
+  }
+
+  .banner8 .banner_content_text p{
+    font-size: 1.1rem;
+  }
+
+  /* Começando footer */
+  footer{
+    background-color: #202020;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer .banner_content{
+    height: 40vh;
+    width: 70vw;
+    border-top: 1px solid rgb(72, 72, 72);
+    border-bottom: 1px solid rgb(72, 72, 72);
+  }
+
+  footer .banner_content_text{
+    padding: 2vh;
+    height: 5vh;
+    width: 70vw;
+    color: #ffffff;
   }
