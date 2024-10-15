@@ -150,9 +150,8 @@
   }
 
   .img360{
-    width: 28vw;
-    height: 59vh;
-    background-image: url('../../assets/images/360img.png');
+    width: 35%;
+    height: 90%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -249,10 +248,10 @@
     justify-content: space-around;
   }
 
-  .banner8 .card{
+  .banner7 .card{
     height: 95%;
     width: 45vh;
-    background-color: #ffffff;
+    background-color: #fefefe;
     border-radius: 5px;
     border: solid 1px rgb(49, 49, 49);
     padding: 3vh;
@@ -282,7 +281,6 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
   }
 
   .banner8 .banner_content_text{
@@ -295,10 +293,65 @@
     padding: 0 0 0 5vh;
   }
 
-  .banner8 .card{
+  .banner8 .card_email{
     background-color: #ffffff;
-    height: 55vh;
+    height: 45vh;
     width: 25vw;
+    border-radius: 10px;
+    margin: 0 0 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1vh 0 1vh;
+  }
+
+  .card_email .banner_content .card{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .card_email .banner_content .card2{
+    height: 65%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .card_email .banner_content .input_description{
+    height: 50%;
+    width: 100%;
+    border-radius: 1vh;
+    border: 1px solid #202020;
+  }
+
+  .card_email .banner_content .input_message{
+    height: 78%;
+    width: 100%;
+    border-radius: 1vh;
+    border: 1px solid #202020;
+  }
+
+  .card_email .banner_content{
+    width: 90%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .card_email .bu{
+    background-color: #EA7100;
+    width: 15vh;
+    margin: 2vh 0 0 0;
+  }
+
+  .card_email p{
+    font-size: 1rem;
   }
 
   .banner8 .banner_content_text h1{
@@ -308,6 +361,8 @@
   .banner8 .banner_content_text p{
     font-size: 1.1rem;
   }
+
+
 
   /* Começando footer */
   footer{
@@ -373,23 +428,56 @@
   }
 
   .div_contact{
-    background-color: rgb(89, 178, 255);
     width: 40vw;
     height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .div_contact .card{
-    background-color: #f4f8ff;
     width: 35vw;
-    height: 15vh;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .div_contact p{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
   }
 
   .div_contact .card2{
-    background-color: #70ffcb;
     width: 35vw;
-    height: 5vh;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
+  .div_contact .icons_footer{
+    height: 3vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+.div_contact .card_location{
+  display: flex;
+  flex-direction: row;
+  width: 25vw;
+  justify-content: space-between;
+}
+
+.div_contact .card_telephone{
+  display: flex;
+  flex-direction: row;
+  width: 10vw;
+  justify-content: space-between;
+}

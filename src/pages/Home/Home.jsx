@@ -7,6 +7,17 @@ import missionIcon from "../../assets/images/mission.svg"
 import big from "../../assets/images/logo.svg"
 import { Link, NavLink } from "react-router-dom"
 import valueIcon from "../../assets/images/value.svg"
+import locationIcon from "../../assets/images/loc.svg"
+import telephoneIcon from "../../assets/images/tel.svg"
+import imagem360 from "../../assets/images/360img.png"
+
+import faceIcon from "../../assets/images/facebook.png"
+import twitterIcon from "../../assets/images/twitter.png"
+import linkIcon from "../../assets/images/linkedin.webp"
+import tubeIcon from "../../assets/images/youtube.webp"
+import instaIcon from "../../assets/images/instagram.png"
+import googleIcon from "../../assets/images/google.webp"
+import pinterestIcon from "../../assets/images/pinterest.png"
 
 export function Home() {
     return (
@@ -40,7 +51,8 @@ export function Home() {
                 </section>
                 <section className={styles.banner4}>
                     <div className={styles.banner_content}>
-                        <div className={styles.img360}></div>
+                            <img className={styles.img360} src={imagem360} alt="Gyro" />
+
                         <div className={styles.banner_content_text}>
                             <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                             <p>Desde a gestão diária até análises avançadas.</p>
@@ -94,8 +106,21 @@ export function Home() {
                         <h1>Ainda tem dúvidas sobre a GYRO na sua empresa ?</h1>
                         <p>Você ainda pode falar com um dos nossos atendentes especializados, vamos tirar todas as suas dúvidas e mostrar o por que podemos transformar o seu comércio com a Gyro.</p>
                     </div>
-                    <div className={styles.card}></div>
-                    <div></div>
+                    <div className={styles.card_email}>
+                        <div className={styles.banner_content}>
+                            <div className={styles.card}>
+                                <p>E-mail</p>
+                                <input type="text" className={styles.input_description} />
+                            </div>
+                            <div className={styles.card2}>
+                                <p>Mensagem</p>
+                                <input type="text" className={styles.input_message} />
+                            </div>
+                        </div>
+                        <button className={styles.bu}>
+                            Enviar
+                        </button>
+                    </div>
                 </section>
                 <footer>
                     <div className={styles.banner_content}>
@@ -104,10 +129,27 @@ export function Home() {
                         </div>
                         <div className={styles.div_contact}>
                             <div className={styles.card}>
-                                <p></p>
-                                <p></p>
+                                <div className={styles.card_location}>
+                                    <img className={styles.icon} src={locationIcon} alt="Location" />
+                                    <p>Avenida Bela Vista, 2537, São Paulo - SP</p>
+                                </div>
+                                <div className={styles.card_telephone}>
+                                    <img className={styles.icon} src={telephoneIcon} alt="Location" />
+                                    <p>11 45338990</p>
+                                </div>
                             </div>
-                            <div className={styles.card2}></div>
+                            <div className={styles.card2}>
+                                <p>Social Media</p>
+                                <div className={styles.icons_footer}>
+                                    <img className={styles.icon} src={faceIcon} alt="Facebook" />
+                                    <img className={styles.icon} src={twitterIcon} alt="Twitter" />
+                                    <img className={styles.icon} src={linkIcon} alt="Linkedin" />
+                                    <img className={styles.icon} src={tubeIcon} alt="Youtube" />
+                                    <img className={styles.icon} src={instaIcon} alt="Instagram" />
+                                    <img className={styles.icon} src={googleIcon} alt="Google" />
+                                    <img className={styles.icon} src={pinterestIcon} alt="Pinterest" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.banner_content_text}>
