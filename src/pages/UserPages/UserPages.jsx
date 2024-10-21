@@ -25,6 +25,7 @@ export function UserPages() {
         
         {page === 'Perfil' && <Perfil />}
         {page === 'Dashboard' && <DashboardFinance />}
+        {/* coloca o componente das tels aqui igual esta perfil e dashboard */}
     </div>
     )
 }
