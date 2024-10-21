@@ -4,12 +4,12 @@ import { NavBar } from "./components/NavBar/NavBar";
 import {Home} from "./pages/Home/Home";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
-
+import {UserPages} from './pages/UserPages/UserPages'
 
 export default function App() {
     return (
     <div className="App">
-        {/* <NavBar /> */}
+        
         <Routes>
             <Route path="/" element={<Home/>}/>
             {/* <Route path="/Servicos" element={<Servicos/>}/>
@@ -17,7 +17,11 @@ export default function App() {
             <Route path="/Dúvidas" element={<Dúvidas/>}/> */}
             <Route path="/cadastro" element={<Cadastro/>}/>
             <Route path="/login" element={<Login/>}/>
+            {/* <Route path="/perfil" element={<Perfil/>}/> */}
+            <Route path="/UserPages" element={<UserPages/>}/>
+
         </Routes>
-    </div>)
+    </div>
+    )
 
 }
