@@ -2,6 +2,8 @@
 import styles from './Home.module.css';
 // import logo from "../../assets/images/logo.svg";
 import NavBar from "../../components/NavBar/NavBar";
+import stylesNavBar from '../../components/NavBar/NavBar.module.css';
+import{NavLink } from "react-router-dom"
 
 
 export function Home() {
@@ -43,6 +45,7 @@ export function Home() {
                         <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                         <p>Desde a gestão diária até análises avançadas.</p>
                         <button>Conhecer</button>
+                        <NavLink to={"/Cadastro"} className={stylesNavBar.buttonCadastro}>Cadastrar</NavLink>
                         </div>
                     </div>
                 </section>
