@@ -3,24 +3,26 @@
 }
 
 .navbar1{
+    padding: 0 3vh 0 1vh;
     display: flex;
     position: fixed;
     width: 100%;
-    text-align: center;
-    padding: 0 100px ;
     justify-content: space-between;
-    z-index: 1000;
+    align-items: center;
+
 }
 
 .navbar1 .logo{
     height: 70px;
     width: 70px;
-}
+} 
 
 .navbar1 .buttonCadastro{
     width: 120px;
     text-align: center;
     border: 1px #EA7100;
+    color: aliceblue;
+    text-decoration: none;
     background-color:#EA7100;
     border-radius: 5px;
     border: 2px solid #EA7100;
@@ -38,17 +40,9 @@
     font-weight: bold;
 }
 
-/* .navbar1 .signup-btn {
-    
-  }
-
-  .navbar1 .login-btn {
-    
-  } */
-
 .navbar1 ul{
     display: flex;
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
 .navbar1 ul li{
@@ -62,10 +56,17 @@
     padding: 0.5rem;
     margin: 0.5rem;
     border-radius: 0.5rem;
+    transition: all 0.1s;
 }
 
 .navbar1 ul li a:not(.active):hover{
     color: #EA7100;
+}
+
+.navbar1 ul li .buttonCadastro:not(.active):hover{
+    background-color: aliceblue;
+    color: #EA7100;
+    border-color: aliceblue;
 }
 
 .navbar1 .menu{
@@ -89,6 +90,7 @@
 @media (max-width: 480px) {
     .navbar1 .menu{
         display: flex;
+        margin: 1vh 1vh 0 0;
     }
 
     .navbar1{

@@ -17,8 +17,12 @@ export default function App() {
             <Route path="/Dúvidas" element={<Dúvidas/>}/> */}
             <Route path="/cadastro" element={<Cadastro/>}/>
             <Route path="/login" element={<Login/>}/>
+ feature/tela-cadastro
+            <Route path="/Home" element={<Home/>} />
+
             {/* <Route path="/perfil" element={<Perfil/>}/> */}
             <Route path="/UserPages" element={<UserPages/>}/>
+
 
         </Routes>
     </div>
