@@ -1,77 +1,61 @@
 import { useState } from "react";
 import React from "react";
-import {mascaraTelefone, mascaraCNPJ, validarEmail } from "../../utils/globals";
+import { mascaraCEP } from "../../utils/globals";
 import styles from "../../pages/Cadastro/Cadastro.module.css";
 
-
 const SecondStep = () => {
-    const [telefone, setTel] = useState(""); 
-    const [cnpj, setCNPJ] = useState("");    
-    const [email, setEmail] = useState("");  
-    const [emailError, setEmailError] = useState(""); 
+  const [cep, setCEP] = useState("");
 
-    const handleTelefoneChange = (e) => {
-      mascaraTelefone(e);  
-      setTel(e.target.value); 
-    };
+  const handleCEPChange = (e) => {
+    mascaraCEP(e);
+    setCEP(e.target.value);
+  };
 
-    const handleCNPJChange = (e) => {
-      mascaraCNPJ(e);  
-      setCNPJ(e.target.value); 
-    };
+  // const cepForViaCep = document.querySelector('#cep')
+  // const endereco = document.querySelector('#endereco')
+  // const numero = document.querySelector('#numero')
+  // const estado = document.querySelector('#estado')
+  // const cidade = document.querySelector('#cidade')
+  
+  // cepForViaCep.addEventListener('focuout', () => {
+  //   console.log('focusout')
+  // })
 
-    const handleEmailChange = (e) => {
-      const emailValue = e.target.value;
-      setEmail(emailValue);
+  return (
+    <div>
+      <div className={styles.forms}>
+        <div className={styles.groupForms}>
+          <h6>Endereço</h6>
+          <input id="endereco" type="text" />
+        </div>
 
-      const error = validarEmail(emailValue);
-      setEmailError(error);
-    };
-
-    const handleEmailBlur = () => {
-      setEmailError(""); 
-    };
-    
-    return (
-        <div>
-            <div className={styles.forms}>
-            <div className={styles.groupForms}>
-              <h6>Endereço</h6>
-              <input type="text" />
-            </div>
-            <div className={styles.groupForms}>
-              <h6>Número</h6>
-              <input
-                type="text"
-                value={telefone}
-                onChange={handleTelefoneChange}
-              />
-            </div>
-            <div className={styles.groupForms}>
-              <h6>CEP</h6>
-              <input
-                type="text"
-                value={cnpj}
-                onChange={handleCNPJChange}
-              />
-            </div>
-            <div className={styles.groupForms}>
-              <h6>Cidade</h6>
-              <input
-                type="email"
-                value={email}
-                onChange={handleEmailChange} 
-                onBlur={handleEmailBlur} 
-              />
-              {emailError && <span className={styles.errorMessage}>{emailError}</span>}
-            </div>
-            <div className={styles.groupForms}>
-              <h6>Estado</h6>
-              <input type="se" />
-            </div>
+        <div className={styles.CEP_e_NUM}>
+          <div className={styles.groupForms}>
+            <h6>Número</h6>
+            <input id="numero" type="number" />
+          </div>
+          <div className={styles.groupForms}>
+            <h6>CEP</h6>
+            <input id="cepForViaCep" type="numero" value={cep} onChange={handleCEPChange} />
           </div>
         </div>
-    )
-}
+        
+        <div className={styles.groupForms}>
+          <h6>Cidade</h6>
+          <input id="cidade" type="text" />
+        </div>
+        <div className={styles.groupForms}>
+          <h6>Estado</h6>
+          <input id="estado" type="text" />
+        </div>
+        <div className={styles.groupForms_checkbox}>
+          <input type="checkbox" name="checkbox termo"/>
+          <span className={styles.checkmark}></span>
+          <p>Eu li e compreendo a <span className={styles.span}>Política de Privacidade</span> e os <span className={styles.span}>Termos de Serviço</span>. </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default SecondStep;

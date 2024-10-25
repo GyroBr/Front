@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 // import logo from "../../assets/images/logo.svg";
 import NavBar from "../../components/NavBar/NavBar";
 import stylesNavBar from '../../components/NavBar/NavBar.module.css';
-import{NavLink } from "react-router-dom"
+// import{NavLink } from "react-router-dom"
 
 import visionIcon from "../../assets/images/vision.svg"
 import missionIcon from "../../assets/images/mission.svg"

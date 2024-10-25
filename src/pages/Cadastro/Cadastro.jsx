@@ -37,7 +37,7 @@ export default function Cadastro() {
 
           <div className={styles.buttons}>
 
-            <div>
+            <div className={styles.div_btn}>
             {!isFirstStep && (
               <button type='button' to={"/Home"} className={styles.buttonLink} onClick={() => changeStep(currentStep - 1)}>
               <GrFormPrevious/>
@@ -45,7 +45,7 @@ export default function Cadastro() {
             </button> 
             )}
             </div>
-            <div>
+            <div className={styles.div_btn}>
             {!isLastStep ? (
               <button type='submit' to={"/Home"} className={styles.buttonLink} onClick={() => changeStep(currentStep + 1)}>
               <span>Continuar</span>
@@ -54,7 +54,6 @@ export default function Cadastro() {
             ): (
               <button type='submit' to={"/Home"} className={styles.buttonLink2} onClick={() => changeStep(currentStep + 1)}>
               <span>Cadastrar</span>
-              <GrFormNext/>
               </button>
             )}
             </div>
