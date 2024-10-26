@@ -1,7 +1,8 @@
-import { useState } from "react";
-import React from "react";
+import { useState, React } from "react";
 import { mascaraCEP } from "../../utils/globals";
 import styles from "../../pages/Cadastro/Cadastro.module.css";
+import viaCepService from '../../components/cadastro/viaCep'
+
 
 const SecondStep = () => {
   const [cep, setCEP] = useState("");
@@ -11,15 +12,10 @@ const SecondStep = () => {
     setCEP(e.target.value);
   };
 
-  // const cepForViaCep = document.querySelector('#cep')
-  // const endereco = document.querySelector('#endereco')
-  // const numero = document.querySelector('#numero')
-  // const estado = document.querySelector('#estado')
-  // const cidade = document.querySelector('#cidade')
-  
-  // cepForViaCep.addEventListener('focuout', () => {
-  //   console.log('focusout')
-  // })
+  const handleCEPBlur = () => {
+    viaCepService(cep); // Chama a função viaCepService com o valor do CEP ao perder o foco
+  };
+
 
   return (
     <div>
@@ -36,7 +32,7 @@ const SecondStep = () => {
           </div>
           <div className={styles.groupForms}>
             <h6>CEP</h6>
-            <input id="cepForViaCep" type="numero" value={cep} onChange={handleCEPChange} />
+            <input id="cepForViaCep" type="numero" value={cep} onChange={handleCEPChange} onBlur={handleCEPBlur}/>
           </div>
         </div>
         
@@ -53,6 +49,7 @@ const SecondStep = () => {
           <span className={styles.checkmark}></span>
           <p>Eu li e compreendo a <span className={styles.span}>Política de Privacidade</span> e os <span className={styles.span}>Termos de Serviço</span>. </p>
         </div>
+        {/* <button onClick={viaCepService(cep)}>teste</button> */}
       </div>
     </div>
   );
