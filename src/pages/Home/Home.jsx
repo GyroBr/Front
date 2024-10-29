@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 // import logo from "../../assets/images/logo.svg";
 import NavBar from "../../components/NavBar/NavBar";
 import stylesNavBar from '../../components/NavBar/NavBar.module.css';
-import{NavLink } from "react-router-dom"
+// import{NavLink } from "react-router-dom"
 
 import visionIcon from "../../assets/images/vision.svg"
 import missionIcon from "../../assets/images/mission.svg"
@@ -59,8 +59,7 @@ export function Home() {
                         <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                         <p>Desde a gestão diária até análises avançadas.</p>
                         <button>Conhecer</button>
-                        <NavLink to={"/Cadastro"} className={stylesNavBar.buttonCadastro}>Cadastrar</NavLink>
-
+                        {/* <NavLink to={"/Cadastro"} className={stylesNavBar.buttonCadastro}>Cadastrar</NavLink> */}
                         </div>
                     </div>
                 </section>
@@ -129,7 +128,7 @@ export function Home() {
                 <footer>
                     <div className={styles.banner_content}>
                         <div className={styles.div_icon}>
-                            <img className={styles.big_icon} src={big} alt="Mission" />
+                            <img className={styles.big_icon} src={big} alt="GYRO" />
                         </div>
                         <div className={styles.div_contact}>
                             <div className={styles.card}>
