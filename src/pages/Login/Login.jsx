@@ -21,7 +21,7 @@ export default function Login () {
             toast.success('Login efetuado com sucesso!', {
                 autoClose: 700,
             });
-            navigate('/UserPages');
+            navigate('/Estoque');
             console.log(response);
         }).catch((error) => {
             toast.error(error, {

@@ -8,9 +8,10 @@ import logout from "../../assets/icons/logout.svg"
 import perfil from "../../assets/icons/perfil_icon.png"
 import Card from "./Card"
 import NavTop from "./NavTop"
+import { useNavigate } from "react-router-dom"
 
 export default function Teste() {
-
+    const navigate = useNavigate()
     return (
         <>
             <div className={styles.all}>
