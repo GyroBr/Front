@@ -4,7 +4,8 @@ import { NavBar } from "./components/NavBar/NavBar";
 import {Home} from "./pages/Home/Home";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
-import {UserPages} from './pages/UserPages/UserPages'
+import {UserPages} from './pages/UserPages/UserPages';
+import Estoque from "./pages/Estoque/Estoque";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,16 +20,14 @@ export default function App() {
             <Route path="/Dúvidas" element={<Dúvidas/>}/> */}
             <Route path="/cadastro" element={<Cadastro/>}/>
             <Route path="/login" element={<Login/>}/>
- feature/tela-cadastro
+            <Route path="/Teste" element={<Teste/>} />
+ feature/tela-cadastro  
             <Route path="/Home" element={<Home/>} />
-
+            <Route path="/Estoque" element={<Estoque/>}/>
             {/* <Route path="/perfil" element={<Perfil/>}/> */}
             <Route path="/UserPages" element={<UserPages/>}/>
-
-
         </Routes>
         <ToastContainer />
     </div>
     )
-
 }

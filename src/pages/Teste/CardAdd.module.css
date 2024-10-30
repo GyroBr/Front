@@ -1,0 +1,22 @@
+
+.imagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addProduto{
+    background: #1F1D2B;
+    width: 25vw;
+    padding: 5px;
+    border:2px dashed orange;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.addProduto:hover{
+    background: orange;
+}

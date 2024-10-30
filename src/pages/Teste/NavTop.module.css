@@ -1,0 +1,116 @@
+.all{
+    width: 100%;
+    background: #252836;
+    padding: 1% 1% 0 1%;
+}
+
+.NavTop span{
+    font-size: 2rem;
+    color: orange;
+    margin-bottom: 1vh;
+}
+
+.NavTop{
+    height: 5vh;
+    width: 100%;
+}
+
+.section_navtop {
+    position: sticky;
+    /* top: 0; */
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: #292C3B;
+    z-index: 1;
+    padding: 2vh;
+}
+
+
+/* Estilo para o texto dentro de .section_navtop */
+.section_navtop p {
+    color: white;                  
+    font-weight: bold;              
+    position: relative;             
+    /* transition: color 0.9s ease;   */
+    font-size: 1.5rem;  
+}
+
+/* Efeito de hover para o texto */
+.section_navtop p:hover {
+    color: #EA7100;               
+    cursor: pointer;
+}
+
+/* Underline animado ao passar o mouse */
+.section_navtop p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;                   
+    width: 0;
+    height: 2px;                    
+    background-color: #EA7100;     
+    transition: width 0.3s ease;   
+}
+
+/* Expande o underline ao passar o mouse */
+.section_navtop p:hover::after {
+    width: 100%;                   
+}
+
+
+section h1{
+    color: white;
+    font-size: 1rem;
+}
+
+.NavTopOptions{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+}
+section p{
+    font-size: 16px;
+}
+
+.configurar p{
+    margin-top: 5%;
+}
+
+.configurar{
+    width: 20vw;
+    height: 6vh;
+    border: 2px solid #EA7100;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    transition: 0.3s ease;
+    margin: 1vh 0 0 0;
+}
+.configurar:hover{
+    background: #EA7100;
+}
+
+.configurar p:hover{
+    color: white;
+}
+.configurar img{
+   height: 50%;
+}
+.cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+    margin-bottom: 1%;
+}
+.border{
+    border: 1px solid white;
+}
