@@ -1,3 +1,5 @@
 export * from "./Home"
 export * from "./Cadastro"
 export * from "./Login"
+export * from "./Estoque"
+export * from "./UserPages"
