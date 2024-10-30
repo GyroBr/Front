@@ -4,14 +4,47 @@ import styles from "./Cadastro.module.css";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import FirstStep from '../../components/cadastro/FirstStep';
 import SecondStep from '../../components/cadastro/SecondStep';
-
+import { cadastrarEmpresa } from "../../../conexaoComBackend";
+import { toast } from 'react-toastify';
 // //Hooks
 import {useForm} from '../../hooks/useForm';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
-  const formComponents = [<FirstStep key="firstStep"/>, <SecondStep key="secondStep"/>];
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState({
+    nome: "",
+    telefone: "",
+    cnpj: "",
+    email: "",
+    setor: "",
+    endereco:{
+    },
+    dadosCadastro: {
+    }
+  });
+  const formComponents = [<FirstStep onUsuario={setUsuario} key="firstStep"/>, <SecondStep onUsuario={setUsuario} key="secondStep"/>];
   const{currentStep, currentComponent, changeStep, isFirstStep, isLastStep} = useForm(formComponents);
-
+  const handleCadastrarUsuario = async()=>{
+    console.log('fui chamado');
+    console.log(JSON.stringify(usuario));
+    await cadastrarEmpresa(usuario)
+    .then((response) => {
+      toast.success('Empresa cadastrada com sucesso!', {
+        autoClose: 700,
+      });
+      setTimeout(() => {
+        navigate('/Login');
+      }, 900)
+      console.log(response);
+    }).catch((error) => {
+      toast.error(error, {
+        autoClose: 700,
+    });
+      console.error(error);
+    });
+  }
   return (
     <>
       <div className={styles.div_mother}>
@@ -47,12 +80,12 @@ export default function Cadastro() {
             </div>
             <div>
             {!isLastStep ? (
-              <button type='submit' to={"/Home"} className={styles.buttonLink} onClick={() => changeStep(currentStep + 1)}>
+              <button type='submit' className={styles.buttonLink} onClick={() => changeStep(currentStep + 1)}>
               <span>Continuar</span>
               <GrFormNext/>
               </button>
             ): (
-              <button type='submit' to={"/Home"} className={styles.buttonLink2} onClick={() => changeStep(currentStep + 1)}>
+              <button type='submit' className={styles.buttonLink2} onClick={handleCadastrarUsuario}>
               <span>Cadastrar</span>
               <GrFormNext/>
               </button>

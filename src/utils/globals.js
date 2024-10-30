@@ -3,7 +3,7 @@ export const mascaraTelefone = (e) => {
     if (valor.length > 11) valor = valor.substring(0, 11);
     valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
     valor = valor.replace(/(\d)(\d{4})$/, "$1-$2");
-    e.target.value = valor;
+    return e.target.value = valor;
     };
 
     export const mascaraCelular = (e) => {
@@ -21,7 +21,7 @@ export const mascaraTelefone = (e) => {
         valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
         valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
         valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
-        e.target.value = valor;
+        return e.target.value = valor;
     };
 
     export const validarEmail = (email) => {
