@@ -1,0 +1,60 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.top-products, .revenue-average {
+    background-color: #2b2b40;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.top-products h3, .revenue-average h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.top-products ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.top-products li {
+    margin-bottom: 5px;
+}
+
+.revenue-average .revenue-values {
+    display: flex;
+    justify-content: space-between;
+}
+
+.revenue-average .revenue-item {
+    text-align: center;
+}
+
+.revenue-average .revenue-item p {
+    margin: 0;
+}
+
+.pie-chart {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b40;
+    border-radius: 50%;
+}
+
+.chart-circle {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: conic-gradient(#ffc107 0% 40%, #ff9800 40% 70%, #ff5722 70% 100%);
+}

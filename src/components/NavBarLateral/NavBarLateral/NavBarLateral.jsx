@@ -41,8 +41,8 @@ export function NavBarLateral ({ onPage, onSelectPage }) {
 
             <RouteButton 
                 iconType={cardapio} 
-                text="Cárdapio" 
-                onClick={() => onSelectPage('Cárdapio')}
+                text="Cardápio" 
+                onClick={() => onSelectPage('cardapio')}
             />
 {/* 
             <RouteButton text={'Estoque'} iconType={estoque}/>

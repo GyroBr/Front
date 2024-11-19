@@ -15,7 +15,7 @@ export default function Card({ imagem, desc, statusColor }) {
 
                 <div className={styles.main_div}>
 
-                    <div className={styles.first_div}>
+                    <div className={styles.f_div}>
 
                         <div className={styles.div_centralizar}>
 
@@ -37,7 +37,7 @@ export default function Card({ imagem, desc, statusColor }) {
                     </div>
 
                     <div className={styles.first_div}>
-
+                        
                         <h3>{desc}</h3>
                         <p className={styles.paragrafo_p}>Status: <div className={styles.status} style={{background: statusColor}}></div></p>
                         <p>Ultima reposição:</p>

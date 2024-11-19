@@ -11,13 +11,8 @@
 }
 
 .NavTop{
-    background-color: #ae06a3;
     height: 5vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
 }
 
 .section_navtop {
@@ -28,14 +23,14 @@
     border: 1px solid white;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: #252836;
+    background-color: #292C3B;
     z-index: 1;
-    height: 14vh;
+    padding: 2vh;
 }
+
 
 /* Estilo para o texto dentro de .section_navtop */
 .section_navtop p {
-    background-color: #1bf426;
     color: white;                  
     font-weight: bold;              
     position: relative;             
@@ -73,7 +68,6 @@ section h1{
 }
 
 .NavTopOptions{
-    background-color: aqua;
     width: 100%;
     height: auto;
     display: flex;
@@ -119,4 +113,9 @@ section p{
 }
 .border{
     border: 1px solid white;
+}
+
+.div_produtos{
+    display: flex;
+    justify-content: space-around;
 }

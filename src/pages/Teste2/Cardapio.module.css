@@ -16,22 +16,15 @@
 }
 
 .section_center{
-    background-color: #EA7100;
-    height: 360px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.card_nav{
-    background-color: aqua;
-    width: 65%;
-}
-
 /* Navegação à esquerda */
 .nav_left {
-    background-color: aquamarine;
     width: 100%;
     height: 90vh;
 }
@@ -55,11 +48,6 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 15%;
-    background-color: aliceblue;
-}
-
-.perfil_icon{
-    width: 45%;
 }
 
 /* Navegação geral */
@@ -121,17 +109,11 @@
 }
 
 .navigation_out{
-    width: 8vw;
+    width: 6vw;
     display: flex;
     justify-content: space-around;
     border-radius: 10px;
     transition: 0.5s ease;
-    background-color: blue;
-    border: solid 1px white;
-}
-
-.navigation_out p{
-    font-size: 1rem;
 }
 
 .navigation_left p{

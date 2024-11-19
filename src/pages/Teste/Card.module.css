@@ -1,6 +1,6 @@
 
 .main_div{
-    background: #1F1D2B;
+    background: #4e4293;
     width: 25vw;
     height: 35vh;
     padding: 5px;
@@ -9,6 +9,19 @@
     justify-content: space-around;
 }
 .first_div{
+    background-color: bisque;
+    width: 50%;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.f_div{
+    background-color: #FF5B5B;
     width: 50%;
     border-radius: 10px;
     padding: 5px;
@@ -28,12 +41,12 @@
 }
 
 .div_image{
-    width: 75%;
-    height: 100%;
+    width: 60%;
+    height: 80%;
     padding: 1%;
     display: flex;
     justify-content: center;
-    background: #252836;
+    background: #818dc0;
     border-radius: 50%;
     padding: 1vh;
 }
@@ -46,7 +59,7 @@
     color: white;
     font-size: 1rem;
     border-radius: 10px;
-    background: #3d435e;
+    background: #252836;
     padding: 10px;
     width: 11vw;
     align-items: center;
@@ -81,7 +94,7 @@
     justify-content: center;
     width: 40%;
     transition: 0.5s ease;
-    background-color: #3d435e;
+    background-color: #252836;
 }
 
 .editar_excluir p:hover{

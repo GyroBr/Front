@@ -34,22 +34,22 @@ export default function NavTop() {
                 <div className={styles.border}>
                     <div className={styles.cards}>
                         <CardAdd/>
-                        <Card imagem={refri2} desc={"Sprit 350ml"} statusColor="#60C670"/>
+                        <Card imagem={refri2} desc={"Sprite 350ml"} statusColor="#60C670"/>
                         <Card imagem={refri3} desc={"Guaraná 350ml"} statusColor="#FFF95F"/>
                     </div>
                     <div className={styles.cards}>
                         <Card imagem={refri1} desc={"Fanta Laranja 350ml"} />
-                        <Card imagem={refri2} desc={"Sprit 350ml"} statusColor="#60C670"/>
+                        <Card imagem={refri2} desc={"Sprite 350ml"} statusColor="#60C670"/>
                         <Card imagem={refri3} desc={"Guaraná 350ml"} statusColor="#FFF95F"/>
                     </div>
                     <div className={styles.cards}>
                         <Card imagem={refri1} desc={"Fanta Laranja 350ml"} />
-                        <Card imagem={refri2} desc={"Sprit 350ml"} statusColor="#60C670"/>
+                        <Card imagem={refri2} desc={"Sprite 350ml"} statusColor="#60C670"/>
                         <Card imagem={refri3} desc={"Guaraná 350ml"} statusColor="#FFF95F"/>
                     </div>
                     <div className={styles.cards}>
                         <Card imagem={refri1} desc={"Fanta Laranja 350ml"} />
-                        <Card imagem={refri2} desc={"Sprit 350ml"} statusColor="#60C670"/>
+                        <Card imagem={refri2} desc={"Sprite 350ml"} statusColor="#60C670"/>
                         <Card imagem={refri3} desc={"Guaraná 350ml"} statusColor="#FFF95F"/>
                     </div>
                     

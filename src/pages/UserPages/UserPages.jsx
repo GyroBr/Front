@@ -3,9 +3,10 @@ import {NavBarLateral} from "../../components/NavBarLateral/NavBarLateral/NavBar
 import { useState } from 'react';
 import {Perfil} from "../../components/Perfil/Perfil";
 import {DashboardFinance} from "../../components/Dashboard/DashboardFinance";
-
+import NavTopCardapio from "../Teste2/NavTopCardapio";
 import styles from './UserPages.module.css';
-
+import NavTop from "../Teste/NavTop";
+import BarChart from "../Dashboard/DashBoardBottom/BarChart";
 export function UserPages() {
 
     const [page, setPage] = useState('Perfil');
@@ -25,6 +26,9 @@ export function UserPages() {
         
         {page === 'Perfil' && <Perfil />}
         {page === 'Dashboard' && <DashboardFinance />}
+        {page === 'cardapio' && <NavTopCardapio/>}
+        {page === 'Estoque' && <NavTop/>}
+        {page === 'Dashboard' && <BarChart/>}
         {/* coloca o componente das tels aqui igual esta perfil e dashboard */}
     </div>
     )
