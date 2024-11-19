@@ -42,17 +42,30 @@ const FirstStep = () => {
           <h6>Nome empresarial</h6>
           <input type="text" />
         </div>
-        <div className={styles.groupForms}>
-          <h6>Telefone</h6>
-          <input type="text" value={telefone} onChange={handleTelefoneChange} />
-        </div>
-        <div className={styles.groupForms}>
-          <h6>CNPJ</h6>
-          <input type="text" value={cnpj} onChange={handleCNPJChange} />
+        <div className={styles.CEP_e_NUM}>
+          <div className={styles.groupForms}>
+            <h6>Telefone</h6>
+            <input
+              required
+              type="text"
+              value={telefone}
+              onChange={handleTelefoneChange}
+            />
+          </div>
+          <div className={styles.groupForms}>
+            <h6>CNPJ</h6>
+            <input
+              required
+              type="text"
+              value={cnpj}
+              onChange={handleCNPJChange}
+            />
+          </div>
         </div>
         <div className={styles.groupForms}>
           <h6>E-mail</h6>
           <input
+            required
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -64,11 +77,21 @@ const FirstStep = () => {
         </div>
         <div className={styles.groupForms}>
           <h6>Setor</h6>
-          <input type="number" />
+          <input type="select" />
+        </div>
+        <div className={styles.CEP_e_NUM}>
+          <div className={styles.groupForms}>
+            <h6>Senha</h6>
+            <input type="password" />
+          </div>
+          <div className={styles.groupForms}>
+            <h6>Confirmar Senha</h6>
+            <input type="password" />
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default FirstStep;

@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 // import{NavLink } from "react-router-dom";
 import styles from "./Cadastro.module.css";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
@@ -10,6 +10,17 @@ import SecondStep from '../../components/cadastro/SecondStep';
 import {useForm} from '../../hooks/useForm';
 
 export default function Cadastro() {
+  // const [formData, setFormData] = useState({
+  //   telefone: '',
+  //   cnpj: '',
+  //   email: '',
+  //   endereco: '',
+  //   numero: '',
+  //   cep: '',
+  //   cidade: '',
+  //   estado: ''
+  // });
+
   const formComponents = [<FirstStep key="firstStep"/>, <SecondStep key="secondStep"/>];
   const{currentStep, currentComponent, changeStep, isFirstStep, isLastStep} = useForm(formComponents);
 
