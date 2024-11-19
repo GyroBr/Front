@@ -1,0 +1,93 @@
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    transition: all 0.3s ease;
+  }
+  
+  .menuItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 4px solid transparent;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-left: color 0.3s ease;
+  }
+  
+  .menuItem:hover {
+    color: orange;
+  }
+  
+  .menuItem.active {
+    font-weight: bold;
+    border-left-color: orange;
+  }
+  
+  .logout,
+  .themeToggle {
+    margin-top: auto;
+    padding: 10px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+  }
+  
+  .logout:hover,
+  .themeToggle:hover {
+    color: orange;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--text);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 70%;
+      background-color: var(--background);
+      z-index: 1000;
+      transform: translateX(-100%);
+      transition: color 0.3s ease;
+    }
+  
+    .menu.open {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Temas */
+  :root {
+    --background: #1e1e2f;
+    --text: #fff;
+  }
+  
+  .light {
+    --background: #fff;
+    --text: #000;
+  }
+  

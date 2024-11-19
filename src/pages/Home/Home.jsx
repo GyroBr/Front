@@ -59,8 +59,7 @@ export function Home() {
                         <h1><b>Suporte Total</b><b className={styles.point}> 360°</b></h1>
                         <p>Desde a gestão diária até análises avançadas.</p>
                         <button>Conhecer</button>
-                        <NavLink to={"/Cadastro"} className={stylesNavBar.buttonCadastro}>Cadastrar</NavLink>
-
+                        {/* <NavLink to={"/Cadastro"} className={stylesNavBar.buttonCadastro}>Cadastrar</NavLink> */}
                         </div>
                     </div>
                 </section>
@@ -129,7 +128,7 @@ export function Home() {
                 <footer>
                     <div className={styles.banner_content}>
                         <div className={styles.div_icon}>
-                            <img className={styles.big_icon} src={big} alt="Mission" />
+                            <img className={styles.big_icon} src={big} alt="GYRO" />
                         </div>
                         <div className={styles.div_contact}>
                             <div className={styles.card}>

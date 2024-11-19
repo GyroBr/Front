@@ -1,0 +1,13 @@
+.test-page {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 250px; /* Ajuste conforme o tamanho da Sidebar */
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  

@@ -1,16 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
 .active{
     color: #EA7100;
 }
 
 .navbar1{
-    padding: 0 3vh 0 1vh;
     display: flex;
-    position: fixed;
-    width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000;    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: fixed; 
+    width: 98.7%; 
+    height: 12vh;
+    top: 0; 
+    z-index: 1000; 
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3vh 0 0 0;
+    margin-right: 10px;
 }
+
+.whiteText {
+    color: white;
+}
+
+.blackText {
+    color: black;
+}
+
 
 .navbar1 .logo{
     height: 70px;
@@ -21,7 +41,6 @@
     width: 120px;
     text-align: center;
     border: 1px #EA7100;
-    color: aliceblue;
     text-decoration: none;
     background-color:#EA7100;
     border-radius: 5px;
@@ -33,7 +52,6 @@
     width: 170px;
     text-align: center;
     border: 1px #EA7100;
-    color: aliceblue;
     text-decoration: none;
     border-radius: 5px;
     border: 2px solid #EA7100;
@@ -47,6 +65,7 @@
 
 .navbar1 ul li{
     list-style: none;
+
 }
 
 .navbar1 ul li a{
@@ -86,6 +105,8 @@
     background-color: white;
     border-radius: 0.2rem;
 }
+
+
 
 @media (max-width: 480px) {
     .navbar1 .menu{

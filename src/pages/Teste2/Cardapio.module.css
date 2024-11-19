@@ -1,0 +1,135 @@
+.all{
+    display: flex;
+}
+
+/* Estilos principais da seção */
+.main_section {
+    position: sticky;    
+    top: 0;              
+    width: 20%;         
+    height: 100vh;       
+    background-color: #292C3B;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  
+    padding-top: 20px;    
+}
+
+.section_center{
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Navegação à esquerda */
+.nav_left {
+    width: 100%;
+    height: 90vh;
+}
+
+/* Div do ícone do hambúrguer */
+.hamburguer_div {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15vh;
+}
+
+/* Ícone do hambúrguer */
+.hamburguer_icon {
+    width: 80px;
+    height: 40px;
+}
+
+/* Div do perfil */
+.perfil_div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15%;
+}
+
+/* Navegação geral */
+.navigation_left {
+    display: flex;
+    margin-bottom: 2%;
+    transition: 0.5s ease;
+}
+
+/* Ícone da navegação */
+.icon_nav_left {
+    width: 40px;
+}
+
+/* Estilo dos textos de navegação */
+.navigation_left p,
+.navigation_left_logout p {
+    font-weight: 500;
+    color: white;
+    margin: 10px 0 0 10px; 
+    position: relative;
+    transition: color 0.3s ease;
+    font-size: 2rem;
+}
+
+/* Efeito de hover nos textos */
+.navigation_left p:hover,
+.navigation_left_logout p:hover {
+    color: #EA7100;
+    cursor: pointer;
+}
+
+/* Estilo para a linha abaixo do texto */
+.navigation_left p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+
+/* Efeito de hover na linha */
+.navigation_left p:hover::after {
+    width: 100%;
+}
+
+/* Estilo para o logout */
+.navigation_left_logout {
+    margin-top: 10vh;
+    width: 100%;
+    height: 5%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.navigation_out{
+    width: 6vw;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+
+.navigation_left p{
+
+}
+
+.navigation_out:hover {
+    background-color: #EA7100;
+}
+
+/* .navigation_left_logout div {
+    display: flex;
+} */
+
+/* .card{
+    background-color: #EA7100;
+    height: auto;
+    display: flex;
+} */

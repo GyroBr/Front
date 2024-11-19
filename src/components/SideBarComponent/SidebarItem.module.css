@@ -1,0 +1,20 @@
+.sidebarItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: var(--text);
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebarItem:hover {
+    color: orange;
+  }
+  
+  .sidebarItem.active {
+    font-weight: bold;
+    border-left-color: orange;
+  }
+  

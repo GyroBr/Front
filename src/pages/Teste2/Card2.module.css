@@ -1,0 +1,26 @@
+.main_section {
+}
+
+.addbuttons {
+    display: flex;
+}
+
+.addButton {
+    width: 18%;
+    display: flex;
+    margin: 1%;
+    padding: 1%;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.addButton img {
+    width: 10%;
+    transition: 0.3s ease;
+}
+
+.addButton:hover {
+    background: orange;
+    border: 2px solid white;
+}
+

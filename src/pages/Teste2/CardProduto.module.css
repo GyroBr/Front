@@ -1,0 +1,85 @@
+.main_section_card {
+    background: #333;
+    width: 100%; 
+    max-width: 300px;
+    height: auto; 
+    margin: 1%;
+    padding: 1%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+.main_section_card h3{
+   text-align: center;
+    color: white;
+    padding-top: 10px;
+}
+.div_imagem_CardProduto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px; 
+    background: #3d435e;
+    border-radius: 10px;
+}
+
+.div_imagem_CardProduto img {
+    width: 60%; 
+    max-width: 100px; 
+    height: auto;
+}
+
+.CardProduto_DivDescription {
+    max-height: 100px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+    border-radius: 10px;
+    background: #3d435e;
+    color: #f5f5f5;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.CardProduto_description {
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.5; 
+}
+
+.CardProduto_price {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background: #3d435e; 
+    color: #fff; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.editar_excluir {
+    background: #333;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.editar_excluir p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    padding: 5px 0;
+    background-color: #3d435e;
+    color: #fff;
+    font-weight: 500;
+}
+
+.editar_excluir p:hover {
+    background-color: orange;
+    cursor: pointer;
+}
