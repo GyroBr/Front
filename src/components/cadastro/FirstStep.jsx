@@ -121,19 +121,31 @@ const FirstStep = ({ onUsuario }) => {
             }
           />
         </div>
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div style={{width: '47%'}} className={styles.groupForms}>
-          <h6>Telefone</h6>
-          <input type="text" value={telefone} onChange={handleTelefoneChange} />
-        </div>
-        <div style={{width: '47%'}} className={styles.groupForms}>
-          <h6>CNPJ</h6>
-          <input type="text" value={cnpj} onChange={handleCNPJChange} />
+        <div className={styles.CEP_e_NUM}>
+          <div className={styles.groupForms}>
+            <h6>Telefone</h6>
+            <input
+              required
+              type="text"
+              value={telefone}
+              onChange={handleTelefoneChange}
+            />
+          </div>
+          <div className={styles.groupForms}>
+            <h6>CNPJ</h6>
+            <input
+              required
+              type="text"
+              value={cnpj}
+              onChange={handleCNPJChange}
+            />
+          </div>
         </div>
         </div>
         <div className={styles.groupForms}>
           <h6>E-mail</h6>
           <input
+            required
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -163,18 +175,22 @@ const FirstStep = ({ onUsuario }) => {
         </div>
         <div className={styles.groupForms}>
           <h6>Setor</h6>
-          <select id="setor" onChange={handleSetorChange}>
-            <option value="">Selecione um setor</option>
-            {setores.map((setor) => (
-              <option key={setor} value={setor}>
-                {setor.replace(/_/g, " ")}
-              </option>
-            ))}
-          </select>
+          <input type="select" />
+        </div>
+        <div className={styles.CEP_e_NUM}>
+          <div className={styles.groupForms}>
+            <h6>Senha</h6>
+            <input type="password" />
+          </div>
+          <div className={styles.groupForms}>
+            <h6>Confirmar Senha</h6>
+            <input type="password" />
+          </div>
         </div>
       </div>
     </div>
   );
+};
 };
 
 export default FirstStep;
