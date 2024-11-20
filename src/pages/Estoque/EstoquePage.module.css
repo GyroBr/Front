@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar_container{
+    margin-right: 8.7rem;
+}
+
+.conteudo{
+    width: 100%;
+    height: 100vh;
+    border: 10px solid red;
+}

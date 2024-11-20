@@ -8,7 +8,7 @@ import SecondStep from '../../components/cadastro/SecondStep';
 
 // //Hooks
 import {useForm} from '../../hooks/useForm';
-import { useState } from "react";
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
