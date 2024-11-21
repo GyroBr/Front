@@ -1,0 +1,39 @@
+.menu_top {
+    border-bottom: 3px solid #f0f0f0;
+    height: 4vh;
+    width: 95%;
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.menu_top ul {
+    list-style: none;
+    padding: 0 0 0 5%;
+    margin: 0; 
+    display: flex;
+    gap: 150px;
+}
+
+.menu_top li {
+    margin: 0; 
+}
+
+.menu_top a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #f0f0f0; 
+}
+
+.item_menu a .txt_link {
+    transition: .3s;
+}
+
+.item_menu a .txt_link:hover {
+    color: #FCB069;
+    font-weight: bold;
+}
+
+.ativo a{
+    color: #FCB069;
+    font-weight: 300;
+}
