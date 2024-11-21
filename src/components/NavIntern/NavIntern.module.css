@@ -1,6 +1,6 @@
 .menu_top {
-    border-bottom: 3px solid #f0f0f0;
-    height: 4vh;
+    border-bottom: 0.125rem solid #f0f0f0;
+    height: 1.9rem;
     width: 95%;
     display: flex;
     align-items: center; /* Alinha os itens verticalmente ao centro */
@@ -11,7 +11,7 @@
     padding: 0 0 0 5%;
     margin: 0; 
     display: flex;
-    gap: 150px;
+    gap: 5rem;
 }
 
 .menu_top li {
@@ -19,7 +19,7 @@
 }
 
 .menu_top a {
-    font-size: 2rem;
+    font-size: 1rem;
     text-decoration: none;
     color: #f0f0f0; 
 }

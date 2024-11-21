@@ -2,7 +2,7 @@
     width: 30%;
     height: 45%;
     background-color: #131313;
-    border-radius: 20px;
+    border-radius: 0.7rem;
     margin: 1% 0 0 3%;
     display: flex;
     justify-content: space-around;
@@ -10,7 +10,7 @@
 
 .container{
     width: 48%;
-    border-radius: 10px;
+    border-radius: 0.7rem;
     height: 100%;
     padding: 2% 2% 0 2%;
 }
@@ -33,9 +33,9 @@
     margin: 0 0 3% 0;
     border: none;
     color: aliceblue;
-    font-size: 24px;
+    font-size: 10px;
     display: flex;
-    padding: 3% 0 0 3%;
+    padding: 8px 0 0 10px;      
 }
 
 .img{
@@ -44,14 +44,14 @@
 }
 
 .upload_img{
-    height: 180px;
-    width: 180px;
+    height: 5.5rem;
+    width: 5.5rem;
     background-color: #1C1D21;
     border-radius: 100px;
 }
 
 .line .icon{
     color: #FCB069;
-    font-size: 24px;
-    margin-left: 5.6rem;
+    font-size: 14px;
+    margin-left: 3.3rem;
 }

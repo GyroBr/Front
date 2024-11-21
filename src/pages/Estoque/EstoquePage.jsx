@@ -23,7 +23,7 @@ const EstoquePage = () => {
                     <BtnAddProduct /> <BtnConfig />
                 </div>
                 <div className={styles.container}>
-                    <CardEstoque/> <CardEstoque/> <CardEstoque/>
+                    <CardEstoque/> 
                 </div>
             </div>
         </div>
