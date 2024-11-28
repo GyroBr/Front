@@ -18,10 +18,11 @@ export default function Login () {
         await logar(dados)
         .then((response) => {
             sessionStorage.setItem('token', response.Token)
+            console.log(response)
             toast.success('Login efetuado com sucesso!', {
                 autoClose: 700,
             });
-            navigate('/Estoque');
+            navigate('/EstoquePage');
             console.log(response);
         }).catch((error) => {
             toast.error(error, {
