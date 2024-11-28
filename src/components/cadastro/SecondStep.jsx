@@ -37,12 +37,12 @@ const SecondStep = () => {
         </div>
         
         <div className={styles.groupForms}>
-          <h6>Cidade</h6>
-          <input id="cidade" type="text" />
+          <h6>Bairro</h6>
+          <input id="bairro" type="text" />
         </div>
         <div className={styles.groupForms}>
-          <h6>Estado</h6>
-          <input id="estado" type="text" />
+          <h6>Cidade</h6>
+          <input id="cidade" type="text" />
         </div>
         <div className={styles.groupForms_checkbox}>
           <input type="checkbox" name="checkbox termo"/>
