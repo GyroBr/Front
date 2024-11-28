@@ -8,20 +8,11 @@ import SecondStep from '../../components/cadastro/SecondStep';
 
 // //Hooks
 import {useForm} from '../../hooks/useForm';
-import { useState } from "react";
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
-  // const [formData, setFormData] = useState({
-  //   telefone: '',
-  //   cnpj: '',
-  //   email: '',
-  //   endereco: '',
-  //   numero: '',
-  //   cep: '',
-  //   cidade: '',
-  //   estado: ''
-  // });
+ 
 
   const formComponents = [<FirstStep key="firstStep"/>, <SecondStep key="secondStep"/>];
   const{currentStep, currentComponent, changeStep, isFirstStep, isLastStep} = useForm(formComponents);
@@ -89,8 +80,6 @@ export default function Cadastro() {
               </button>
             )}
             </div>
-            
-            
           </div>
         </div>
       </div>

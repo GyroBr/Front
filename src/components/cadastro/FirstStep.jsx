@@ -188,9 +188,7 @@ const FirstStep = ({ onUsuario }) => {
           </div>
         </div>
       </div>
-    </div>
   );
-};
 };
 
 export default FirstStep;
