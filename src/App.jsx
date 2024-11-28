@@ -14,6 +14,7 @@ import Cardapio from "./pages/Teste2/Cardapio";
 import BarChart from "./pages/Dashboard/DashBoardBottom/BarChart"
 import EstoquePage from "./pages/Estoque/EstoquePage";
 import EstoquePage2 from "./pages/Estoque/EstoquePage";
+import Employee from "./pages/Employee/Employee";
 // import { Pie } from 'react-chartjs-2';
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
@@ -31,8 +32,9 @@ export default function App() {
             <Route path="/Estoque" element={<Teste/>} />
             <Route path="/Cardapio" element={<Cardapio/>} />
             <Route path="/Dashboard" element={<BarChart/>} />
-            <Route path="/EstoquePage" element={<EstoquePage/>} />
+            {/* <Route path="/EstoquePage" element={<EstoquePage/>} /> */}
             <Route path="/EstoquePage" element={<EstoquePage2/>} />
+            <Route path="/Employee" element={<Employee/>} />
             
  feature/tela-cadastro  
             <Route path="/Home" element={<Home/>} />

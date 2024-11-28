@@ -6,7 +6,7 @@ import { BsSliders2 } from "react-icons/bs";
 const BtnConfig = () => {
     return (
         <button className={styles.btn_config}>
-            Adicionar Produto <BsSliders2 className={styles.icon} />
+            Configurar Categoria <BsSliders2 className={styles.icon} />
         </button>
     );
 };

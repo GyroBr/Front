@@ -6,6 +6,10 @@ import BtnConfig from "../../components/Button/BtnConfig";
 import CardEstoque from "../../components/CardEstoque/CardEstoque";
 import styles from "./EstoquePage.module.css";
 
+
+const  token = sessionStorage.getItem("token")
+console.log(token)
+
 const EstoquePage = () => {
     return (
         <div className={styles.body}>
