@@ -1,8 +1,14 @@
 import {axios} from 'axios'
 
-export const registerEmpresa = async () => {
+const apiURL = 'http://localhost:8080'
+
+export const registerEmpresa = async (enterprises) => {
     try {
-        const response = await axios.post('http://localhost:8080/enterprises/register') 
+        const response = await axios.post(`/enterprises/register, ${enterprises}`, {
+            headers : {
+                "Content-Type" : "application/json"
+            }
+        }) 
         return response
     } catch (error) {
         return error
