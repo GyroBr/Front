@@ -10,7 +10,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 1000;    text-align: center;
+    z-index: 1000;    
+    text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: fixed; 
     width: 98.7%; 
@@ -19,7 +20,6 @@
     z-index: 1000; 
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 3vh 0 0 0;
     margin-right: 10px;
 }
 
@@ -60,7 +60,6 @@
 
 .navbar1 ul{
     display: flex;
-    margin-top: 25px;
 }
 
 .navbar1 ul li{

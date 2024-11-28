@@ -23,7 +23,18 @@ export default function Cadastro() {
   //   estado: ''
   // });
 
-  const formComponents = [<FirstStep key="firstStep"/>, <SecondStep key="secondStep"/>];
+  const [usuario, setUsuario] = useState({
+    nome: "",
+    telefone: "",
+    cnpj: "",
+    email: "",
+    setor: "",
+    endereco:{
+    },
+    dadosCadastro: {
+    }
+  });
+  const formComponents = [<FirstStep onUsuario={setUsuario} key="firstStep"/>, <SecondStep onUsuario={setUsuario} key="secondStep"/>];
   const{currentStep, currentComponent, changeStep, isFirstStep, isLastStep} = useForm(formComponents);
   const handleCadastrarUsuario = async()=>{
     console.log('fui chamado');

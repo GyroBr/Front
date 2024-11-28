@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Teste from "./pages/Teste/Teste";
 // import TestPage from './pages/TestPage/TestPage';
 import Cardapio from "./pages/Teste2/Cardapio";
+import CardapioPage from "./pages/Cardapio/CardapioPage";
 import BarChart from "./pages/Dashboard/DashBoardBottom/BarChart"
 import EstoquePage from "./pages/Estoque/EstoquePage";
 import EstoquePage2 from "./pages/Estoque/EstoquePage";
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/Estoque" element={<Teste/>} />
             <Route path="/Cardapio" element={<Cardapio/>} />
+            <Route path="/CardapioPage" element={<CardapioPage/>} />
             <Route path="/Dashboard" element={<BarChart/>} />
             <Route path="/EstoquePage" element={<EstoquePage/>} />
             <Route path="/EstoquePage" element={<EstoquePage2/>} />

@@ -4,7 +4,7 @@ export default async function viaCepService(cep) {
   // const cepForViaCep = document.querySelector("#cepForViaCep");
   const endereco = document.querySelector("#endereco");
   const numero = document.querySelector("#numero");
-  const estado = document.querySelector("#estado");
+  const bairro = document.querySelector("#bairro");
   const cidade = document.querySelector("#cidade");
   console.log(cep)
 
@@ -22,10 +22,10 @@ export default async function viaCepService(cep) {
     console.log('houve um erro ao procurar cep ' , data.erro)
   }
 
-  endereco.value = data.logradouro;
-      numero.value = data.unidade;
-      estado.value = data.estado; 
-      cidade.value = data.localidade;
+    endereco.value = data.logradouro;
+    numero.value = data.unidade;
+    bairro.value = data.bairro; 
+    cidade.value = data.localidade;
 
  }catch(error){
   console.log(error)

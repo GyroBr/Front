@@ -31,6 +31,7 @@ const FirstStep = ({ onUsuario }) => {
   const [emailError, setEmailError] = useState("");
   const [setor, setSetor] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [nome, setNome] = useState("");
 
   const handleTelefoneChange = (e) => {
@@ -74,6 +75,11 @@ const FirstStep = ({ onUsuario }) => {
   const handleSenhaChange = (e) => {
     const senhaValue = e.target.value;
     setSenha(senhaValue);
+    
+  }
+  const handleConfirmarSenhaChange = (e) => {
+    const confirmarSenhaValue = e.target.value;
+    setConfirmarSenha(confirmarSenhaValue);
     
   }
 
@@ -142,7 +148,7 @@ const FirstStep = ({ onUsuario }) => {
           </div>
         </div>
         </div>
-        <div className={styles.groupForms}>
+        <div className={styles.forms}>
           <h6>E-mail</h6>
           <input
             required
@@ -155,7 +161,7 @@ const FirstStep = ({ onUsuario }) => {
             <span className={styles.errorMessage}>{emailError}</span>
           )}
         </div>
-        <div className={styles.groupForms}>
+        {/* <div className={styles.forms}>
           <h6>Senha</h6>
           <input
             type="password"
@@ -163,28 +169,32 @@ const FirstStep = ({ onUsuario }) => {
             onChange={handleSenhaChange}
             
           />
-        </div>
-        <div className={styles.groupForms}>
-          <h6>Nome do usuário</h6>
-          <input
-            type="text"
-            value={nome}
-            onChange={handleNomeChange}
-
-          />
-        </div>
-        <div className={styles.groupForms}>
+        </div> */}
+        
+        <div className={styles.forms}>
           <h6>Setor</h6>
-          <input type="select" />
+          <input 
+          type="select" 
+          value={setor}
+          onChange={handleSetorChange}
+          />
         </div>
         <div className={styles.CEP_e_NUM}>
           <div className={styles.groupForms}>
             <h6>Senha</h6>
-            <input type="password" />
+            <input
+             type="password"
+             value={senha}
+             onChange={handleSenhaChange}
+            />
           </div>
           <div className={styles.groupForms}>
             <h6>Confirmar Senha</h6>
-            <input type="password" />
+            <input 
+             type="password"
+             value={confirmarSenha}
+             onChange={handleConfirmarSenhaChange} 
+            />
           </div>
         </div>
       </div>
