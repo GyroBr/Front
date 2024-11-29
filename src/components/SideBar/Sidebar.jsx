@@ -1,7 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import styles from "../SideBar/Sidebar.module.css";
 import { CiLogout } from "react-icons/ci";
-import { BsBarChartFill, BsReverseLayoutTextSidebarReverse, BsBox, BsCart4, BsJustify, BsPerson, BsBoxArrowLeft } from "react-icons/bs";
+import {
+    BsBarChartFill,
+    BsReverseLayoutTextSidebarReverse,
+    BsBox,
+    BsCart4,
+    BsJustify,
+    BsPerson,
+    BsBoxArrowLeft,
+} from "react-icons/bs";
+import { getEnterpriseById } from "../../services/empresas/empresa";
 
 const Menu = () => {
     const menuRef = useRef(null);
@@ -11,24 +20,29 @@ const Menu = () => {
 
         function selectLink(event) {
             menuItem.forEach((item) => item.classList.remove(styles.ativo));
-            console.log(menuItem)
             event.currentTarget.classList.add(styles.ativo);
-
         }
 
-        menuItem.forEach((item) => item.addEventListener('click', selectLink));
+        menuItem.forEach((item) => item.addEventListener("click", selectLink));
 
         return () => {
-            menuItem.forEach((item) => item.removeEventListener('click', selectLink));
-        }
+            menuItem.forEach((item) => item.removeEventListener("click", selectLink));
+        };
     }, []);
 
-    function selectLink(event) {
-        const menuItem = menuRef.current.querySelectorAll(`.${styles.item_menu}`);
-        menuItem.forEach((item) => item.classList.remove(styles.ativo));
-        event.currentTarget.classList.add(styles.ativo);
-        console.log(event.currentTarget.classList); // Adicione esta linha
-    }
+    useEffect(() => {
+        const fetchEnterpriseData = async () => {
+            const token = sessionStorage.getItem("token");
+            try {
+                const data = await getEnterpriseById(token);
+                console.log("Enterprise Data:", data);
+            } catch (error) {
+                console.error("Erro ao buscar os dados da empresa:", error.message);
+            }
+        };
+
+        fetchEnterpriseData();
+    }, []);
 
     return (
         <nav className={styles.menu_lateral} ref={menuRef}>
@@ -37,7 +51,7 @@ const Menu = () => {
             </div>
 
             <ul>
-                <li className={`${styles.item_menu}`} onClick={selectLink}>
+                <li className={styles.item_menu}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsBarChartFill />
@@ -46,7 +60,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu} onClick={selectLink}>
+                <li className={styles.item_menu}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsReverseLayoutTextSidebarReverse />
@@ -55,7 +69,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu} onClick={selectLink}>
+                <li className={styles.item_menu}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsBox />
@@ -64,7 +78,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu} onClick={selectLink}>
+                <li className={styles.item_menu}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsCart4 />
@@ -73,7 +87,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu} onClick={selectLink}>
+                <li className={styles.item_menu}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsPerson />
@@ -82,7 +96,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu_out} onClick={selectLink}>
+                <li className={styles.item_menu_out}>
                     <a href="#">
                         <span className={styles.icon}>
                             <BsBoxArrowLeft />

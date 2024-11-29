@@ -14,3 +14,17 @@ export const registerEnterprise = async (empresa) => {
         throw new Error(error.response?.data?.message || "Erro ao cadastrar a empresa");
     }
 };
+
+
+export const getEnterpriseById = async (token) => {
+    try {
+        const response = await axios.get(`${apiURL}/get-by-id`, {
+            headers: {
+                "Authorization": token
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || "Erro ao buscar a empresa pelo ID");
+    }
+};
