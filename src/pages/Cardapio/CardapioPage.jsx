@@ -24,6 +24,17 @@ const CardapioPage = () => {
                 </div>
                 <div className={styles.container}>
                     <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
+                    <CardCardapio/> 
                 </div>
             </div>
         </div>

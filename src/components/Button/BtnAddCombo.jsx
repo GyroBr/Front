@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "../Button/BtnAddProduct.module.css";
+import styles from "../Button/BtnAddCombo.module.css";
 import { BsPlusLg } from "react-icons/bs";
 
 
