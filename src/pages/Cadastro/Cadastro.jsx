@@ -38,21 +38,41 @@ export default function Cadastro() {
           navigate('/Login');
         }, 900);
       } catch (error) {
-        if (error.response && error.response.data) {
-          const errorMessages = error.response.data;
-          errorMessages.forEach((err) => {
-            toast.error(`Campo "${err.field}" erro: ${err.message}`, {
+        console.error("Erro completo:", error);
+    
+        if (error.response) {
+          console.error("Detalhes da resposta de erro:", {
+            status: error.response.status,
+            headers: error.response.headers,
+            data: error.response.data,
+          });
+    
+          if (error.response.data) {
+            const errorMessages = Array.isArray(error.response.data) ? error.response.data : [error.response.data];
+            errorMessages.forEach((err) => {
+              toast.error(`Campo "${err.field || 'desconhecido'}" erro: ${err.message || 'Erro desconhecido'}`, {
+                autoClose: 700,
+              });
+            });
+          } else {
+            toast.error(`Erro: ${error.response.status} - ${error.response.statusText}`, {
               autoClose: 700,
             });
+          }
+        } else if (error.request) {
+          console.error("Sem resposta do servidor. Detalhes da requisição:", error.request);
+          toast.error('Erro: Sem resposta do servidor.', {
+            autoClose: 700,
           });
         } else {
-          toast.error('Erro ao cadastrar a empresa', {
+          console.error("Erro na configuração da requisição:", error.message);
+          toast.error(`Erro inesperado: ${error.message}`, {
             autoClose: 700,
           });
         }
-        console.error('Erro:', error);
       }
     };
+    
     
 
     return (

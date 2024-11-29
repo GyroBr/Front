@@ -34,6 +34,9 @@ const FirstStep = ({ onUsuario }) => {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [name, setNome] = useState("");
 
+  const limparTelefone = (telefone) => telefone.replace(/[\s()-]/g, ""); // Remove espaços, parênteses e traços
+
+
   useEffect(() => {
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
@@ -47,26 +50,28 @@ const FirstStep = ({ onUsuario }) => {
   }, [phoneNumber, email, senha, name, cnpj, sector]);
 
   const handleTelefoneChange = (e) => {
-    const telefoneValue = mascaraTelefone(e);
-    console.log("Telefone formatado:", telefoneValue);
-    setTel(telefoneValue);
-    const telefoneLimpo = telefoneValue.replace(/[\s()-]/g, "");
-    console.log("Telefone limpo:", telefoneLimpo);
+    const telefoneComMascara = mascaraTelefone(e);
+    const telefoneLimpo = limparTelefone(telefoneComMascara); // Remove a máscara
+
+    setTel(telefoneLimpo); // Atualiza o input com a máscara
+
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
-      phoneNumber: Number(telefoneLimpo),
+      phoneNumber: telefoneLimpo, // Atualiza o objeto com o telefone sem máscara
     }));
   };
-    
+
+
+
 
   const handleCNPJChange = (e) => {
     const cnpjValue = mascaraCNPJ(e);
-    setCNPJ(cnpjValue);
-    const cnpjLimpo = cnpjValue.replace(/[.\-/]/g, ""); 
-    console.log("cnpj papai ", cnpjLimpo)
+    const cnpjLimpo = cnpjValue.replace(/[.\-/]/g, ""); // Remove pontos, barras e traços
+    setCNPJ(cnpjLimpo);
+
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
-      cnpj: Number(cnpjLimpo),
+      cnpj: cnpjLimpo, // Passa o CNPJ limpo ao objeto
     }));
   };
 
@@ -130,9 +135,10 @@ const FirstStep = ({ onUsuario }) => {
             <input
               required
               type="text"
-              value={phoneNumber}
+              value={phoneNumber} 
               onChange={handleTelefoneChange}
             />
+
           </div>
           <div className={styles.groupForms}>
             <h6>CNPJ</h6>
