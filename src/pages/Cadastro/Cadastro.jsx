@@ -6,7 +6,7 @@ import FirstStep from '../../components/cadastro/FirstStep';
 import SecondStep from '../../components/cadastro/SecondStep';
 
 
-// //Hooks
+// //Hookst
 import {useForm} from '../../hooks/useForm';
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,15 +15,16 @@ export default function Cadastro() {
  
 
   const [usuario, setUsuario] = useState({
-    nome: "",
-    telefone: "",
+    name: "",
+    phoneNumber: "",
     cnpj: "",
     email: "",
-    setor: "",
-    endereco:{
+    password: "",
+    sector: "",
+    address:{
     },
-    dadosCadastro: {
-    }
+    // dadosCadastro: {
+    // }
   });
   const formComponents = [<FirstStep onUsuario={setUsuario} key="firstStep"/>, <SecondStep onUsuario={setUsuario} key="secondStep"/>];
   const{currentStep, currentComponent, changeStep, isFirstStep, isLastStep} = useForm(formComponents);
