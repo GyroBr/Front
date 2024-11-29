@@ -48,20 +48,22 @@ const FirstStep = ({ onUsuario }) => {
 
   const handleTelefoneChange = (e) => {
     const telefoneValue = mascaraTelefone(e);
+    console.log("Telefone formatado:", telefoneValue);
     setTel(telefoneValue);
     const telefoneLimpo = telefoneValue.replace(/[\s()-]/g, "");
-    console.log("Telefone Limpo:", telefoneLimpo);
+    console.log("Telefone limpo:", telefoneLimpo);
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
-      phoneNumber: telefoneLimpo, 
+      phoneNumber: Number(telefoneLimpo),
     }));
   };
-  
+    
 
   const handleCNPJChange = (e) => {
     const cnpjValue = mascaraCNPJ(e);
     setCNPJ(cnpjValue);
     const cnpjLimpo = cnpjValue.replace(/[.\-/]/g, ""); 
+    console.log("cnpj papai ", cnpjLimpo)
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
       cnpj: Number(cnpjLimpo),
@@ -71,6 +73,7 @@ const FirstStep = ({ onUsuario }) => {
   const handleNomeChange = (e) => {
     const nomeValue = e.target.value;
     setNome(nomeValue);
+    console.log("nome ta vindo? ", nomeValue)
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
       name: nomeValue,
