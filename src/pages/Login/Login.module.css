@@ -54,6 +54,7 @@
     width: 500px;
     height: 50.357px;
     border-radius: 10px;
+    border: #EA7100;
     background: #EA7100;
     color: #FFF;
     text-align: center;
@@ -65,10 +66,18 @@
     width: 510px;
     height: 50.600px;
     color: #EA7100;
+    border: #EA7100 3px solid;
     background-color: #FFF;
     text-align: center;
     font-size: 20px;
     font-weight: 700;
+}
+
+.arrow_back {
+    color: #EA7100;
+    width: 50px;
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .div_logo {

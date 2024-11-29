@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import styles from "./CardCardapio.module.css";
 import ModalCardapioExcluir from '../ModaisCardapio/ModalCardapioExcluir';
@@ -47,7 +48,7 @@ const Card = () => {
                     <button className={styles.buttonCard}>
                     <MdEdit /> Editar
                     </button>
-                    <button onClick={() => console.log("clicou")} className={styles.buttonCard}>
+                    <button onClick={() => setIsModalOpen(true)} className={styles.buttonCard}>
                     <MdDelete /> Excluir
                     </button>
                 </div>
@@ -55,6 +56,7 @@ const Card = () => {
             {
                 isModalOpen && <ModalCardapioExcluir handleBack={handleBack}/>
             }
+            <ModalCardapioExcluir isOpen={isModalOpen}/>
         </div>
     );
 };
