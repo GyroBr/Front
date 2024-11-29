@@ -1,16 +1,16 @@
-import {axios} from 'axios'
+import axios from 'axios';
 
-const apiURL = 'http://localhost:8080'
+const apiURL = 'http://localhost:8080/enterprises';
 
-export const registerEmpresa = async (enterprises) => {
+export const registerEnterprise = async (empresa) => {
     try {
-        const response = await axios.post(`/enterprises/register, ${enterprises}`, {
-            headers : {
-                "Content-Type" : "application/json"
+        const response = await axios.post(`${apiURL}/register`, empresa, {
+            headers: {
+                "Content-Type": "application/json"
             }
-        }) 
-        return response
+        });
+        return response;
     } catch (error) {
-        return error
+        throw new Error(error.response?.data?.message || "Erro ao cadastrar a empresa");
     }
-}
+};

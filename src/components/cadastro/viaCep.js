@@ -1,33 +1,28 @@
-  import axios from "axios";
+import axios from "axios";
 
-  export default async function viaCepService(cep) {
-    // const cepForViaCep = document.querySelector("#cepForViaCep");
-    const street = document.querySelector("#endereco");
-    const number = document.querySelector("#numero");
-    const neighborhood = document.querySelector("#bairro");
-    const city = document.querySelector("#cidade");
-    console.log(cep)
+export default async function viaCepService(cep) {
+  const uriViaCep = `https://viacep.com.br/ws/${cep}/json/`;
 
-    const uriViaCep = `https://viacep.com.br/ws/${cep}/json/`;
-
-  try{
-    const response = await axios.get(uriViaCep)
-
-
+  try {
+    const response = await axios.get(uriViaCep);
     const data = response.data;
 
-    console.log(data)
+    console.log(data);
 
-    if(data.erro){
-      console.log('houve um erro ao procurar cep ' , data.erro)
+    // Verifique se a API retornou um erro
+    if (data.erro) {
+      console.error('Erro ao buscar o CEP:', data.erro);
+      return null;
     }
 
-      street.value = data.logradouro;
-      number.value = data.unidade;
-      neighborhood.value = data.bairro; 
-      city.value = data.localidade;
-
-  }catch(error){
-    console.log(error)
+    // Retorne um objeto com os dados esperados
+    return {
+      logradouro: data.logradouro || "",
+      bairro: data.bairro || "",
+      localidade: data.localidade || "",
+    };
+  } catch (error) {
+    console.error("Erro na requisição do CEP:", error);
+    return null;
   }
-  }
+}

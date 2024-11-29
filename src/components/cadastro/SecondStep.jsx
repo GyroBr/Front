@@ -16,14 +16,24 @@ const SecondStep = ({ onUsuario }) => {
   };
 
   const handleCEPBlur = async () => {
-    if (postalCode.length === 9) { // Garante que o postalCode tem o formato correto
-      try {
-        const data = await viaCepService(postalCode);
-        setEndereco(data.logradouro || "");
-        setBairro(data.neighborhood || "");
-        setCidade(data.localidade || "");
-      } catch (error) {
-        console.error("Erro ao buscar dados do cpf:", error);
+    if (postalCode.length === 9) { 
+      const data = await viaCepService(postalCode);
+      if (data) {
+        setEndereco(data.logradouro);
+        setBairro(data.bairro);
+        setCidade(data.localidade);
+        onUsuario((prevUsuario) => ({
+          ...prevUsuario,
+          address: {
+            street: data.logradouro,
+            number: number, 
+            postalCode: postalCode.replace(/[\s()-]/g, ""), 
+            neighborhood: data.bairro,
+            city: data.localidade,
+          }
+        }));
+      } else {
+        console.warn("Nenhum dado encontrado para o CEP.");
       }
     }
   };
@@ -45,9 +55,13 @@ const SecondStep = ({ onUsuario }) => {
       default:
         break;
     }
-    onUsuario((prev) => ({ 
-      ...prev, 
-      address: { ...prev.address, [field]: value } 
+   
+    onUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      address: {
+        ...prevUsuario.address,
+        [field]: value,
+      }
     }));
   };
 
@@ -55,62 +69,48 @@ const SecondStep = ({ onUsuario }) => {
     <div>
       <div className={styles.forms}>
         <div className={styles.groupForms}>
-          <h6>Endereço</h6>
-          <input 
-            id="street" 
-            type="text" 
-            value={street} 
-            onChange={(e) => handleChange("street", e.target.value)} 
+          <h6>CEP</h6>
+          <input
+            type="text"
+            value={postalCode}
+            onChange={handleCEPChange}
+            onBlur={handleCEPBlur}
           />
         </div>
 
-        <div className={styles.CEP_e_NUM}>
-          <div className={styles.groupForms}>
-            <h6>Número</h6>
-            <input 
-              id="number" 
-              type="number" 
-              value={number} 
-              onChange={(e) => handleChange("number", e.target.value)} 
-            />
-          </div>
-          <div className={styles.groupForms}>
-            <h6>CEP</h6>
-            <input 
-              id="cepForViaCep" 
-              type="text" 
-              value={postalCode} 
-              onChange={handleCEPChange} 
-              onBlur={handleCEPBlur} 
-            />
-          </div>
+        <div className={styles.groupForms}>
+          <h6>Número</h6>
+          <input
+            type="text"
+            value={number}
+            onChange={(e) => handleChange("number", e.target.value)}
+          />
+        </div>
+
+        <div className={styles.groupForms}>
+          <h6>Endereço</h6>
+          <input
+            type="text"
+            value={street}
+            onChange={(e) => handleChange("street", e.target.value)}
+          />
         </div>
         
         <div className={styles.groupForms}>
           <h6>Bairro</h6>
-          <input 
-            id="neighborhood" 
-            type="text" 
-            value={neighborhood} 
-            onChange={(e) => handleChange("neighborhood", e.target.value)} 
+          <input
+            type="text"
+            value={neighborhood}
+            onChange={(e) => handleChange("neighborhood", e.target.value)}
           />
         </div>
         <div className={styles.groupForms}>
           <h6>Cidade</h6>
-          <input 
-            id="city" 
-            type="text" 
-            value={city} 
-            onChange={(e) => handleChange("city", e.target.value)} 
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => handleChange("city", e.target.value)}
           />
-        </div>
-        <div className={styles.groupForms_checkbox}>
-          <input type="checkbox" name="checkbox termo" />
-          <span className={styles.checkmark}></span>
-          <p>
-            Eu li e compreendo a <span className={styles.span}>Política de Privacidade</span> e os{" "}
-            <span className={styles.span}>Termos de Serviço</span>.
-          </p>
         </div>
       </div>
     </div>
