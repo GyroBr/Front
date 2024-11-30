@@ -99,12 +99,17 @@ export default function Cadastro() {
 
                 <div className={styles.buttons}>
                     <div className={styles.div_btn}>
-                        {!isFirstStep && (
-                            <button type='button' to={"/Home"} className={styles.buttonLink} onClick={() => changeStep(currentStep - 1)}>
+                        {isFirstStep ? (
+                            <button type='button' to={"/Home"} className={styles.buttonLink} onClick={() => navigate('/Home')}>
                                 <GrFormPrevious />
-                                <span>Voltar</span>
+                                <span>Página inicial</span>
                             </button>
-                        )}
+                        ) : (
+                          <button type='button' className={styles.buttonLink} onClick={() => changeStep(currentStep - 1)}>
+                              <GrFormPrevious />
+                              <span>Voltar</span>
+                          </button>
+                      )}
                     </div>
                     <div className={styles.div_btn}>
                         {!isLastStep ? (
