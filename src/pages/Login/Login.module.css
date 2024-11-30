@@ -74,10 +74,15 @@
 }
 
 .arrow_back {
+    display: inline-block;
     color: #EA7100;
-    width: 50px;
+    width: 60px;
     font-size: 30px;
     cursor: pointer;
+    transition: all 0.4s;
+}
+.arrow_back:hover {
+    margin-left: -15%;
 }
 
 .div_logo {
