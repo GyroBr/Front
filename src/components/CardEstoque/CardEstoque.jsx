@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CardEstoque.module.css";
-import ModalAdicionarLote from '../ModaisLote/ModalAdicionarLote';
+import ModalExcluirLote from '../ModaisLote/ModalExcluirLote';
 import { BsPlusLg, BsCalendar4Event, BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import { useState } from "react";
 
@@ -42,7 +42,7 @@ const Card = () => {
                         <span className={styles.text}>Quantidade lote { }:    </span>
                     </div>
                     {/* <div className={styles.line}>
-                        <span className={styles.text}>Adicionar Produtos <BsPlusLg className={styles.icon} /></span>
+                        <span className={styles.text}>Excluir Produtos <BsPlusLg className={styles.icon} /></span>
                     </div> */}
 
                 </div>
@@ -76,15 +76,14 @@ const Card = () => {
                         </button>
 
                         <button onClick={() => console.log("clicou")} className={styles.btn_edit_delete}>
-                            <BsFillTrashFill />
-                            <span className={styles.text}>Excluir</span>
+                            <BsFillTrashFill />Excluir
                             
                         </button>
                     </div>
                 </div>
             </div>
             {
-                isModalOpen && <ModalAdicionarLote handleBack={handleBack} />
+                isModalOpen && <ModalExcluirLote handleBack={handleBack} />
             }
         </div>
     );
