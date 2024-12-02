@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { Children } from "react";
 import styles from "./ModalExcluir.module.css";
 
 export default function ModalExcluir({ isOpen }) {
@@ -9,6 +9,7 @@ export default function ModalExcluir({ isOpen }) {
       <div className={styles.background}>
         <div className={styles.modalContentStyle}>
           <div className={styles.contents}>
+            {Children}
             <h4>Tem certeza que deseja excluir este produto?</h4>
 
             <div className={styles.buttons}>
