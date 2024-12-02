@@ -3,6 +3,8 @@ import { auth } from "../../services/auth/auth";
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { MdArrowBack } from "react-icons/md";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ export default function Login() {
 
   return (
     <div className={styles.div_mother}>
+      <a  href="."><MdArrowBack className={styles.arrow_back} /></a>
       <div className={styles.div_form}>
         <div className={styles.div_logo}></div>
         <p className={styles.subtittle}>Bem-vindo de volta! Acesse sua conta <span className={styles.colored_dot}>.</span></p>
