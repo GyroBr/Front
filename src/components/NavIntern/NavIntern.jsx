@@ -54,7 +54,7 @@ const NavIntern = () => {
                 </li>
                 <li className={styles.item_menu}>
                     <a href="#">
-                        <span className={styles.txt_link}>Whisky</span>
+                        <span className={styles.txt_link}>Whiskey</span>
                     </a>
                 </li>
             </ul>
