@@ -4,20 +4,11 @@ import ModalExcluirLote from '../ModaisLote/ModalExcluirLote';
 import { BsPlusLg, BsCalendar4Event, BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import { useState } from "react";
 
-const Card = () => {
-    // Estado para controlar a visibilidade do modal
+const Card = ({id, onDelete}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Funções para abrir e fechar o modal
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-
-    const handleBack = () => {
-        setIsModalOpen(true);
-    }
-    const handleNext = () => {
-        setIsModalOpen(false);
-    }
     return (
         <div className={styles.card_estoque}>
             <div className={styles.container}>
@@ -75,16 +66,20 @@ const Card = () => {
                             <span className={styles.text}>Editar</span>
                         </button>
 
-                        <button onClick={() => console.log("clicou")} className={styles.btn_edit_delete}>
+                        <button onClick={openModal} className={styles.btn_edit_delete}>
                             <BsFillTrashFill />Excluir
-                            
                         </button>
                     </div>
                 </div>
             </div>
-            {
-                isModalOpen && <ModalExcluirLote handleBack={handleBack} />
-            }
+            {isModalOpen && (
+                <ModalExcluirLote
+                    isOpen={isModalOpen}
+                    setModalOpen={closeModal}
+                    productId={id}
+                    onDeleteSuccess={() => onDelete(id)} // Chama a função passada por prop
+                />
+            )}
         </div>
     );
 };
