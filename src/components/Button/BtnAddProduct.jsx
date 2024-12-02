@@ -6,7 +6,7 @@ import { BsPlusLg } from "react-icons/bs";
 const BtnAdd = () => {
     return (
         <button className={styles.btn_add}>
-            Adicionar Produto <BsPlusLg className={styles.icon} />
+            Adicionar Lote <BsPlusLg className={styles.icon} />
         </button>
     );
 };

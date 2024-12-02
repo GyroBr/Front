@@ -24,7 +24,8 @@ const EstoquePage = () => {
                     <NavIntern />
                 </div>
                 <div className={styles.container_btn}>
-                    <BtnAddProduct /> <BtnConfig />
+                    <BtnAddProduct /> 
+                    {/* <BtnConfig /> */}
                 </div>
                 <div className={styles.container}>
                     <CardEstoque/> 
