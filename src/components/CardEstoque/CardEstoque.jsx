@@ -77,7 +77,7 @@ const Card = ({id, onDelete}) => {
                     isOpen={isModalOpen}
                     setModalOpen={closeModal}
                     productId={id}
-                    onDeleteSuccess={() => onDelete(id)} // Chama a função passada por prop
+                    onDeleteSuccess={() => onDelete(id)} // Chama a função passada por props
                 />
             )}
         </div>
