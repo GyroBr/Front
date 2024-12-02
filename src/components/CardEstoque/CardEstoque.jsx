@@ -1,8 +1,23 @@
 import React from "react";
 import styles from "./CardEstoque.module.css";
+import ModalAdicionarLote from '../ModaisLote/ModalAdicionarLote';
 import { BsPlusLg, BsCalendar4Event, BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
+import { useState } from "react";
 
 const Card = () => {
+    // Estado para controlar a visibilidade do modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Funções para abrir e fechar o modal
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const handleBack = () => {
+        setIsModalOpen(true);
+    }
+    const handleNext = () => {
+        setIsModalOpen(false);
+    }
     return (
         <div className={styles.card_estoque}>
             <div className={styles.container}>
@@ -12,6 +27,9 @@ const Card = () => {
                     </div>
                 </div>
                 <div className={styles.container_info}>
+                    <div className={styles.line}>
+                        <span className={styles.text}>Nome Produto { }</span>
+                    </div>
                     <div className={styles.line}>
                         <span className={styles.text}>Quantidade em estoque: { }</span>
                     </div>
@@ -23,15 +41,14 @@ const Card = () => {
                     <div className={styles.line}>
                         <span className={styles.text}>Quantidade lote { }:    </span>
                     </div>
-                    <div className={styles.line}>
+                    {/* <div className={styles.line}>
                         <span className={styles.text}>Adicionar Produtos <BsPlusLg className={styles.icon} /></span>
-                    </div>
+                    </div> */}
+
                 </div>
             </div>
             <div className={styles.container}>
-                <div className={styles.line}>
-                    <span className={styles.text}>Nome Produto { }</span>
-                </div>
+
                 <div className={styles.box}>
                     <div className={styles.box_status}>
                         <span className={styles.text}>Status</span>
@@ -54,17 +71,21 @@ const Card = () => {
 
                     <div className={styles.box_btn}>
                         <button className={styles.btn_edit_delete}>
-                            <BsFillPencilFill/>
+                            <BsFillPencilFill />
                             <span className={styles.text}>Editar</span>
                         </button>
 
-                        <button className={styles.btn_edit_delete}>
-                            <BsFillTrashFill/>
+                        <button onClick={() => console.log("clicou")} className={styles.btn_edit_delete}>
+                            <BsFillTrashFill />
                             <span className={styles.text}>Excluir</span>
+                            
                         </button>
                     </div>
                 </div>
             </div>
+            {
+                isModalOpen && <ModalAdicionarLote handleBack={handleBack} />
+            }
         </div>
     );
 };
