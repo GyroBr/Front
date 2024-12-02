@@ -52,7 +52,7 @@ const Menu = () => {
 
             <ul>
                 <li className={styles.item_menu}>
-                    <a href="#">
+                    <a href="/Dashboard">
                         <span className={styles.icon}>
                             <BsBarChartFill />
                         </span>
@@ -70,7 +70,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu}>
-                    <a href="#">
+                    <a href="/EstoquePage">
                         <span className={styles.icon}>
                             <BsBox />
                         </span>
@@ -79,7 +79,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu}>
-                    <a href="#">
+                    <a href="/CardapioPage">
                         <span className={styles.icon}>
                             <BsCart4 />
                         </span>
@@ -88,7 +88,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu}>
-                    <a href="#">
+                    <a href="/Employee">
                         <span className={styles.icon}>
                             <BsPerson />
                         </span>
