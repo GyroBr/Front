@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import styles from "./CardCardapio.module.css";
-import ModalCardapioExcluir from '../ModaisCardapio/ModalCardapioExcluir';
+import ModalExcluir from '../Modais/ModalExcluir';
 import { MdEdit, MdDelete  } from "react-icons/md";
 import { useState } from "react";
 
-const Card = () => {
+// eslint-disable-next-line react/prop-types
+const Card = ( { name, description, price, image} ) => {
       // Estado para controlar a visibilidade do modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,20 +29,21 @@ const Card = () => {
             <div className={styles.container}>
                 <div className={styles.img}>
                     <div className={styles.upload_img}>
-
+                        <img src={image} alt="" />
                     </div>
                 </div>
                 <div className={styles.container_info}>
                     <div className={styles.tittle}>
-                        <span className={styles.text}>Coca-Cola {}</span>
+                        <span className={styles.text}>{name}</span>
                     </div>
                     <div className={styles.description}>
                         <span className={styles.text}>
-                        A clássica e refrescante Coca-Cola, perfeita para acompanhar qualquer refeição. Com seu sabor inconfundível e equilíbrio perfeito entre doçura e gás, é a escolha ideal para quem busca matar a sede e apreciar um momento de prazer. Sirva bem gelada!</span>
+                            {description}
+                        </span>
                     </div>
                 </div>
                     <div className={styles.price}>
-                        <span className={styles.text}>R$6,50</span>
+                        <span className={styles.text}>R${price}</span>
                     </div>
 
                 <div className={styles.buttons}>
@@ -54,9 +56,9 @@ const Card = () => {
                 </div>
             </div>
             {
-                isModalOpen && <ModalCardapioExcluir handleBack={handleBack}/>
+                isModalOpen && <ModalExcluir handleBack={handleBack}/>
             }
-            <ModalCardapioExcluir isOpen={isModalOpen}/>
+            <ModalExcluir isOpen={isModalOpen}/>
         </div>
     );
 };
