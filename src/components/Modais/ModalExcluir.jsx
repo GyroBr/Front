@@ -9,7 +9,6 @@ export default function ModalExcluir({ isOpen }) {
       <div className={styles.background}>
         <div className={styles.modalContentStyle}>
           <div className={styles.contents}>
-            {Children}
             <h4>Tem certeza que deseja excluir este produto?</h4>
 
             <div className={styles.buttons}>
