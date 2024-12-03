@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
 import BtnAddProduct from "../../components/Button/BtnAddProduct";
+import BtnAddBatch from "../../components/Button/BtnAddBatch";
 import BtnConfig from "../../components/Button/BtnConfig";
 import CardEstoque from "../../components/CardEstoque/CardEstoque";
 import styles from "./EstoquePage.module.css";
@@ -24,7 +25,7 @@ const EstoquePage = () => {
                     <NavIntern />
                 </div>
                 <div className={styles.container_btn}>
-                    <BtnAddProduct /> 
+                    <BtnAddBatch /> 
                     {/* <BtnConfig /> */}
                 </div>
                 <div className={styles.container}>
