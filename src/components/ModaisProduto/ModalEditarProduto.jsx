@@ -1,44 +1,55 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
-import styles from "./ModalAdicionarProduto.module.css";
+import React, { useState } from "react";
+import styles from "./ModalEditarProduto.module.css";
 import { FaUpload } from "react-icons/fa"; // Ícone de upload
 
-export default function ModalAdicionar({
+export default function ModalEditar({
   isOpen,
   setModalOpen,
-  onDeleteSuccess,
+  onEditSuccess,
+  productId,
+  name: initialName,
+  description: initialDescription,
+  price: initialPrice,
+  image: initialImage,
 }) {
-  // Função para confirmar a exclusão
+  // Estados locais para controlar os valores dos campos
+  const [name, setName] = useState(initialName || "");
+  const [description, setDescription] = useState(initialDescription || "");
+  const [price, setPrice] = useState(initialPrice || "");
+  const [image, setImage] = useState(initialImage || "");
+
+  // Função para confirmar a edição
   const handleConfirm = async () => {
     try {
       const response = await fetch(
-        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/`,
+        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/${productId}`,
         {
-          method: "POST",
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, description, price, image }),
         }
       );
 
       if (response.ok) {
-        // Exclusão bem-sucedida
-        alert("Produto adicionado com sucesso!");
-        onDeleteSuccess(); // Notifica o componente pai para atualizar a lista
+        alert("Produto editado com sucesso!");
+        // onEditSuccess(); // Notifica o componente pai para atualizar a lista
       } else {
-        // Erro de servidor ou resposta inesperada
-        throw new Error("Erro ao adicionar o produto."); // Gera uma exceção para cair no `catch`
+        throw new Error("Erro ao editar o produto.");
       }
     } catch (error) {
-      // Captura qualquer erro durante o processo
-      console.error("Erro ao tentar adicionar o produto:", error);
-      alert(error.message); // Exibe o erro específico capturado
+      console.error("Erro ao tentar editar o produto:", error);
+      alert(error.message);
     } finally {
-      // Fecha o modal independentemente do sucesso ou falha
       setModalOpen(false);
     }
   };
 
   if (!isOpen) {
-    return null; // Retorna nulo se o modal não estiver aberto
+    return null;
   }
 
   return (
@@ -51,7 +62,8 @@ export default function ModalAdicionar({
               <input
                 className={styles.inputs_square}
                 type="text"
-                placeholder="Digite o nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className={styles.inputWrapper}>
@@ -59,16 +71,16 @@ export default function ModalAdicionar({
               <input
                 className={styles.inputs_square}
                 type="number"
-                placeholder="Digite o preço"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
           </div>
           <div className={styles.row}>
-            {/* Campo para seleção de categorias */}
             <div className={styles.inputWrapper}>
               <h6>Categoria</h6>
               <select className={styles.inputs_square}>
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Selecione uma categoria
                 </option>
                 <option value="eletronicos">Sucos</option>
@@ -80,8 +92,6 @@ export default function ModalAdicionar({
                 <option value="outros">Whiskey</option>
               </select>
             </div>
-
-            {/* Campo para upload de imagens */}
             <div className={styles.inputWrapper}>
               <h6>Adicionar imagem</h6>
               <label htmlFor="imageUpload" className={styles.uploadLabel}>
@@ -90,6 +100,7 @@ export default function ModalAdicionar({
                   type="file"
                   accept="image/*"
                   className={styles.fileInput}
+                  onChange={(e) => setImage(e.target.files[0]?.name || "")}
                 />
                 <span className={styles.uploadText}>Clique para enviar</span>
               </label>
@@ -100,10 +111,10 @@ export default function ModalAdicionar({
             <textarea
               className={styles.textarea_description}
               rows="4"
-              placeholder="Digite a descrição do produto..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-
           <div className={styles.buttons}>
             <button
               className={styles.btn_cancel}
@@ -112,7 +123,7 @@ export default function ModalAdicionar({
               Cancelar
             </button>
             <button className={styles.btn_confirm} onClick={handleConfirm}>
-              Adicionar
+              Salvar
             </button>
           </div>
         </div>
