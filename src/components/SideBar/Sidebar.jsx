@@ -97,7 +97,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu_out}>
-                    <a href="#">
+                    <a href="/">
                         <span className={styles.icon}>
                             <BsBoxArrowLeft />
                         </span>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import styles from "./CardCardapio.module.css";
-import ModalExcluir from '../Modais/ModalExcluir';
+import ModalExcluirProduto from '../ModaisProduto/ModalExcluirProduto';
 import { MdEdit, MdDelete  } from "react-icons/md";
 import { useState } from "react";
 
@@ -41,7 +41,7 @@ const Card = ({ id, name, description, price, image, onDelete }) => {
           </div>
         </div>
         {isModalOpen && (
-          <ModalExcluir
+          <ModalExcluirProduto
             isOpen={isModalOpen}
             setModalOpen={closeModal}
             productId={id}

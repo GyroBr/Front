@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
@@ -35,9 +36,7 @@ const CardapioPage = () => {
         // Atualize a lista localmente removendo o item excluído
         setRepositories((prev) => prev.filter((repo) => repo.id !== id));
         alert("Produto excluído com sucesso!");
-      } else {
-        alert("Erro ao excluir o produto.");
-      }
+      } 
     } catch (error) {
       console.error("Erro ao excluir o produto:", error);
       alert("Erro ao tentar excluir o produto.");
@@ -57,7 +56,8 @@ const CardapioPage = () => {
           <NavIntern />
         </div>
         <div className={styles.container_btn}>
-          <BtnAddProduct /> <BtnAddCombo />
+          <BtnAddProduct /> 
+          {/* <BtnAddCombo /> */}
         </div>
         {repositories.length > 0 ? (
           <div className={styles.container}>

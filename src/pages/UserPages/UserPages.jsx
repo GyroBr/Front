@@ -7,7 +7,8 @@ import NavTopCardapio from "../Teste2/NavTopCardapio";
 import styles from './UserPages.module.css';
 import NavTop from "../Teste/NavTop";
 import BarChart from "../Dashboard/DashBoardBottom/BarChart";
-import ModalExcluir from "../../components/Modais/ModalExcluir";
+import ModalExcluirProduto from "../../components/ModaisProduto/ModalExcluirProduto";
+import ModalAdicionarProduto from "../../components/ModaisProduto/ModalAdicionarProduto";
 export function UserPages() {
 
     const [page, setPage] = useState('Perfil');
@@ -30,7 +31,8 @@ export function UserPages() {
         {page === 'Cardapio' && <NavTopCardapio/>}
         {page === 'Estoque' && <NavTop/>}
         {page === 'Dashboard' && <BarChart/>}
-        {page === 'ModalExcluir' && <ModalExcluir/>}
+        {page === 'ModalExcluirProduto' && <ModalExcluirProduto/>}
+        {page === 'ModalAdicionarProduto' && <ModalAdicionarProduto/>}
         {/* coloca o componente das tels aqui igual esta perfil e dashboard */}
     </div>
     )
