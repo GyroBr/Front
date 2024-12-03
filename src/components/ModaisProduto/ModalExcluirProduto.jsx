@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import styles from "./ModalExcluir.module.css";
+import styles from "./ModalExcluirProduto.module.css";
 
 export default function ModalExcluir({ isOpen, setModalOpen, productId, onDeleteSuccess }) {
   // Função para confirmar a exclusão
