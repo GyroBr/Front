@@ -3,23 +3,48 @@ import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
 import BtnAddProduct from "../../components/Button/BtnAddProduct";
 import CardCardapio from "../../components/CardCardapio/CardCardapio";
-import { getProducts } from "../../services/produto/ProdutoService"; // Atualize o caminho correto para a service
+import { getProductImage, getProducts } from "../../services/produto/ProdutoService";
 import styles from "./CardapioPage.module.css";
 
 const CardapioPage = () => {
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = sessionStorage.getItem("token");
-  console.log(token);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const products = await getProducts(token);
-        setRepositories(products);
+
+        if (!Array.isArray(products)) {
+          setLoading(false);
+          return;
+        }
+
+
+        const productsWithImages = await Promise.all(
+          products.map(async (product) => {
+            if (!product.productId) {
+              return null; 
+            }
+
+            const imageUrl = product.image
+              ? await getProductImage(token, product.image)
+              : "/path/to/default/image.png"; 
+
+
+            return {
+              ...product,
+              image: imageUrl,
+            };
+          })
+        );
+
+
+        const validProducts = productsWithImages.filter((product) => product !== null);
+        setRepositories(validProducts);
         setLoading(false);
       } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
         setLoading(false);
       }
     };
@@ -40,21 +65,22 @@ const CardapioPage = () => {
           <NavIntern />
         </div>
         <div className={styles.container_btn}>
-          <BtnAddProduct /> 
+          <BtnAddProduct />
         </div>
         {loading ? (
           <p>Carregando produtos...</p>
+        ) : repositories.length === 0 ? (
+          <p>Nenhum produto encontrado.</p>
         ) : (
           <div className={styles.container}>
             {repositories.map((repo) => (
               <CardCardapio
-                key={repo.id}
-                id={repo.id} 
+                key={`${repo.id}-${repo.name}`} 
+                id={repo.id}
                 name={repo.name}
                 description={repo.description}
                 price={repo.price}
-                image={repo.image ? repo.image : "/path/to/default/image.png"} // Caminho para imagem padrão
-                // Passando a função de exclusão
+                image={repo.image}
               />
             ))}
           </div>
