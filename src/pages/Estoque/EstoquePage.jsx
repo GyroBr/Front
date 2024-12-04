@@ -26,7 +26,6 @@ const EstoquePage = () => {
                 </div>
                 <div className={styles.container_btn}>
                     <BtnAddBatch /> 
-                    {/* <BtnConfig /> */}
                 </div>
                 <div className={styles.container}>
                     <CardEstoque/> 

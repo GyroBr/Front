@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../SideBar/Sidebar.module.css";
 import { CiLogout } from "react-icons/ci";
 import {
@@ -13,6 +14,7 @@ import {
 import { getEnterpriseById } from "../../services/empresas/empresa";
 
 const Menu = () => {
+    const navigate = useNavigate();
     const menuRef = useRef(null);
 
     useEffect(() => {
@@ -43,6 +45,22 @@ const Menu = () => {
 
         fetchEnterpriseData();
     }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const token = sessionStorage.getItem("token");
+            if (!token) {
+                navigate("/"); // Redireciona para a página de login se o token não existir
+            }
+        }, 1000); // Verifica a cada 1 segundo
+
+        return () => clearInterval(interval); // Limpa o intervalo quando o componente desmonta
+    }, [navigate]);
+
+    const handleLogout = () => {
+        sessionStorage.removeItem("token");
+        navigate("/"); // Redireciona para a página de login após o logout
+    };
 
     return (
         <nav className={styles.menu_lateral} ref={menuRef}>
@@ -97,7 +115,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu_out}>
-                    <a href="/">
+                    <a onClick={handleLogout} href="#">
                         <span className={styles.icon}>
                             <BsBoxArrowLeft />
                         </span>

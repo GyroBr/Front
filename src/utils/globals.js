@@ -40,3 +40,8 @@ export const mascaraTelefone = (e) => {
       e.target.value = valor;
   };
   
+  export const brazilianDate = (data) => {
+    const [day, month, year] = data.split("-");
+
+    return `${year}-${month}-${day}`;
+  }

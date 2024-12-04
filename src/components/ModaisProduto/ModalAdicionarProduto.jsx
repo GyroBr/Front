@@ -1,39 +1,62 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ModalAdicionarProduto.module.css";
 import { FaUpload } from "react-icons/fa"; // Ícone de upload
+import { registerProduct } from "../../services/produto/ProdutoService"; // Importe a função de requisição
+import { brazilianDate } from "../../utils/globals";
 
-export default function ModalAdicionar({
-  isOpen,
-  setModalOpen,
-  onDeleteSuccess,
-}) {
-  // Função para confirmar a exclusão
+export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
+  const [product, setProduct] = useState({
+    name: "",
+    description: "",
+    price: "",
+    quantity: "",
+    image: "",
+    expirationDate: "",
+    category: "",
+  });
+
+  const token = sessionStorage.getItem("token")
+  
+
+  // Atualiza o estado ao modificar os inputs
+  // Atualiza o estado ao modificar os inputs
+const handleInputChange = (e) => {
+  const { name, value, files } = e.target;
+
+  if (name === "image" && files.length > 0) {
+    setProduct((prev) => ({ ...prev, image: URL.createObjectURL(files[0]) }));
+  } else {
+    let newValue = value;
+
+    // Converte price para double com duas casas decimais
+     if (name === "quantity" && value !== "") {
+      newValue = parseInt(value, 10); // Converte para inteiro
+    }
+
+    setProduct((prev) => ({ ...prev, [name]: newValue }));
+  }
+};
+
+
+  // Função para adicionar o produto
   const handleConfirm = async () => {
     try {
-      const response = await fetch(
-        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/`,
-        {
-          method: "POST",
-        }
-      );
-
-      if (response.ok) {
-        // Exclusão bem-sucedida
+      product.price = parseFloat(product.price).toFixed(2); 
+        product.price = parseFloat(product.price); // Converte de volta para número
+      console.log(product, product.price)
+      const response = await registerProduct(token, product);
+      if (response?.status === 201 || response?.status === 200) {
         alert("Produto adicionado com sucesso!");
-        onDeleteSuccess(); // Notifica o componente pai para atualizar a lista
+        onAddSuccess(); // Notifica o componente pai para atualizar a lista
+        setModalOpen(false);
       } else {
-        // Erro de servidor ou resposta inesperada
-        throw new Error("Erro ao adicionar o produto."); // Gera uma exceção para cair no `catch`
+        throw new Error("Erro ao adicionar o produto.");
       }
     } catch (error) {
-      // Captura qualquer erro durante o processo
-      console.error("Erro ao tentar adicionar o produto:", error);
-      alert(error.message); // Exibe o erro específico capturado
-    } finally {
-      // Fecha o modal independentemente do sucesso ou falha
-      setModalOpen(false);
+      console.error("Erro ao tentar adicionar o produto:", error.response?.data || error.field || error.message);
+      alert("Não foi possível adicionar o produto. Verifique os dados e tente novamente.");
     }
   };
 
@@ -52,6 +75,9 @@ export default function ModalAdicionar({
                 className={styles.inputs_square}
                 type="text"
                 placeholder="Digite o nome"
+                name="name"
+                value={product.name}
+                onChange={handleInputChange}
               />
             </div>
             <div className={styles.inputWrapper}>
@@ -60,28 +86,24 @@ export default function ModalAdicionar({
                 className={styles.inputs_square}
                 type="number"
                 placeholder="Digite o preço"
+                name="price"
+                value={product.price}
+                onChange={handleInputChange}
               />
             </div>
           </div>
           <div className={styles.row}>
-            {/* Campo para seleção de categorias */}
             <div className={styles.inputWrapper}>
               <h6>Categoria</h6>
-              <select className={styles.inputs_square}>
-                <option value="" disabled selected>
-                  Selecione uma categoria
-                </option>
-                <option value="eletronicos">Sucos</option>
-                <option value="vestuario">Refrigerantes</option>
-                <option value="alimentos">Cervejas</option>
-                <option value="outros">Vinhos</option>
-                <option value="outros">Gelos</option>
-                <option value="outros">Gin</option>
-                <option value="outros">Whiskey</option>
-              </select>
+              <input
+                className={styles.inputs_square}
+                type="text"
+                placeholder="Digite a categoria"
+                name="category"
+                value={product.category}
+                onChange={handleInputChange}
+              />
             </div>
-
-            {/* Campo para upload de imagens */}
             <div className={styles.inputWrapper}>
               <h6>Adicionar imagem</h6>
               <label htmlFor="imageUpload" className={styles.uploadLabel}>
@@ -90,9 +112,34 @@ export default function ModalAdicionar({
                   type="file"
                   accept="image/*"
                   className={styles.fileInput}
+                  name="image"
+                  onChange={handleInputChange}
                 />
                 <span className={styles.uploadText}>Clique para enviar</span>
               </label>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.inputWrapper}>
+              <h6>Quantidade</h6>
+              <input
+                type="number"
+                name="quantity"
+                value={product.quantity}
+                className={styles.inputs_square}
+                placeholder="Quantidade"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <h6>Data de Validade</h6>
+              <input
+                type="date"
+                name="expirationDate"
+                value={product.expirationDate}
+                className={styles.inputs_square}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className={styles.div_input} id="productDescription">
@@ -100,7 +147,10 @@ export default function ModalAdicionar({
             <textarea
               className={styles.textarea_description}
               rows="4"
+              name="description"
+              value={product.description}
               placeholder="Digite a descrição do produto..."
+              onChange={handleInputChange}
             />
           </div>
 
