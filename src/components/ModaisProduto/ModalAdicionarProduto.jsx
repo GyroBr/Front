@@ -1,10 +1,7 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import styles from "./ModalAdicionarProduto.module.css";
 import { FaUpload } from "react-icons/fa"; // Ícone de upload
 import { registerProduct } from "../../services/produto/ProdutoService"; // Importe a função de requisição
-import { brazilianDate } from "../../utils/globals";
 
 export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
   const [product, setProduct] = useState({
@@ -12,40 +9,59 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
     description: "",
     price: "",
     quantity: "",
-    image: "", 
     expirationDate: "",
     category: "",
+    image: null, // Armazena o arquivo da imagem
   });
 
-  const token = sessionStorage.getItem("token")
-  
+  const token = sessionStorage.getItem("token");
 
   // Atualiza o estado ao modificar os inputs
-  // Atualiza o estado ao modificar os inputs
-const handleInputChange = (e) => {
-  const { name, value, files } = e.target;
+  const handleInputChange = (e) => {
+    const { name, value, files } = e.target;
 
-  if (name === "image" && files.length > 0) {
-    setProduct((prev) => ({ ...prev, image: URL.createObjectURL(files[0]) }));
-  } else {
-    let newValue = value;
+    if (name === "image" && files.length > 0) {
+      setProduct((prev) => ({ ...prev, image: files[0] })); // Armazena o arquivo da imagem
+    } else {
+      let newValue = value;
 
-    // Converte price para double com duas casas decimais
-     if (name === "quantity" && value !== "") {
-      newValue = parseInt(value, 10); // Converte para inteiro
+      // Converte price e quantity para tipos numéricos apropriados
+      if (name === "price" && value !== "") {
+        newValue = parseFloat(value);
+      } else if (name === "quantity" && value !== "") {
+        newValue = parseInt(value, 10);
+      }
+
+      setProduct((prev) => ({ ...prev, [name]: newValue }));
     }
-
-    setProduct((prev) => ({ ...prev, [name]: newValue }));
-  }
-};
-
+  };
 
   // Função para adicionar o produto
   const handleConfirm = async () => {
     try {
-      product.price = Number(product.price); 
-      console.log(product, product.price)
-      const response = await registerProduct(token, product);
+      const formData = new FormData();
+      formData.append("name", product.name);
+      formData.append("price", product.price);
+      formData.append("category", product.category);
+      formData.append("quantity", product.quantity);
+      formData.append("expirationDate", product.expirationDate);
+      formData.append("description", product.description);
+      if (product.image) {
+        formData.append("file", product.image); // Adiciona o arquivo da imagem
+      }
+
+      // Adiciona o cabeçalho de autorização
+      const headers = new Headers();
+      headers.append("Authorization", `Bearer ${token}`);
+
+      // Log para debugar o conteúdo do FormData
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+      }
+
+      // Chama a função de serviço para fazer a requisição
+      const response = await registerProduct(token, formData, headers);
+
       if (response?.status === 201 || response?.status === 200) {
         alert("Produto adicionado com sucesso!");
         onAddSuccess(); // Notifica o componente pai para atualizar a lista
@@ -54,7 +70,7 @@ const handleInputChange = (e) => {
         throw new Error("Erro ao adicionar o produto.");
       }
     } catch (error) {
-      console.error("Erro ao tentar adicionar o produto:", error.response?.data || error.field || error.message);
+      console.error("Erro ao tentar adicionar o produto:", error.response?.data || error.message);
       alert("Não foi possível adicionar o produto. Verifique os dados e tente novamente.");
     }
   };
@@ -141,29 +157,18 @@ const handleInputChange = (e) => {
               />
             </div>
           </div>
-          <div className={styles.div_input} id="productDescription">
-            <h6>Descrição</h6>
-            <textarea
-              className={styles.textarea_description}
-              rows="4"
-              name="description"
-              value={product.description}
-              placeholder="Digite a descrição do produto..."
-              onChange={handleInputChange}
-            />
+          <div className={styles.row}>
+            <div className={styles.inputWrapper}>
+              <h6>Descrição</h6>
+              <textarea
+                name="description"
+                className={styles.inputs_square}
+                value={product.description}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
           </div>
-
-          <div className={styles.buttons}>
-            <button
-              className={styles.btn_cancel}
-              onClick={() => setModalOpen(false)}
-            >
-              Cancelar
-            </button>
-            <button className={styles.btn_confirm} onClick={handleConfirm}>
-              Adicionar
-            </button>
-          </div>
+          <button onClick={handleConfirm} className={styles.confirmButton}>Adicionar Produto</button>
         </div>
       </div>
     </div>

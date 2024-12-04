@@ -1,48 +1,31 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
 import BtnAddProduct from "../../components/Button/BtnAddProduct";
-import BtnAddCombo from "../../components/Button/BtnAddCombo";
 import CardCardapio from "../../components/CardCardapio/CardCardapio";
+import { getProducts } from "../../services/produto/ProdutoService"; // Atualize o caminho correto para a service
 import styles from "./CardapioPage.module.css";
 
 const CardapioPage = () => {
   const [repositories, setRepositories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const token = sessionStorage.getItem("token");
+  console.log(token);
 
   useEffect(() => {
-    const fetchRepositories = async () => {
-      const response = await fetch(
-        "https://674cbf5754e1fca9290d7565.mockapi.io/products/product"
-      );
-      const data = await response.json();
-      setRepositories(data);
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts(token);
+        setRepositories(products);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+        setLoading(false);
+      }
     };
 
-    fetchRepositories();
-  }, []);
-
-
-  // Função para excluir um produto
-  const handleDelete = async (id) => {
-    try {
-      const response = await fetch(
-        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      if (response.ok) {
-        // Atualize a lista localmente removendo o item excluído
-        setRepositories((prev) => prev.filter((repo) => repo.id !== id));
-        alert("Produto excluído com sucesso!");
-      } 
-    } catch (error) {
-      console.error("Erro ao excluir o produto:", error);
-      alert("Erro ao tentar excluir o produto.");
-    }
-  };
+    fetchProducts();
+  }, [token]);
 
   return (
     <div className={styles.body}>
@@ -58,24 +41,23 @@ const CardapioPage = () => {
         </div>
         <div className={styles.container_btn}>
           <BtnAddProduct /> 
-          {/* <BtnAddCombo /> */}
         </div>
-        {repositories.length > 0 ? (
+        {loading ? (
+          <p>Carregando produtos...</p>
+        ) : (
           <div className={styles.container}>
             {repositories.map((repo) => (
               <CardCardapio
                 key={repo.id}
-                id={repo.id} // Passando o ID do produto
+                id={repo.id} 
                 name={repo.name}
                 description={repo.description}
                 price={repo.price}
-                image={repo.image}
-                onDelete={handleDelete} // Passando a função de exclusão
+                image={repo.image ? repo.image : "/path/to/default/image.png"} // Caminho para imagem padrão
+                // Passando a função de exclusão
               />
             ))}
           </div>
-        ) : (
-          <p>Carregando produtos...</p>
         )}
       </div>
     </div>
