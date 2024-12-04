@@ -1,19 +1,25 @@
 import axios from "axios";
 
-const APIBASEURL = "http://localhost:8080/produtos"
+const APIBASEURL = "http://localhost:8080/products"
 
 
-export const getCategoriasByEmpresaId = async (token) => {
+export const registerProduct = async (token, productBody) => {
     try {
-        const response = await axios.get(`${APIBASEURL}/get-categories-by-empresa-id`, {
-            headers: {
-                Authorization: token
-            }
-        });
+        console.log("Body enviado para o servidor:", token);
+        const response = await axios.post(`${APIBASEURL}`, productBody, {
 
-        console.log("Repostas das categorias", response)
+            headers: {
+                "Content-Type": "application/json",
+                
+                Authorization: `Bearer ${token}`
+            }
+        }); 
+
+        console.log("Produto cadastrado", response)
+        return response
+        
     } catch (error) {
-        console.log("error to get categories", error)
+        console.log("error to post product", error)
     }
 
 }

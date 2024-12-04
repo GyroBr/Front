@@ -22,6 +22,7 @@ const CardapioPage = () => {
     fetchRepositories();
   }, []);
 
+
   // Função para excluir um produto
   const handleDelete = async (id) => {
     try {
