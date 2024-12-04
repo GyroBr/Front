@@ -12,7 +12,7 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
     description: "",
     price: "",
     quantity: "",
-    image: "",
+    image: "", 
     expirationDate: "",
     category: "",
   });
@@ -43,8 +43,7 @@ const handleInputChange = (e) => {
   // Função para adicionar o produto
   const handleConfirm = async () => {
     try {
-      product.price = parseFloat(product.price).toFixed(2); 
-        product.price = parseFloat(product.price); // Converte de volta para número
+      product.price = Number(product.price); 
       console.log(product, product.price)
       const response = await registerProduct(token, product);
       if (response?.status === 201 || response?.status === 200) {
