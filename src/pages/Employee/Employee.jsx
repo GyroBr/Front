@@ -5,6 +5,13 @@ import styles from "../Employee/Employee.module.css";
 import { BsPlusLg, BsTrash3, BsPencil } from "react-icons/bs";
 
 const EmployeePage = () => {
+
+    
+
+
+
+
+
     return (
         <div className={styles.body}>
             <div className={styles.sidebar_container}>
