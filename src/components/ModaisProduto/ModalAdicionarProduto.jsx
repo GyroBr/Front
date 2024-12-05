@@ -166,9 +166,17 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
               ></textarea>
             </div>
           </div>
-          <button onClick={handleConfirm} className={styles.confirmButton}>
-            Adicionar Produto
-          </button>
+          <div className={styles.buttons}>
+            <button
+              className={styles.btn_cancel}
+              onClick={() => setModalOpen(false)}
+            >
+              Cancelar
+            </button>
+            <button className={styles.btn_confirm} onClick={handleConfirm}>
+              Adicionar
+            </button>
+          </div>
         </div>
       </div>
     </div>

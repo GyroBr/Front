@@ -13,9 +13,10 @@ export default function ModalExcluir({ isOpen, setModalOpen, productId, onDelete
       const response = await deleteProduct(token, productId);
 
       // Verifica se a resposta foi bem-sucedida
-      if (response) {
+      if (response.status === 200 || response.status === 204) {
         alert("Produto excluído com sucesso!");
-        onDeleteSuccess(); // Notifica o componente pai para atualizar a lista
+        window.location.reload()
+        // onDeleteSuccess(); // Notifica o componente pai para atualizar a lista
       }
     } catch (error) {
       console.error("Erro ao tentar excluir o produto:", error);

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import axios from "axios";
 
 const APIBASEURL = "http://localhost:8080/products";
@@ -55,19 +56,19 @@ export const getProductImage = async (token, imageName) => {
     }
 };
 
-export const editProduct = async (token, productId, formData) => {
+export const editProduct = async (token, productId, productBody) => {
     try {
-        console.log(formData, "dados para edição");
+        console.log(productBody, "dados para edição");
         console.log(token, "token que chegou");
-        const response = await axios.put(`${APIBASEURL}/${productId}`, formData, {
+        const response = await axios.put(`${APIBASEURL}/${productId}`, productBody, {
             headers: {
-                "Content-Type": "multipart/form-data",
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
 
-        console.log("Produto editado com sucesso", response.data);
-        return response.data;
+        console.log("Produto editado com sucesso", response);
+        return response;
     } catch (error) {
         console.error("Erro ao tentar editar o produto:", error.response?.data || error.message);
         throw error;
@@ -83,8 +84,8 @@ export const deleteProduct = async (token, productId) => {
             },
         });
 
-        console.log("Produto deletado com sucesso", response.data);
-        return response.data;
+        console.log("Produto deletado com sucesso", response);
+        return response;
     } catch (error) {
         console.error("Erro ao tentar deletar o produto:", error.response?.data || error.message);
         throw error;

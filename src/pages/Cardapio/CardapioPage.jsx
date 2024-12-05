@@ -76,11 +76,12 @@ const CardapioPage = () => {
             {repositories.map((repo) => (
               <CardCardapio
                 key={`${repo.id}-${repo.name}`} 
-                id={repo.id}
+                id={repo.productId}
                 name={repo.name}
                 description={repo.description}
                 price={repo.price}
                 image={repo.image}
+                category={repo.category}
               />
             ))}
           </div>

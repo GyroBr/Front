@@ -7,7 +7,7 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-const Card = ({ id, name, description, price, image, onDelete, onEdit }) => {
+const Card = ({ id, name, description, price, image, onDelete, onEdit, category }) => {
   //Modal excluir
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
 
@@ -62,6 +62,7 @@ const Card = ({ id, name, description, price, image, onDelete, onEdit }) => {
           setModalOpen={closeModalEdit}
           productId={id}
           name={name}
+          category={category}
           description={description}
           price={price}
           image={image}
