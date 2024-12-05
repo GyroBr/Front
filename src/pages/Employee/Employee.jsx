@@ -15,6 +15,7 @@ const EmployeePage = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [isEditable, setIsEditable] = useState(true);
     const [enterpriseData, setEnterpriseData] = useState({
+        id: "",
         nome: "",
         telefone: "",
         email: "",
@@ -37,12 +38,13 @@ const EmployeePage = () => {
                     const data = await getEnterpriseById(token);
                     console.log(data); // Processar os dados conforme necessário
                     setEnterpriseData({
+                        id: data.enterpriseId,
                         nome: data.name,
-                        telefone: "um numero",
+                        telefone: data.phoneNumber,
                         email: data.email,
-                        cnpj: "um cnpj",
+                        cnpj: data.cnpj,
                         sector: data.sector,
-                        password: "********",
+                        password: data.password,
                         cep: data.address.postalCode,
                         rua: data.address.street,
                         numero: data.address.number,
@@ -75,16 +77,38 @@ const EmployeePage = () => {
     const handleCancelClick = () => {
         setIsEditing(false);
         console.log("to na segunda");
+        window.location.reload();
     };
 
     const handleConfirmClick = async () => {
         // Adicione a lógica de confirmação aqui
+        const dataToSend = {
+            name: enterpriseData.nome,
+            phoneNumber: enterpriseData.telefone,
+            email: enterpriseData.email,
+            password: enterpriseData.password,
+        };
+        console.error(dataToSend)
         try {
+            const token = sessionStorage.getItem('token');  // Pega o token do sessionStorage
+
+            const response = await api.put(`/admin/update-enterprise/${enterpriseData.id}`, dataToSend, {
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": token
+                },
+            });
+
             toast.success('Perfil atualizado com sucesso!', {
                 autoClose: 1700,
             });
+
         } catch (error) {
             // setIsEditing(false);
+
+            toast.error('Erro ao atualizar perfil!', {
+                autoClose: 1700,
+            });
             console.log("to na terceira");
         }
     };
@@ -157,6 +181,8 @@ const EmployeePage = () => {
                                         placeholder="Digite o cnpj"
                                         className={styles.input}
                                         readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
+
                                     />
                                 </div>
                             </div>
@@ -172,6 +198,7 @@ const EmployeePage = () => {
                                         placeholder="Digite o setor"
                                         className={styles.input}
                                         readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                                 <div className={styles.box}>
@@ -198,7 +225,8 @@ const EmployeePage = () => {
                                         onChange={handleInputChange}
                                         placeholder="Digite o cep"
                                         className={styles.input}
-                                        readOnly={isEditable}
+                                        readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                                 <div className={styles.box}>
@@ -210,7 +238,8 @@ const EmployeePage = () => {
                                         onChange={handleInputChange}
                                         placeholder="Digite a Rua"
                                         className={styles.input}
-                                        readOnly={isEditable}
+                                        readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                             </div>
@@ -225,7 +254,8 @@ const EmployeePage = () => {
                                         onChange={handleInputChange}
                                         placeholder="Digite o número"
                                         className={styles.input}
-                                        readOnly={isEditable}
+                                        readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                                 <div className={styles.box}>
@@ -237,7 +267,8 @@ const EmployeePage = () => {
                                         onChange={handleInputChange}
                                         placeholder="Digite o bairro"
                                         className={styles.input}
-                                        readOnly={isEditable}
+                                        readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                             </div>
@@ -252,7 +283,8 @@ const EmployeePage = () => {
                                         onChange={handleInputChange}
                                         placeholder="Digite a cidade"
                                         className={styles.input}
-                                        readOnly={isEditable}
+                                        readOnly={true}
+                                        onFocus={(e) => e.target.blur()}
                                     />
                                 </div>
                                 {/* <div className={styles.box}>
@@ -282,9 +314,50 @@ const EmployeePage = () => {
                         <div className={styles.container_scrool}>
                             <div className={styles.card}>
                                 <div className={styles.card_func}>
-                                    <span> Felipe Magalhães de Souza</span>
-                                    <span> felipe@gmail.com</span>
-                                    <span> ******* </span>
+                                    <div className={styles.line}>
+                                        <div className={styles.box}>
+                                            <span>Nome</span>
+                                            <input
+                                                type="text"
+                                                name="nome"
+                                                value={enterpriseData.nome}
+                                                onChange={handleInputChange}
+                                                placeholder="Digite a cidade"
+                                                className={styles.input_a}
+                                                readOnly={true}
+                                                onFocus={(e) => e.target.blur()}
+                                            />
+                                        </div>
+
+                                        <div className={styles.box}>
+                                            <span>Email</span>
+                                            <input
+                                                type="text"
+                                                name="nome"
+                                                value={enterpriseData.email}
+                                                onChange={handleInputChange}
+                                                placeholder="Digite a cidade"
+                                                className={styles.input_a}
+                                                readOnly={true}
+                                                onFocus={(e) => e.target.blur()}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.box}>
+                                        <span>Senha</span>
+                                        <input
+                                            type="text"
+                                            name="nome"
+                                            value={enterpriseData.password}
+                                            onChange={handleInputChange}
+                                            placeholder="Digite a cidade"
+                                            className={styles.input_a}
+                                            readOnly={true}
+                                            onFocus={(e) => e.target.blur()}
+                                        />
+                                    </div>
+
                                 </div>
                                 <div className={styles.card_edit}>
                                     <BsPencil className={styles.icon_card} />
