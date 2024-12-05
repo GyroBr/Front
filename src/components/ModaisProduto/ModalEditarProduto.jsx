@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import styles from "./ModalEditarProduto.module.css";
-import { FaUpload } from "react-icons/fa"; // Ícone de upload
+import { editProduct } from "../../services/produto/ProdutoService";
 
 export default function ModalEditar({
   isOpen,
@@ -10,39 +9,55 @@ export default function ModalEditar({
   onEditSuccess,
   productId,
   name: initialName,
-  description: initialDescription,
   price: initialPrice,
   image: initialImage,
+  category: initialCategory,
+  description: initialDescription,
 }) {
   // Estados locais para controlar os valores dos campos
-  const [name, setName] = useState(initialName || "");
-  const [description, setDescription] = useState(initialDescription || "");
-  const [price, setPrice] = useState(initialPrice || "");
-  const [image, setImage] = useState(initialImage || "");
+  const [product, setProduct] = useState({
+    name: initialName || "",
+    description: initialDescription || "",
+    price: initialPrice || "",
+    image: null, // Para novos arquivos
+    category: initialCategory || "",
+    existingImage: initialImage || "", // Para exibir a imagem atual
+  });
+
+  const token = sessionStorage.getItem("token");
+
+  // Função para lidar com alterações nos inputs
+  const handleInputChange = (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === "image" && files.length > 0) {
+      setProduct((prev) => ({ ...prev, image: files[0] }));
+    } else {
+      setProduct((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   // Função para confirmar a edição
   const handleConfirm = async () => {
     try {
-      const response = await fetch(
-        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/${productId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, description, price, image }),
-        }
-      );
+      const formData = new FormData();
+      formData.append("name", product.name);
+      formData.append("price", product.price);
+      formData.append("category", product.category);
+      formData.append("description", product.description);
+      if (product.image) {
+        formData.append("file", product.image);
+      }
 
-      if (response.ok) {
+      const response = await editProduct(token, productId, formData);
+
+      if (response.status === 200) {
         alert("Produto editado com sucesso!");
-        // onEditSuccess(); // Notifica o componente pai para atualizar a lista
-      } else {
-        throw new Error("Erro ao editar o produto.");
+        onEditSuccess(); // Notifica o componente pai para atualizar a lista
       }
     } catch (error) {
-      console.error("Erro ao tentar editar o produto:", error);
-      alert(error.message);
+      console.error("Erro ao tentar editar o produto:", error.response?.data || error.message);
+      alert("Erro ao editar o produto. Verifique os dados e tente novamente.");
     } finally {
       setModalOpen(false);
     }
@@ -62,8 +77,9 @@ export default function ModalEditar({
               <input
                 className={styles.inputs_square}
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="name"
+                value={product.name}
+                onChange={handleInputChange}
               />
             </div>
             <div className={styles.inputWrapper}>
@@ -71,26 +87,22 @@ export default function ModalEditar({
               <input
                 className={styles.inputs_square}
                 type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                name="price"
+                value={product.price}
+                onChange={handleInputChange}
               />
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.inputWrapper}>
               <h6>Categoria</h6>
-              <select className={styles.inputs_square}>
-                <option value="" disabled>
-                  Selecione uma categoria
-                </option>
-                <option value="eletronicos">Sucos</option>
-                <option value="vestuario">Refrigerantes</option>
-                <option value="alimentos">Cervejas</option>
-                <option value="outros">Vinhos</option>
-                <option value="outros">Gelos</option>
-                <option value="outros">Gin</option>
-                <option value="outros">Whiskey</option>
-              </select>
+              <input
+                className={styles.inputs_square}
+                type="text"
+                name="category"
+                value={product.category}
+                onChange={handleInputChange}
+              />
             </div>
             <div className={styles.inputWrapper}>
               <h6>Adicionar imagem</h6>
@@ -100,10 +112,18 @@ export default function ModalEditar({
                   type="file"
                   accept="image/*"
                   className={styles.fileInput}
-                  onChange={(e) => setImage(e.target.files[0]?.name || "")}
+                  name="image"
+                  onChange={handleInputChange}
                 />
                 <span className={styles.uploadText}>Clique para enviar</span>
               </label>
+              {/* {product.existingImage && (
+                <img
+                  src={product.existingImage}
+                  alt="Imagem do Produto"
+                  className={styles.previewImage}
+                />
+              )} */}
             </div>
           </div>
           <div className={styles.div_input} id="productDescription">
@@ -111,8 +131,9 @@ export default function ModalEditar({
             <textarea
               className={styles.textarea_description}
               rows="4"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              name="description"
+              value={product.description}
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.buttons}>
