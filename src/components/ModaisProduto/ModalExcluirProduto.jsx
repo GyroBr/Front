@@ -1,33 +1,27 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./ModalExcluirProduto.module.css";
+import { deleteProduct } from "../../services/produto/ProdutoService";
 
 export default function ModalExcluir({ isOpen, setModalOpen, productId, onDeleteSuccess }) {
+  const token = sessionStorage.getItem("token");
+
   // Função para confirmar a exclusão
   const handleConfirm = async () => {
     try {
-      const response = await fetch(
-        `https://674cbf5754e1fca9290d7565.mockapi.io/products/product/${productId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      // Chama a função deleteProduct do ProdutoService.js
+      const response = await deleteProduct(token, productId);
 
-      if (response.ok) {
-        // Exclusão bem-sucedida
+      // Verifica se a resposta foi bem-sucedida
+      if (response) {
         alert("Produto excluído com sucesso!");
         onDeleteSuccess(); // Notifica o componente pai para atualizar a lista
-      } else {
-        // Erro de servidor ou resposta inesperada
-        throw new Error("Erro ao excluir o produto."); // Gera uma exceção para cair no `catch`
       }
     } catch (error) {
-      // Captura qualquer erro durante o processo
       console.error("Erro ao tentar excluir o produto:", error);
-      alert(error.message); // Exibe o erro específico capturado
+      alert("Erro ao excluir o produto. Tente novamente.");
     } finally {
-      // Fecha o modal independentemente do sucesso ou falha
-      setModalOpen(false);
+      setModalOpen(false); // Fecha o modal independentemente do sucesso ou falha
     }
   };
 
