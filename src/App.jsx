@@ -37,8 +37,6 @@ export default function App() {
             {/* <Route path="/EstoquePage" element={<EstoquePage/>} /> */}
             <Route path="/EstoquePage" element={<EstoquePage2/>} />
             <Route path="/Employee" element={<Employee/>} />
-            
- feature/tela-cadastro  
             <Route path="/Home" element={<Home/>} />
             {/* <Route path="/perfil" element={<Perfil/>}/> */}
             <Route path="/UserPages" element={<UserPages/>}/>
