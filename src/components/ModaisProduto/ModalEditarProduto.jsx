@@ -8,20 +8,22 @@ export default function ModalEditar({
   setModalOpen,
   onEditSuccess,
   productId,
+  productId: initializeId,
   name: initialName,
   price: initialPrice,
-  image: initialImage,
+  // image: initialImage,
   category: initialCategory,
   description: initialDescription,
 }) {
   // Estados locais para controlar os valores dos campos
   const [product, setProduct] = useState({
+    productId: initializeId,
     name: initialName || "",
     description: initialDescription || "",
     price: initialPrice || "",
-    image: null, // Para novos arquivos
+    // image: null, // Para novos arquivos
     category: initialCategory || "",
-    existingImage: initialImage || "", // Para exibir a imagem atual
+    // existingImage: initialImage || "", // Para exibir a imagem atual
   });
 
   const token = sessionStorage.getItem("token");
@@ -45,15 +47,17 @@ export default function ModalEditar({
       formData.append("price", product.price);
       formData.append("category", product.category);
       formData.append("description", product.description);
-      if (product.image) {
-        formData.append("file", product.image);
-      }
+      // if (product.image) {
+      //   formData.append("file", product.image);
+      // }
 
       const response = await editProduct(token, productId, formData);
+      console.log(response)
 
       if (response.status === 200) {
         alert("Produto editado com sucesso!");
-        onEditSuccess(); // Notifica o componente pai para atualizar a lista
+        window.location.reload();
+        // onEditSuccess(); // Notifica o componente pai para atualizar a lista
       }
     } catch (error) {
       console.error("Erro ao tentar editar o produto:", error.response?.data || error.message);
@@ -104,7 +108,7 @@ export default function ModalEditar({
                 onChange={handleInputChange}
               />
             </div>
-            <div className={styles.inputWrapper}>
+            {/* <div className={styles.inputWrapper}>
               <h6>Adicionar imagem</h6>
               <label htmlFor="imageUpload" className={styles.uploadLabel}>
                 <input
@@ -117,14 +121,14 @@ export default function ModalEditar({
                 />
                 <span className={styles.uploadText}>Clique para enviar</span>
               </label>
-              {/* {product.existingImage && (
+              {product.existingImage && (
                 <img
                   src={product.existingImage}
                   alt="Imagem do Produto"
                   className={styles.previewImage}
                 />
-              )} */}
-            </div>
+              )}
+            </div> */}
           </div>
           <div className={styles.div_input} id="productDescription">
             <h6>Descrição</h6>
@@ -144,7 +148,7 @@ export default function ModalEditar({
               Cancelar
             </button>
             <button className={styles.btn_confirm} onClick={handleConfirm}>
-              Salvar
+              Confirmar
             </button>
           </div>
         </div>
