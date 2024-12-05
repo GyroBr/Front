@@ -204,7 +204,7 @@ span{
     color: #f0f0f0;
 }
 
-.box_btn{
+.button_group{
     width: 44%;
     display: flex;
     justify-content: space-between;

@@ -1,6 +1,6 @@
-export * from "./Home"
-export * from "./Cadastro"
-export * from "./Login"
+// export * from "./Home"
+// export * from "./Cadastro"
+// export * from "./Login"
 import axios from "axios";
 
 const api = axios.create(
