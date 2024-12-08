@@ -33,6 +33,38 @@ const CardPerfil = ({ nome, email }) => {
         window.location.reload();
     };
 
+    const handleConfirmClick = async () => {
+        // Adicione a lógica de confirmação aqui
+        const dataToSend = {
+            name: EmployeeData.nome,
+            email: EmployeeData.email,
+            password: EmployeeData.password,
+        };
+        console.error(dataToSend)
+        try {
+            const token = sessionStorage.getItem('token');  // Pega o token do sessionStorage
+
+            const response = await api.put(`/admin/update-enterprise/${EmployeeData.id}`, dataToSend, {
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": token
+                },
+            });
+
+            toast.success('Perfil atualizado com sucesso!', {
+                autoClose: 1700,
+            });
+
+        } catch (error) {
+            // setIsEditing(false);
+
+            toast.error('Erro ao atualizar perfil!', {
+                autoClose: 1700,
+            });
+            console.log("to na terceira");
+        }
+    };
+
     return (
         <div className={styles.card}>
             <div className={styles.card_func}>
@@ -93,7 +125,7 @@ const CardPerfil = ({ nome, email }) => {
             </div>
             <div className={styles.card_edit}>
                 <BsPencil className={styles.icon_card} onClick={handleEditClick} />
-                <BsTrash3 className={styles.icon_card} />
+                <BsTrash3 className={styles.icon_card} onClick={handleConfirmClick} />
             </div>
         </div>
     )

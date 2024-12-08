@@ -57,7 +57,7 @@ export const updateEmployee = async (token, formData, id) => {
 
 export const deleteEmployee = async (token, formData) => {
     try {
-        const response = await axios.delete(`${deleteEmployee}`, formData, {
+        const response = await api.delete(`${deleteEmployee}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,

@@ -10,7 +10,17 @@
     height: 75px;
     display: flex;
     flex-direction: column;
-    border: 1px solid rebeccapurple;
+}
+
+.button_group{
+    /* background-color: chartreuse; */
+    width: 80%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
 }
 
 span{
@@ -76,7 +86,7 @@ span{
     color: #f0f0f0;
     font-weight: 700;
     font-size: 0.7rem;
-    width: 6.4rem;
+    width: 5.2rem;
     height: 1.6rem;
     border: none;
     border-radius: 3px;
@@ -88,9 +98,19 @@ span{
     color: #f0f0f0;
     font-weight: 700;
     font-size: 0.7rem;
-    width: 6.4rem;
+    width: 5.2rem;
     height: 1.6rem;
     border: none;
     border-radius: 3px;
     /* transition: all 0.3s ease;   */
+}
+
+.btn_confirm:hover{
+    background-color: #3bcb31;
+    color: #f0f0f0;
+}
+
+.btn_cancel:hover{
+    background-color: #ff613d;
+    color: #f0f0f0;
 }
