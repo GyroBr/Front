@@ -42,9 +42,9 @@ export const getEmployees = async (token) => {
 
 export const updateEmployee = async (token, formData, id) => {
     try {
-        const response = await axios.put(`${updateEmployee}${id}`, formData, {
+        const response = await api.put(`/admin/update-employee/${id}`, formData, {
             headers: {
-                "Content-Type": "multipart/form-data",
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
@@ -55,9 +55,9 @@ export const updateEmployee = async (token, formData, id) => {
     }
 };
 
-export const deleteEmployee = async (token, formData) => {
+export const deleteEmployee = async (token) => {
     try {
-        const response = await api.delete(`${deleteEmployee}`, formData, {
+        const response = await api.delete(`/admin/update-employee/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,
