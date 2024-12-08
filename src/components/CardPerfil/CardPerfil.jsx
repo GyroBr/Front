@@ -4,6 +4,8 @@ import { BsPlusLg, BsTrash3, BsPencil } from "react-icons/bs";
 
 const CardPerfil = () => {
 
+
+
     return (
         <div className={styles.card}>
             <div className={styles.card_func}>
@@ -13,8 +15,6 @@ const CardPerfil = () => {
                         <input
                             type="text"
                             name="nome"
-                            // value={enterpriseData.nome}
-                            // onChange={handleInputChange}
                             placeholder="Digite a cidade"
                             className={styles.input_a}
                             readOnly={true}
@@ -27,8 +27,6 @@ const CardPerfil = () => {
                         <input
                             type="text"
                             name="nome"
-                            // value={enterpriseData.email}
-                            // onChange={handleInputChange}
                             placeholder="Digite a cidade"
                             className={styles.input_a}
                             readOnly={true}
@@ -36,20 +34,18 @@ const CardPerfil = () => {
                         />
                     </div>
                 </div>
-
                 <div className={styles.box}>
                     <span>Senha</span>
                     <input
                         type="text"
                         name="nome"
-                        // value={enterpriseData.password}
-                        // onChange={handleInputChange}
                         placeholder="Digite a cidade"
                         className={styles.input_a}
                         readOnly={true}
                         onFocus={(e) => e.target.blur()}
                     />
                 </div>
+
 
             </div>
             <div className={styles.card_edit}>

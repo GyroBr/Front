@@ -10,10 +10,13 @@ import api from '../../api';
 import { getEnterpriseById } from "../../services/empresas/empresa";
 import { TbElevator } from "react-icons/tb";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
+import CardAddEmployee from "../../components/CardPerfil/CardAddEmployee";
+import { registerEmployee, getEmployees } from "../../services/Employee/employe";
 
 const EmployeePage = () => {
 
     const [isEditing, setIsEditing] = useState(false);
+    const [isAddingEmployee, setIsAddingEmployee] = useState(false);
     const [isEditable, setIsEditable] = useState(true);
     const [enterpriseData, setEnterpriseData] = useState({
         id: "",
@@ -30,6 +33,7 @@ const EmployeePage = () => {
         cidade: ""
     });
 
+    //carrega assim que a pagina carrega
     useEffect(() => {
         const fetchData = async () => {
             const token = sessionStorage.getItem('token');
@@ -61,6 +65,24 @@ const EmployeePage = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const token = sessionStorage.getItem('token');
+            if (token) {
+                // Faça a requisição GET aqui
+                try {
+                    const data = await getEmployees(token);
+                    console.log(data); // Processar os dados conforme necessário
+                    
+                } catch (error) {
+                    console.error('Erro ao buscar dados:', error);
+                }
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEnterpriseData((prevData) => ({
@@ -79,6 +101,14 @@ const EmployeePage = () => {
         setIsEditing(false);
         console.log("to na segunda");
         window.location.reload();
+    };
+
+    const handleOpenCardEmployee = () => {
+        setIsAddingEmployee(true);
+    };
+
+    const handleCloseCardEmployee = () => {
+        setIsAddingEmployee(false);
     };
 
     const handleConfirmClick = async () => {
@@ -308,23 +338,21 @@ const EmployeePage = () => {
                         </div>
                     </div>
                     <div className={styles.container_card}>
-                        <button className={styles.card_btn}>
+                        <button className={styles.card_btn} onClick={handleOpenCardEmployee}>
                             Adicionar Funcionário
                             <BsPlusLg className={styles.icon} />
                         </button>
                         <div className={styles.container_scrool}>
                             <CardPerfil />
-                            <CardPerfil />
-                            <CardPerfil />
-                            <CardPerfil />
-                            <CardPerfil />
-                            <CardPerfil />
                         </div>
                     </div>
                 </div>
             </div>
+            {isAddingEmployee && (
+                <CardAddEmployee handleClose={handleCloseCardEmployee} />
+            )}
         </div>
     );
 };
 
-export default EmployeePage;
+export default EmployeePage
