@@ -3,8 +3,13 @@ import styles from './CardPerfil.module.css'
 import { BsPlusLg, BsTrash3, BsPencil } from "react-icons/bs";
 import { updateEmployee } from '../../services/Employee/employe';
 import { toast } from 'react-toastify';
+import ModalExcluirEmployee from '../ModaisEmployee/ModalExcluirEmployee';
 
-const CardPerfil = ({ id, nome, email }) => {
+const CardPerfil = ({ id, nome, email, onDelete }) => {
+    const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+
+    const openModalDelete = () => setIsModalDeleteOpen(true);
+    const closeModalDelete = () => setIsModalDeleteOpen(false);
 
     const [isEditable, setIsEditable] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
@@ -43,7 +48,7 @@ const CardPerfil = ({ id, nome, email }) => {
         };
         console.error(dataToSend)
         try {
-            const token = sessionStorage.getItem('token'); 
+            const token = sessionStorage.getItem('token');
             console.log("token", token);
 
             const response = await updateEmployee(token, dataToSend, EmployeeData.employeeId);
@@ -95,37 +100,45 @@ const CardPerfil = ({ id, nome, email }) => {
                     </div>
                 </div>
                 <div className={styles.line}>
-                <div className={styles.box}>
-                    <span>Senha</span>
-                    <input
-                        type="text"
-                        name="password"
-                        value={EmployeeData.password}
-                        placeholder="Digite a cidade"
-                        className={styles.input_a}
-                        readOnly={isEditable}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className={styles.box}>
-                    {isEditing && (
-                        <div className={styles.button_group}>
-                            <button className={styles.btn_cancel} onClick={handleCancelClick}>
-                                Cancelar
-                            </button>
-                            <button className={styles.btn_confirm} onClick={handleConfirmClick}>
-                                Confirmar
-                            </button>
-                        </div>
-                    )}
-                </div>
+                    <div className={styles.box}>
+                        <span>Senha</span>
+                        <input
+                            type="text"
+                            name="password"
+                            value={EmployeeData.password}
+                            placeholder="Digite a cidade"
+                            className={styles.input_a}
+                            readOnly={isEditable}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className={styles.box}>
+                        {isEditing && (
+                            <div className={styles.button_group}>
+                                <button className={styles.btn_cancel} onClick={handleCancelClick}>
+                                    Cancelar
+                                </button>
+                                <button className={styles.btn_confirm} onClick={handleConfirmClick}>
+                                    Confirmar
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
             </div>
             <div className={styles.card_edit}>
                 <BsPencil className={styles.icon_card} onClick={handleEditClick} />
-                <BsTrash3 className={styles.icon_card} />
+                <BsTrash3 className={styles.icon_card} onClick={openModalDelete} />
             </div>
+            {isModalDeleteOpen && (
+                <ModalExcluirEmployee
+                    isOpen={isModalDeleteOpen}
+                    setModalOpen={closeModalDelete}
+                    employeeId={id}
+                    onDeleteSuccess={() => onDelete(id)}
+                />
+            )}
         </div>
     )
 }
