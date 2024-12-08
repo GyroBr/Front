@@ -9,6 +9,7 @@ import styles from "./CardapioPage.module.css";
 const CardapioPage = () => {
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isFullHeight, setIsFullHeight] = useState(false);
   const token = sessionStorage.getItem("token");
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const CardapioPage = () => {
         const validProducts = productsWithImages.filter((product) => product !== null);
         setRepositories(validProducts);
         setLoading(false);
+        setIsFullHeight(validProducts.length > 8);
       } catch (error) {
         setLoading(false);
       }
@@ -57,7 +59,9 @@ const CardapioPage = () => {
       <div className={styles.sidebar_container}>
         <Sidebar />
       </div>
-      <div className={styles.conteudo}>
+      <div className={`${styles.conteudo} ${
+          isFullHeight ? styles.autoHeight : styles.fullHeight
+        }`}>
         <div className={styles.title_page}>
           <h1>Cardápio</h1>
         </div>
@@ -65,7 +69,7 @@ const CardapioPage = () => {
           <NavIntern />
         </div>
         <div className={styles.container_btn}>
-          <BtnAddProduct />
+          {/* <BtnAddProduct /> */}
         </div>
         {loading ? (
           <p>Carregando produtos...</p>

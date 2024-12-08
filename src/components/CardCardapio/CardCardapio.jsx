@@ -39,14 +39,14 @@ const Card = ({ id, name, description, price, image, onDelete, onEdit, category 
         <div className={styles.price}>
           <span className={styles.text}>R${price}</span>
         </div>
-        <div className={styles.buttons}>
+        {/* <div className={styles.buttons}>
           <button onClick={openModalEdit} className={styles.buttonCard}>
             <MdEdit /> Editar
           </button>
           <button onClick={openModalDelete} className={styles.buttonCard}>
             <MdDelete /> Excluir
           </button>
-        </div>
+        </div> */}
       </div>
       {isModalDeleteOpen && (
         <ModalExcluirProduto
