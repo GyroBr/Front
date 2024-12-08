@@ -1,0 +1,148 @@
+.card_estoque{
+    width: 490px;
+    height: 180px;
+    background-color: #131313;
+    border-radius: 10px;
+    margin: 1% 0 0 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container{
+    border-radius: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.container_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line{
+    /* background-color: #a3a3a3; */
+    border-bottom: #FCB069 solid 1px;
+    width: 110px;
+    height: 20px;
+    /* border-radius: 5px; */
+    margin: 0 0 3% 0;
+    color: aliceblue;
+    font-size: 0.625rem;
+    display: flex;
+    padding: 8px 0 0 0.625rem;      
+    align-items: center;
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+}
+
+.upload_img {
+    width: 120px;
+    height: 120px;
+    background-color: #1C1D21;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.upload_img img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 0.25rem; 
+}
+
+.line .icon{
+    color: #FCB069;
+    font-size: 14px;
+    margin-left: 3.3rem;
+}
+
+.text{
+    color: rgb(255, 253, 253);
+    font-size: 9px;
+    margin-bottom: 5px;
+}
+
+.box{
+    background-color: #1C1D21;
+    width: 280px;
+    height: 120px;
+    border-radius: 5px;
+    padding: 1rem 0.8rem 1rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.line_color{
+    width: 5rem;
+    height: 0.5rem;
+    background-color: rgb(74, 255, 74);
+    margin: 0 1rem 0 1rem;
+    border-radius: 1rem;
+}
+
+.box_intern{
+    background-color: #131313;
+    height: 1.2rem;
+    width: 100%;
+    border-radius: 0.15rem;
+    border: none;
+    color: aliceblue;
+    font-size: 0.625rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+}
+
+.box_btn{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.date {
+    color: aliceblue;
+    font-size: 6px;
+    width: 100%;
+    margin-left: 5px;
+}
+
+.box_btn {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-top: 10px;
+  }
+  
+  .btn_edit_delete {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #ffa858;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  
+  .btn_edit_delete:hover {
+    background-color: #e08a4f;
+  }
+  

@@ -16,6 +16,7 @@ import BarChart from "./pages/Dashboard/DashBoardBottom/BarChart"
 import EstoquePage from "./pages/Estoque/EstoquePage";
 import EstoquePage2 from "./pages/Estoque/EstoquePage";
 import Employee from "./pages/Employee/Employee";
+import Order from "./pages/Order/OrderPage";
 // import { Pie } from 'react-chartjs-2';
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/Dúvidas" element={<Dúvidas/>}/> */}
             <Route path="/cadastro" element={<Cadastro/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/Order" element={<Order/>}/>
             <Route path="/Estoque" element={<Teste/>} />
             <Route path="/Cardapio" element={<Cardapio/>} />
             <Route path="/CardapioPage" element={<CardapioPage/>} />
