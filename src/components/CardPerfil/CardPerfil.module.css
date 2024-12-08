@@ -10,6 +10,7 @@
     height: 75px;
     display: flex;
     flex-direction: column;
+    border: 1px solid rebeccapurple;
 }
 
 span{
@@ -67,4 +68,29 @@ span{
 .icon_card{
     color: #f0f0f0;
     font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn_confirm{
+    background-color: #FFA34E;
+    color: #f0f0f0;
+    font-weight: 700;
+    font-size: 0.7rem;
+    width: 6.4rem;
+    height: 1.6rem;
+    border: none;
+    border-radius: 3px;
+    /* transition: all 0.3s ease;   */
+}
+
+.btn_cancel{
+    background-color: #FFA34E;
+    color: #f0f0f0;
+    font-weight: 700;
+    font-size: 0.7rem;
+    width: 6.4rem;
+    height: 1.6rem;
+    border: none;
+    border-radius: 3px;
+    /* transition: all 0.3s ease;   */
 }
