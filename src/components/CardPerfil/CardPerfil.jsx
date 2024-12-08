@@ -1,13 +1,15 @@
 import React, { Component, useState } from 'react'
 import styles from './CardPerfil.module.css'
 import { BsPlusLg, BsTrash3, BsPencil } from "react-icons/bs";
+import { updateEmployee } from '../../services/Employee/employe';
+import { toast } from 'react-toastify';
 
-const CardPerfil = ({ nome, email }) => {
+const CardPerfil = ({ id, nome, email }) => {
 
     const [isEditable, setIsEditable] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
     const [EmployeeData, setEmployeeData] = useState({
-        id: "",
+        id: id,
         nome: nome,
         email: email,
         password: "******"
@@ -34,7 +36,6 @@ const CardPerfil = ({ nome, email }) => {
     };
 
     const handleConfirmClick = async () => {
-        // Adicione a lógica de confirmação aqui
         const dataToSend = {
             name: EmployeeData.nome,
             email: EmployeeData.email,
@@ -42,23 +43,20 @@ const CardPerfil = ({ nome, email }) => {
         };
         console.error(dataToSend)
         try {
-            const token = sessionStorage.getItem('token');  // Pega o token do sessionStorage
+            const token = sessionStorage.getItem('token'); 
 
-            const response = await api.put(`/admin/update-enterprise/${EmployeeData.id}`, dataToSend, {
-                headers: {
-                    "content-type": "application/json",
-                    "Authorization": token
-                },
-            });
-
-            toast.success('Perfil atualizado com sucesso!', {
+            const response = await updateEmployee(token, dataToSend, EmployeeData.id);
+            toast.success('Funcionário atualizado com sucesso!', {
                 autoClose: 1700,
             });
+
+            setIsEditing(false);
+            setIsEditable(true);
 
         } catch (error) {
             // setIsEditing(false);
 
-            toast.error('Erro ao atualizar perfil!', {
+            toast.error('Erro ao atualizar Funcionário!', {
                 autoClose: 1700,
             });
             console.log("to na terceira");
@@ -114,7 +112,7 @@ const CardPerfil = ({ nome, email }) => {
                             <button className={styles.btn_cancel} onClick={handleCancelClick}>
                                 Cancelar
                             </button>
-                            <button className={styles.btn_confirm}>
+                            <button className={styles.btn_confirm} onClick={handleConfirmClick}>
                                 Confirmar
                             </button>
                         </div>
@@ -125,7 +123,7 @@ const CardPerfil = ({ nome, email }) => {
             </div>
             <div className={styles.card_edit}>
                 <BsPencil className={styles.icon_card} onClick={handleEditClick} />
-                <BsTrash3 className={styles.icon_card} onClick={handleConfirmClick} />
+                <BsTrash3 className={styles.icon_card} />
             </div>
         </div>
     )
