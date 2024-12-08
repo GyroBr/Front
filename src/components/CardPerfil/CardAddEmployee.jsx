@@ -29,6 +29,8 @@ const CardPerfil = ({handleClose}) => {
                 autoClose: 1700,
             });
 
+            window.location.reload();
+
         } catch (error) {
             // setIsEditing(false);
 

@@ -42,7 +42,7 @@ export const getEmployees = async (token) => {
 
 export const updateEmployee = async (token, formData, id) => {
     try {
-        const response = await api.put(`/admin/update-employee/${id}`, formData, {
+        const response = await api.put(`/admin/update-employee/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
@@ -55,9 +55,9 @@ export const updateEmployee = async (token, formData, id) => {
     }
 };
 
-export const deleteEmployee = async (token) => {
+export const deleteEmployee = async (id, token) => {
     try {
-        const response = await api.delete(`/admin/update-employee/${id}`, formData, {
+        const response = await api.delete(`/admin/delete-employee/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,
