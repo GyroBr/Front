@@ -15,6 +15,7 @@ import { registerEmployee, getEmployees } from "../../services/Employee/employe"
 
 const EmployeePage = () => {
 
+    const [employees, setEmployees] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [isAddingEmployee, setIsAddingEmployee] = useState(false);
     const [isEditable, setIsEditable] = useState(true);
@@ -72,8 +73,9 @@ const EmployeePage = () => {
                 // Faça a requisição GET aqui
                 try {
                     const data = await getEmployees(token);
-                    console.log(data); // Processar os dados conforme necessário
-                    
+
+                    setEmployees(data.data);
+
                 } catch (error) {
                     console.error('Erro ao buscar dados:', error);
                 }
@@ -82,6 +84,10 @@ const EmployeePage = () => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        console.log(employees); // Verifique o estado employees após a definição
+    }, [employees]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -343,7 +349,13 @@ const EmployeePage = () => {
                             <BsPlusLg className={styles.icon} />
                         </button>
                         <div className={styles.container_scrool}>
-                            <CardPerfil />
+                            {employees.map((employee) => (
+                                <CardPerfil
+                                    key={employee.employeeId}
+                                    nome={employee.name}
+                                    email={employee.email}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>

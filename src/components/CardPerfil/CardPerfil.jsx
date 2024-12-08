@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import styles from './CardPerfil.module.css'
 import { BsPlusLg, BsTrash3, BsPencil } from "react-icons/bs";
 
-const CardPerfil = () => {
-
-
+const CardPerfil = ({nome, email}) => {
 
     return (
         <div className={styles.card}>
@@ -14,7 +12,8 @@ const CardPerfil = () => {
                         <span>Nome</span>
                         <input
                             type="text"
-                            name="nome"
+                            name="name"
+                            value={nome}
                             placeholder="Digite a cidade"
                             className={styles.input_a}
                             readOnly={true}
@@ -26,7 +25,8 @@ const CardPerfil = () => {
                         <span>Email</span>
                         <input
                             type="text"
-                            name="nome"
+                            name="email"
+                            value={email}
                             placeholder="Digite a cidade"
                             className={styles.input_a}
                             readOnly={true}
@@ -38,7 +38,8 @@ const CardPerfil = () => {
                     <span>Senha</span>
                     <input
                         type="text"
-                        name="nome"
+                        name="nome" 
+                        value={"*********"}
                         placeholder="Digite a cidade"
                         className={styles.input_a}
                         readOnly={true}

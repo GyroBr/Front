@@ -25,14 +25,15 @@ export const registerEmployee = async (token, formData) => {
 
 export const getEmployees = async (token) => {
     try {
-        const response = await api.get(`/admin/get-employee`, {
+        const response = await api.get(`/admin`, {
             headers: {
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
 
         console.log("Funcionários recuperados", response.data);
-        return response.data;
+        return response;
     } catch (error) {
         console.error("Erro ao tentar obter os funcionários:", error.response?.data || error.message);
         throw error;
