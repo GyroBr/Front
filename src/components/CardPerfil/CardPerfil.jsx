@@ -44,8 +44,9 @@ const CardPerfil = ({ id, nome, email }) => {
         console.error(dataToSend)
         try {
             const token = sessionStorage.getItem('token'); 
+            console.log("token", token);
 
-            const response = await updateEmployee(token, dataToSend, EmployeeData.id);
+            const response = await updateEmployee(token, dataToSend, EmployeeData.employeeId);
             toast.success('Funcionário atualizado com sucesso!', {
                 autoClose: 1700,
             });
