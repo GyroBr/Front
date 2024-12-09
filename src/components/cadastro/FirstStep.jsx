@@ -34,7 +34,7 @@ const FirstStep = ({ onUsuario }) => {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [name, setNome] = useState("");
 
-  const limparTelefone = (telefone) => telefone.replace(/[\s()-]/g, ""); // Remove espaços, parênteses e traços
+  const limparTelefone = (telefone) => telefone.replace(/[\s()-]/g, ""); 
 
 
   useEffect(() => {
@@ -51,13 +51,13 @@ const FirstStep = ({ onUsuario }) => {
 
   const handleTelefoneChange = (e) => {
     const telefoneComMascara = mascaraTelefone(e);
-    const telefoneLimpo = limparTelefone(telefoneComMascara); // Remove a máscara
+    const telefoneLimpo = limparTelefone(telefoneComMascara); 
 
-    setTel(telefoneLimpo); // Atualiza o input com a máscara
+    setTel(telefoneLimpo); 
 
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
-      phoneNumber: telefoneLimpo, // Atualiza o objeto com o telefone sem máscara
+      phoneNumber: telefoneLimpo, 
     }));
   };
 
@@ -66,19 +66,19 @@ const FirstStep = ({ onUsuario }) => {
 
   const handleCNPJChange = (e) => {
     const cnpjValue = mascaraCNPJ(e);
-    const cnpjLimpo = cnpjValue.replace(/[.\-/]/g, ""); // Remove pontos, barras e traços
+    const cnpjLimpo = cnpjValue.replace(/[.\-/]/g, ""); 
     setCNPJ(cnpjLimpo);
 
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
-      cnpj: cnpjLimpo, // Passa o CNPJ limpo ao objeto
+      cnpj: cnpjLimpo, 
     }));
   };
 
   const handleNomeChange = (e) => {
     const nomeValue = e.target.value;
     setNome(nomeValue);
-    console.log("nome ta vindo? ", nomeValue)
+
     onUsuario((prevUsuario) => ({
       ...prevUsuario,
       name: nomeValue,

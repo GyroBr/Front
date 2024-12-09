@@ -28,16 +28,18 @@ export default function Login() {
         console.log(response)
         navigate('/EstoquePage');
       }).catch((error) => {
-        toast.error(error.message || error, {
-          autoClose: 700,
+        const errorMessages = error.response.data;
+        errorMessages.forEach((error) => {
+          toast.error(`Erro em ${error.field}: ${error.message}`, {
+            autoClose: 4000,
+          });
         });
-        console.error(error);
       });
   };
 
   return (
     <div className={styles.div_mother}>
-      <a  href="."><MdArrowBack className={styles.arrow_back} /></a>
+      <a href="."><MdArrowBack className={styles.arrow_back} /></a>
       <div className={styles.div_form}>
         <div className={styles.div_logo}></div>
         <p className={styles.subtittle}>Bem-vindo de volta! Acesse sua conta <span className={styles.colored_dot}>.</span></p>
