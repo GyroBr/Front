@@ -213,7 +213,7 @@ export default function Cadastro() {
               </div>
             </div>
             <div className={styles.buttonGroup}>
-              <button onClick={handleBack} className={styles.backButton}>
+              <button to={"/"} onClick={() => navigate('/Home')} className={styles.backButton}>
                 <GrFormPrevious /> Voltar
               </button>
               <button onClick={handleNext} className={styles.nextButton}>
@@ -273,7 +273,7 @@ export default function Cadastro() {
               <button onClick={handleBack} className={styles.backButton}>
                 <GrFormPrevious /> Voltar
               </button>
-              <button onClick={handleCadastrarUsuario} className={styles.nextButton}>
+              <button onClick={handleCadastrarUsuario} className={styles.cadButton}>
                 Cadastrar
               </button>
             </div>

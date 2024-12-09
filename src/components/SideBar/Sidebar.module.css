@@ -18,6 +18,8 @@
     left: 0;
     overflow: hidden;
     transition: .3s;
+    position: fixed;
+    z-index: 10;
 }
 
 .menu_lateral:hover{

@@ -15,8 +15,8 @@ export const createOrder = async (token, orderData) => {
             },
         });
 
-        console.log("Pedido criado com sucesso", response.data);
-        return response.data;
+        console.log("Pedido criado com sucesso", response);
+        return response;
     } catch (error) {
         console.error("Erro ao tentar criar o pedido:", error.response?.data || error.message);
         throw error;

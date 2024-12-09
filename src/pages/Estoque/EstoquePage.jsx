@@ -51,7 +51,7 @@ const EstoquePage = () => {
         );
         setRepositories(validProducts);
         setLoading(false);
-        setIsFullHeight(validProducts.length > 8);
+        setIsFullHeight(validProducts.length < 6 && validProducts.length > 6);
       } catch (error) {
         console.error("Erro ao buscar produtos", error);
         setLoading(false);
@@ -78,7 +78,7 @@ const EstoquePage = () => {
       <div className={styles.sidebar_container}>
         <Sidebar />
       </div>
-      <div className={`${styles.conteudo} ${isFullHeight ? styles.autoHeight : styles.fullHeight}`}>
+      <div className={`${styles.conteudo} ${ isFullHeight ? styles.fullHeight : styles.autoHeight }`}>
         <div className={styles.title_page}>
           <h1>Gestão de Estoque</h1>
         </div>

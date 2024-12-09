@@ -6,6 +6,7 @@ import CardCart from "../../components/CardOrder/CardCart";
 import styles from "./OrderPage.module.css";
 import { getProductImage, getProducts } from "../../services/produto/ProdutoService";
 import { createOrder } from "../../services/pedido/PedidoService";
+import { toast } from "react-toastify";
 
 const OrderPage = () => {
   const [products, setProducts] = useState([]);
@@ -73,10 +74,24 @@ const OrderPage = () => {
     };
 
     try {
-      await createOrder(token, orderData);
+      const response = await createOrder(token, orderData);
+      console.log(response)
       setCartItems({});
-    } catch (error) {
+      if (response.status === 200) {
+        
+        setTimeout(() => {
+          window.location.reload();
+      }, 1000);
+      toast.success('Pedido criado com sucesso!', {
+        autoClose: 700,
+      })
+      
+    }} catch (error) {
       const errorMessage = error.response.data;
+      toast.error(`Erro ao tentar criar o pedido:
+         ${errorMessage}`, {
+        autoClose:1500,
+      })
       console.log(errorMessage)
       console.error("Erro ao criar pedido:", error);
     }

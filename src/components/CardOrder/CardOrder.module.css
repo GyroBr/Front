@@ -7,8 +7,23 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    transition: background-color 0.3s ease;  
+    position: relative; /* Define um contexto de empilhamento para os cards */
+    z-index: 1; /* Z-index padrão para os cards */
 }
-
+.card_estoque[style*="blur"] {
+    z-index: 0; /* Cards fora de estoque ficam abaixo */
+  }
+  
+  .card_estoque.inCart {
+    background-color: #FFA14F; /* Cor de destaque quando está no carrinho */
+  }
+  
+  .btn_edit_delete:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
 .container{
     border-radius: 0.7rem;
     display: flex;
@@ -16,7 +31,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 
 .container_info {
     display: flex;
@@ -26,11 +40,9 @@
 }
 
 .line{
-    /* background-color: #a3a3a3; */
     border-bottom: #FCB069 solid 1px;
     width: 110px;
     height: 20px;
-    /* border-radius: 5px; */
     margin: 0 0 3% 0;
     color: aliceblue;
     font-size: 0.625rem;
@@ -172,3 +184,37 @@
       background-color: #525252;
       border: #333333 solid 1px;
   }
+
+.card_estoque.inCart {
+    background-color: #FFA14F; /* Cor de destaque para o card */
+  }
+  
+  .btn_edit_delete {
+    width: 30px;
+    height: 30px;
+    border: none;
+    display: flex;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffa858; /* Cor padrão */
+    transition: background-color 0.3s;
+  }
+  
+  .btn_edit_delete:hover {
+    background-color: #e08a4f;
+  }
+  
+  .btnInCart {
+    background-color: #202020; 
+    color: white;
+  }
+  
+  .btnInCart:hover {
+    background-color: #3b3b3b;
+  }
+  
