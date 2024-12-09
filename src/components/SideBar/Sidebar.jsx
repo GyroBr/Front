@@ -11,6 +11,7 @@ import {
     BsPerson,
     BsBoxArrowLeft,
 } from "react-icons/bs";
+import { MdOutlineMenuBook  } from "react-icons/md";
 import { getEnterpriseById } from "../../services/empresas/empresa";
 
 const Menu = () => {
@@ -88,6 +89,14 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu}>
+                    <a href="/Order">
+                        <span className={styles.icon}>
+                            <BsCart4 />
+                        </span>
+                        <span className={styles.txt_link}>Pedidos</span>
+                    </a>
+                </li>
+                <li className={styles.item_menu}>
                     <a href="/EstoquePage">
                         <span className={styles.icon}>
                             <BsBox />
@@ -99,7 +108,7 @@ const Menu = () => {
                 <li className={styles.item_menu}>
                     <a href="/CardapioPage">
                         <span className={styles.icon}>
-                            <BsCart4 />
+                            <MdOutlineMenuBook  />
                         </span>
                         <span className={styles.txt_link}>Menu</span>
                     </a>

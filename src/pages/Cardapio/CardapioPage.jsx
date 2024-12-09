@@ -45,7 +45,7 @@ const CardapioPage = () => {
         const validProducts = productsWithImages.filter((product) => product !== null);
         setRepositories(validProducts);
         setLoading(false);
-        setIsFullHeight(validProducts.length > 8);
+        setIsFullHeight(validProducts.length > 6);
       } catch (error) {
         setLoading(false);
       }
