@@ -17,7 +17,7 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
         id: id,
         nome: nome,
         email: email,
-        password: "******"
+        password: ""
     });
 
     const handleInputChange = (e) => {
@@ -41,17 +41,20 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
     };
 
     const handleConfirmClick = async () => {
+        console.log(id)
         const dataToSend = {
-            name: EmployeeData.nome,
+            fullName: EmployeeData.nome,
             email: EmployeeData.email,
             password: EmployeeData.password,
+
         };
-        console.error(dataToSend)
+        console.log(dataToSend)
+        console.log("senha: " , dataToSend.password)
         try {
             const token = sessionStorage.getItem('token');
             console.log("token", token);
 
-            const response = await updateEmployee(token, dataToSend, EmployeeData.employeeId);
+            const response = await updateEmployee(token, dataToSend,id);
             toast.success('Funcionário atualizado com sucesso!', {
                 autoClose: 1700,
             });
