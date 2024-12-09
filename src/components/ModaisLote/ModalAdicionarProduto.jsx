@@ -9,6 +9,7 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
     description: "",
     price: "",
     quantity: "",
+    warningQuantity: "",
     expirationDate: "",
     category: "",
     image: null,
@@ -41,6 +42,7 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
       formData.append("price", product.price);
       formData.append("category", product.category);
       formData.append("quantity", product.quantity);
+      formData.append("warningQuantity", product.warningQuantity);
       formData.append("expirationDate", product.expirationDate);
       formData.append("description", product.description);
       if (product.image) {
@@ -169,6 +171,17 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
                 value={product.description}
                 onChange={handleInputChange}
               ></textarea>
+            </div>
+            <div className={styles.inputWrapper}>
+              <h6>Quantidade alerta</h6>
+              <input
+                type="number"
+                name="warningQuantity"
+                value={product.warningQuantity}
+                className={styles.inputs_square}
+                placeholder="Quantidade em alerta"
+                onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className={styles.buttons}>

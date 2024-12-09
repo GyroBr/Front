@@ -90,26 +90,27 @@ const EstoquePage = () => {
         </div>
         <div className={styles.container}>
           {loading ? (
-            <p>Carregando produtos...</p>
-          ) : filteredRepositories.length === 0 ? (
-            <p>Nenhum produto encontrado.</p>
-          ) : (
-            <div className={styles.container}>
-              {filteredRepositories.map((repo) => (
-                <CardEstoque
-                  key={`${repo.id}-${repo.name}`}
-                  id={repo.productId}
-                  name={repo.name}
-                  description={repo.description}
-                  price={repo.price}
-                  image={repo.image}
-                  category={repo.category}
-                  quantity={repo.quantity}
-                  expirationDate={repo.expirationDate}
-                />
-              ))}
-            </div>
-          )}
+          <p>Carregando produtos...</p>
+        ) : repositories.length === 0 ? (
+          <p>Nenhum produto encontrado.</p>
+        ) : (
+          <div className={styles.container}>
+            {repositories.map((repo) => (
+              <CardEstoque
+                key={`${repo.id}-${repo.name}`}
+                id={repo.productId}
+                name={repo.name}
+                description={repo.description}
+                price={repo.price}
+                image={repo.image}
+                warningQuantity={repo.warningQuantity}
+                category={repo.category}
+                quantity={repo.quantity}
+                expireDate={repo.expireDate}
+              />
+            ))}
+          </div>
+        )}
         </div>
       </div>
     </div>

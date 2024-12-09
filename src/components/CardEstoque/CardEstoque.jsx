@@ -20,10 +20,10 @@ const Card = ({
   onEdit,
   category,
   quantity,
-  expirationDate,
+  expireDate,
 }) => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-
+  console.log(expireDate)
   const openModalDelete = () => setIsModalDeleteOpen(true);
   const closeModalDelete = () => setIsModalDeleteOpen(false);
 
@@ -81,13 +81,7 @@ const Card = ({
             <div className={styles.box_intern}>
               <BsCalendar4Event />
               <span className={styles.date}>
-                {expirationDate
-                  ? Date(expirationDate).toLocaleDateString("pt-BR", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                    })
-                  : "Data não disponível"}
+                {expireDate}
               </span>
             </div>
           </div>

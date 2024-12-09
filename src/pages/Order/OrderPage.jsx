@@ -65,7 +65,7 @@ const OrderPage = () => {
   const handleCreateOrder = async () => {
     const orderData = {
       paymentMethod: "PIX",
-      amountOfMoneyGiven: 0,
+      amountOfMoneyGiven: null,
       orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
         productId: parseInt(id, 10),
         quantity,
@@ -76,6 +76,8 @@ const OrderPage = () => {
       await createOrder(token, orderData);
       setCartItems({});
     } catch (error) {
+      const errorMessage = error.response.data;
+      console.log(errorMessage)
       console.error("Erro ao criar pedido:", error);
     }
   };
@@ -110,7 +112,7 @@ const OrderPage = () => {
                   name={product.name}
                   price={product.price}
                   image={product.image}
-                  description={product.description}
+                  productQuantity={product.quantity}
                   onUpdateCart={updateCart}
                 />
               ))
