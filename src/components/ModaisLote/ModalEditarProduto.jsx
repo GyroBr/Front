@@ -12,7 +12,7 @@ export default function ModalEditar({
   productId: initializeId,
   name: initialName,
   price: initialPrice,
-  // image: initialImage,
+  warningQuantity: initialWarningQuantity,
   category: initialCategory,
   description: initialDescription,
 }) {
@@ -22,9 +22,8 @@ export default function ModalEditar({
     name: initialName || "",
     description: initialDescription || "",
     price: initialPrice || "",
-    // image: null, // Para novos arquivos
+    warningQuantity: initialWarningQuantity || "",
     category: initialCategory || "",
-    // existingImage: initialImage || "", // Para exibir a imagem atual
   });
 
   const token = sessionStorage.getItem("token");
@@ -48,9 +47,7 @@ export default function ModalEditar({
       formData.append("price", product.price);
       formData.append("category", product.category);
       formData.append("description", product.description);
-      // if (product.image) {
-      //   formData.append("file", product.image);
-      // }
+      formData.append("WarningQuantity", product.WarningQuantity);
 
       const response = await editProduct(token, productId, formData);
       console.log(response)

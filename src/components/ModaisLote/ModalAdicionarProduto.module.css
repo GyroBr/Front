@@ -9,21 +9,23 @@
 }
 
 .modalContentStyle {
-    top: 50%;
-    left: 50%;
-    width: 870px;
-    height: 600px;
-    padding: 80px;
-    position: fixed;
-    color: #F0F0F0;
-    align-items: center;
-    border-radius: 10px;
-    background: #1C1D21;
-    flex-direction: column;
-    border: #FFA858 solid 1px;
-    background-color: #0c0c0c;
-    transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 870px;
+  max-height: 600px; /* Limita a altura máxima */
+  padding: 80px;
+  position: fixed;
+  color: #F0F0F0;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: #1C1D21;
+  flex-direction: column;
+  border: #FFA858 solid 1px;
+  background-color: #0c0c0c;
+  transform: translate(-50%, -50%);
 }
+
 
 .contents {
     width: 100%;

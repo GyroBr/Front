@@ -1,36 +1,42 @@
 .card_estoque{
-    width: 30%;
-    height: 45%;
+    width: 310px;
+    height: 210px;
     background-color: #131313;
-    border-radius: 0.7rem;
+    border-radius: 10px;
     margin: 1% 0 0 3%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
 .container{
     width: 48%;
     border-radius: 0.7rem;
-    height: 100%;
     padding: 2% 2% 0 2%;
-}
-
-.img{
-    width: 100%;
-    height: 40%;
-}
-
-.container_info{
-    width: 100%;
-    height: 60%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img {
+    width: 100%;
+    height: 40%;
+    margin-bottom: 1rem; /* Cria distância entre a imagem e os inputs */
+}
+
+.container_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* Cria espaçamento uniforme entre os elementos */
 }
 
 .line{
     background-color: #1C1D21;
-    height: 4vh;
-    width: 100%;
+    width: 130px;
+    height: 20px;
     border-radius: 5px;
     margin: 0 0 3% 0;
     border: none;
@@ -38,6 +44,7 @@
     font-size: 0.625rem;
     display: flex;
     padding: 8px 0 0 0.625rem;      
+    align-items: center;
 }
 
 .img{
@@ -45,11 +52,22 @@
     justify-content: center;
 }
 
-.upload_img{
-    height: 5.5rem;
-    width: 5.5rem;
+.upload_img {
+    width: 85px;
+    height: 85px;
     background-color: #1C1D21;
-    border-radius: 6.25rem;
+    border-radius: 6.25rem; /* Mantém o formato circular */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse a div */
+    display: flex; /* Centra a imagem */
+    justify-content: center; /* Centra a imagem horizontalmente */
+    align-items: center; /* Centra a imagem verticalmente */
+}
+
+.upload_img img {
+    width: 100%; /* Faz a imagem ocupar a largura da div */
+    height: 100%; /* Faz a imagem ocupar a altura da div */
+    object-fit: cover; /* Garante que a imagem preencha a div proporcionalmente */
+    border-radius: 6.25rem; /* Mantém o mesmo formato da div */
 }
 
 .line .icon{
@@ -60,14 +78,14 @@
 
 .text{
     color: aliceblue;
-    font-size: 0.625rem;
+    font-size: 8px;
 }
 
 .box{
     background-color: #1C1D21;
-    width: 100%;
-    height: 13.5rem;
-    border-radius: 0.3rem;
+    width: 130px;
+    height: 190px;
+    border-radius: 5px;
     padding: 1rem 0.8rem 1rem 0.8rem;
     display: flex;
     flex-direction: column;
@@ -104,9 +122,11 @@
 }
 
 .box_btn{
+    width: 100%;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .box_btn .btn_edit_delete{
@@ -120,4 +140,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.date {
+    color: aliceblue;
+    font-size: 6px;
+    width: 100%;
+    margin-left: 5px;
 }

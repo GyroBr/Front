@@ -349,11 +349,12 @@ const EmployeePage = () => {
                             <BsPlusLg className={styles.icon} />
                         </button>
                         <div className={styles.container_scrool}>
-                            {employees.map((employee) => (
+                            {employees.length > 0 && employees.map((employee) => (
                                 <CardPerfil
                                     key={employee.employeeId}
                                     nome={employee.name}
                                     email={employee.email}
+                                    id={employee.employeeId}
                                 />
                             ))}
                         </div>
