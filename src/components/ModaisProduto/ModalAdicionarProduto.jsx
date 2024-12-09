@@ -12,6 +12,7 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
     expirationDate: "",
     category: "",
     image: null,
+    warningQuantity: "", 
   });
 
   const token = sessionStorage.getItem("token");
@@ -28,6 +29,8 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
         newValue = parseFloat(value);
       } else if (name === "quantity" && value !== "") {
         newValue = parseInt(value, 10);
+      } else if (name === "warningQuantity" && value !== "") {
+        newValue = parseInt(value, 10);
       }
 
       setProduct((prev) => ({ ...prev, [name]: newValue }));
@@ -41,6 +44,7 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
       formData.append("price", product.price);
       formData.append("category", product.category);
       formData.append("quantity", product.quantity);
+      formData.append("warningQuantity", product.warningQuantity); 
       formData.append("expirationDate", product.expirationDate);
       formData.append("description", product.description);
       if (product.image) {
@@ -50,7 +54,6 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
       const headers = new Headers();
       headers.append("Authorization", `Bearer ${token}`);
 
-      // Log dos dados para verificação
       for (let pair of formData.entries()) {
         console.log(pair[0] + ": " + pair[1]);
       }
@@ -61,19 +64,17 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
       if (response.status === 200) {
         setTimeout(() => {
           window.location.reload();
-      }, 1000);
-      toast.success('Produto editado com sucesso!', {
-        autoClose: 700,
-      });
+        }, 1000);
+        toast.success('Produto editado com sucesso!', {
+          autoClose: 700,
+        });
       }
     } catch (error) {
-      console.error(
-        "Erro ao tentar adicionar o produto:",
-        error.response?.data || error.message || error.field
-      );
-      // Evita mostrar um alerta em caso de sucesso e exibe apenas para erros
-      toast.error('Erro ao tentar adicionar o produto', {
-        autoClose: 700,
+    
+console.log(error.response)
+
+      toast.error(error.response.data, {
+        autoClose: 5000,
       });
     }
   };
@@ -146,6 +147,17 @@ export default function ModalAdicionar({ isOpen, setModalOpen, onAddSuccess }) {
                 value={product.quantity}
                 className={styles.inputs_square}
                 placeholder="Quantidade"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <h6>Quantidade de Aviso</h6> {/* Novo campo de input */}
+              <input
+                type="number"
+                name="warningQuantity"
+                value={product.warningQuantity}
+                className={styles.inputs_square}
+                placeholder="Aviso de quantidade"
                 onChange={handleInputChange}
               />
             </div>

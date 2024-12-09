@@ -1,8 +1,15 @@
+
 import Sidebar from "../../components/SideBar/Sidebar";
 import styles from "../History/History.module.css";
 import React, { useEffect, useState } from "react";
 
 function History() {
+
+import React, { Component, useState } from 'react'
+
+
+const HistoryPage = () => {
+
     return (
         <div className={styles.body}>
             <div className={styles.sidebar_container}>
@@ -14,6 +21,7 @@ function History() {
                 </div>
 
                 <div className={styles.card_conteudo}>
+
                     <div className={styles.container_history}>
                         <div className={styles.container_graph}>
                             <div className={styles.box_card}>
@@ -31,10 +39,14 @@ function History() {
                             aqui, tabela
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     )
+
 }
 
-export default History
+};
+
+export default HistoryPage

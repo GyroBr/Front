@@ -28,7 +28,6 @@ export const getProducts = async (token) => {
             },
         });
 
-        console.log("Produtos recuperados", response.data);
         return response.data;
     } catch (error) {
         console.error("Erro ao tentar obter os produtos:", error.response?.data || error.message);
@@ -48,7 +47,6 @@ export const getProductImage = async (token, imageName) => {
         const imageBlob = new Blob([response.data], { type: response.headers['content-type'] });
         const imageUrl = URL.createObjectURL(imageBlob);
 
-        console.log("Imagem recuperada", imageUrl);
         return imageUrl;
     } catch (error) {
         console.error("Erro ao tentar obter a imagem do produto:", error.response?.data || error.message);
@@ -66,14 +64,26 @@ export const editProduct = async (token, productId, productBody) => {
                 Authorization: `Bearer ${token}`,
             },
         });
-
-        console.log("Produto editado com sucesso", response);
         return response;
     } catch (error) {
         console.error("Erro ao tentar editar o produto:", error.response?.data || error.message);
         throw error;
     }
 };
+
+export const getAllCategories = async (token) => {
+    try {
+        const response = await axios.get(`${APIBASEURL}/categories`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log("erro ao pegar categorias")
+        throw error;
+    }
+}
 
 export const deleteProduct = async (token, productId) => {
     try {
@@ -83,8 +93,6 @@ export const deleteProduct = async (token, productId) => {
                 Authorization: `Bearer ${token}`,
             },
         });
-
-        console.log("Produto deletado com sucesso", response);
         return response;
     } catch (error) {
         console.error("Erro ao tentar deletar o produto:", error.response?.data || error.message);

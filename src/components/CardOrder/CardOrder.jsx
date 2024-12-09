@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./CardOrder.module.css";
 
-const CardOrder = ({ id, name, price, image, onUpdateCart }) => {
+const CardOrder = ({ id, name, price, image, onUpdateCart, productQuantity }) => {
   const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
@@ -25,6 +25,7 @@ const CardOrder = ({ id, name, price, image, onUpdateCart }) => {
       <div className={styles.container_info}>
         <h3 className={styles.textName}>{name}</h3>
         <p className={styles.textPrice}>R$ {price},00</p>
+        <p className={styles.textProductQuantity}>Em estoque: {productQuantity}</p>
         <div className={styles.box_btn}>
           <button
             className={styles.btn_edit_delete}

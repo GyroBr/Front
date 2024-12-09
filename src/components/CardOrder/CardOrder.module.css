@@ -84,6 +84,11 @@
     margin-bottom: 5px;
     color: rgb(255, 253, 253);
 }
+.textProductQuantity{
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: rgb(255, 253, 253);
+}
 
 .box{
     width: 280px;

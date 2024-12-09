@@ -44,6 +44,7 @@ export default function App() {
             <Route path="/Home" element={<Home/>} />
             {/* <Route path="/perfil" element={<Perfil/>}/> */}
             <Route path="/UserPages" element={<UserPages/>}/>
+            <Route path="/History" element={<History/>}/>
         </Routes>
         <ToastContainer />
     </div>
