@@ -3,9 +3,6 @@ import Sidebar from "../../components/SideBar/Sidebar";
 import styles from "../History/History.module.css";
 import React, { useEffect, useState } from "react";
 
-function History() {
-
-import React, { Component, useState } from 'react'
 
 
 const HistoryPage = () => {
@@ -47,6 +44,6 @@ const HistoryPage = () => {
 
 }
 
-};
+
 
 export default HistoryPage
