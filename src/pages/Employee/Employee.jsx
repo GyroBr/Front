@@ -86,7 +86,8 @@ const EmployeePage = () => {
     }, []);
 
     useEffect(() => {
-        console.log(employees); // Verifique o estado employees após a definição
+        console.log("to no employee", employees); // Verifique o estado employees após a definição
+        
     }, [employees]);
 
     const handleInputChange = (e) => {
@@ -354,6 +355,7 @@ const EmployeePage = () => {
                                     key={employee.employeeId}
                                     nome={employee.name}
                                     email={employee.email}
+                                    password={employee.password}
                                     id={employee.employeeId}
                                 />
                             ))}

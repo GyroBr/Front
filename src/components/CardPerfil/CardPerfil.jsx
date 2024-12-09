@@ -5,7 +5,7 @@ import { updateEmployee } from '../../services/Employee/employe';
 import { toast } from 'react-toastify';
 import ModalExcluirEmployee from '../ModaisEmployee/ModalExcluirEmployee';
 
-const CardPerfil = ({ id, nome, email, onDelete }) => {
+const CardPerfil = ({ id, nome, email, password, onDelete }) => {
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
 
     const openModalDelete = () => setIsModalDeleteOpen(true);
@@ -17,7 +17,7 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
         id: id,
         nome: nome,
         email: email,
-        password: ""
+        password: password
     });
 
     const handleInputChange = (e) => {
@@ -82,7 +82,7 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
                             type="text"
                             name="nome"
                             value={EmployeeData.nome}
-                            placeholder="Digite a cidade"
+                            placeholder="Digite o nome"
                             className={styles.input_a}
                             readOnly={isEditable}
                             onChange={handleInputChange}
@@ -95,7 +95,7 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
                             type="text"
                             name="email"
                             value={EmployeeData.email}
-                            placeholder="Digite a cidade"
+                            placeholder="Digite o email"
                             className={styles.input_a}
                             readOnly={isEditable}
                             onChange={handleInputChange}
@@ -106,10 +106,10 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
                     <div className={styles.box}>
                         <span>Senha</span>
                         <input
-                            type="text"
+                            type="password"
                             name="password"
                             value={EmployeeData.password}
-                            placeholder="Digite a cidade"
+                            placeholder="Digite a senha"
                             className={styles.input_a}
                             readOnly={isEditable}
                             onChange={handleInputChange}
