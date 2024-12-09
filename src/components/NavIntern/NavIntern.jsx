@@ -2,11 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./NavIntern.module.css";
 import { getAllCategories } from "../../services/produto/ProdutoService";
 
-const NavIntern = ({ onCategorySelect }) => { // Recebe a função como prop
+const NavIntern = ({ onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
   const menuRef = useRef(null);
 
   const token = sessionStorage.getItem("token");
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -19,7 +20,7 @@ const NavIntern = ({ onCategorySelect }) => { // Recebe a função como prop
     };
 
     fetchCategories();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const menuItem = menuRef.current?.querySelectorAll(`.${styles.menu_top} ul li`);
@@ -52,7 +53,8 @@ const NavIntern = ({ onCategorySelect }) => { // Recebe a função como prop
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  onCategorySelect(category); // Chama a função com a categoria selecionada
+                  console.log("Categoria clicada:", category); // Debug para verificar o valor
+                  onCategorySelect(category);
                 }}
               >
                 <span className={styles.txt_link}>{category}</span>
