@@ -80,7 +80,7 @@ const Menu = () => {
                 </li>
 
                 <li className={styles.item_menu}>
-                    <a href="#">
+                    <a href="/History">
                         <span className={styles.icon}>
                             <BsReverseLayoutTextSidebarReverse />
                         </span>
