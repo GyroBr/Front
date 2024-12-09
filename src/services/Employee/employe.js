@@ -40,9 +40,9 @@ export const getEmployees = async (token) => {
     }
 };
 
-export const updateEmployee = async (token, formData, id) => {
+export const updateEmployee = async (token, body, id) => {
     try {
-        const response = await api.put(`/admin/update-employee/${id}`, {
+        const response = await api.put(`/admin/update-employee/${id}`, body, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
