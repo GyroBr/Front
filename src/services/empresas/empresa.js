@@ -3,6 +3,8 @@ import axios from 'axios';
 const apiURL = 'http://localhost:8080/enterprises';
 
 export const registerEnterprise = async (empresa) => {
+
+    console.log(empresa)
     try {
         const response = await axios.post(`${apiURL}/register`, empresa, {
             headers: {
