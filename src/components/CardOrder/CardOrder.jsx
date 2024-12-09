@@ -1,61 +1,49 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CardOrder.module.css";
-import {
-  BsCalendar4Event,
-  BsFillPencilFill,
-  BsFillTrashFill,
-} from "react-icons/bs";
-import { useState } from "react";
 
-const Card = ({
-  id,
-  name,
-  price,
-  image,
-  quantity,
-}) => {
+const CardOrder = ({ id, name, price, image, onUpdateCart }) => {
+  const [quantity, setQuantity] = useState(0);
+
+  const handleAddToCart = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    onUpdateCart(id, newQuantity, name, price);
+  };
+
+  const handleRemoveFromCart = () => {
+    const newQuantity = Math.max(0, quantity - 1);
+    setQuantity(newQuantity);
+    onUpdateCart(id, newQuantity, name, price);
+  };
+
   return (
     <div className={styles.card_estoque}>
-      <div className={styles.container}>
-        <div className={styles.img}>
-          <div className={styles.upload_img}>
-            <img src={image} alt={name} />
-          </div>
-        </div>
-        <div className={styles.container_info}></div>
+      <div className={styles.upload_img}>
+        <img src={image} alt={name} className={styles.img} />
       </div>
-      <div className={styles.container}>
-        <div className={styles.box}>
-          <div className={styles.line}>
-            <span className={styles.text}>Produto: {name}</span>
-          </div>
-          <div className={styles.line}>
-            <span className={styles.text}>Preço: R${price},00</span>
-          </div>
-
-          <div className={styles.box_btn}>
-            {/* Botão para diminuir quantidade */}
-            <button
-              className={styles.btn_edit_delete}
-              onClick={() => onEdit(id, quantity - 1)}
-            >
-              -
-            </button>
-
-            <span className={styles.text}>Quantidade: {quantity}</span>
-
-            <button
-              className={styles.btn_edit_delete}
-              onClick={() => onEdit(id, quantity + 1)}
-            >
-              +
-            </button>
-          </div>
+      <div className={styles.container_info}>
+        <h3 className={styles.textName}>{name}</h3>
+        <p className={styles.textPrice}>R$ {price},00</p>
+        <div className={styles.box_btn}>
+          <button
+            className={styles.btn_edit_delete}
+            onClick={handleRemoveFromCart}
+            disabled={quantity === 0}
+          >
+            -
+          </button>
+          <span className={styles.textQuantity}>{quantity}</span>
+          <button
+            className={styles.btn_edit_delete}
+            onClick={handleAddToCart}
+          >
+            +
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default CardOrder;

@@ -1,5 +1,5 @@
 .card_estoque{
-    width: 490px;
+    width: 400px;
     height: 180px;
     background-color: #131313;
     border-radius: 10px;
@@ -73,72 +73,83 @@
     font-size: 9px;
     margin-bottom: 5px;
 }
+.textName{
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: rgb(255, 253, 253);
+    border-bottom: #FCB069 solid 1px;
+}
+.textPrice{
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: rgb(255, 253, 253);
+}
 
 .box{
-    background-color: #1C1D21;
     width: 280px;
     height: 120px;
-    border-radius: 5px;
-    padding: 1rem 0.8rem 1rem 0.8rem;
     display: flex;
+    border-radius: 5px;
     flex-direction: column;
+    background-color: #1C1D21;
     justify-content: space-between;
+    padding: 1rem 0.8rem 1rem 0.8rem;
 }
 
 .line_color{
     width: 5rem;
     height: 0.5rem;
-    background-color: rgb(74, 255, 74);
-    margin: 0 1rem 0 1rem;
     border-radius: 1rem;
+    margin: 0 1rem 0 1rem;
+    background-color: rgb(74, 255, 74);
 }
 
 .box_intern{
-    background-color: #131313;
-    height: 1.2rem;
     width: 100%;
-    border-radius: 0.15rem;
     border: none;
-    color: aliceblue;
-    font-size: 0.625rem;
     display: flex;
+    height: 1.2rem;
+    color: aliceblue;
     align-items: center;
+    font-size: 0.625rem;
+    border-radius: 0.15rem;
     padding: 0 1rem 0 1rem;
+    background-color: #131313;
 }
 
 .box_btn{
-    margin-top: 1rem;
     display: flex;
+    margin-top: 1rem;
     justify-content: space-around;
 }
 
 .date {
-    color: aliceblue;
-    font-size: 6px;
     width: 100%;
+    font-size: 6px;
     margin-left: 5px;
+    color: aliceblue;
 }
 
 .box_btn {
-    display: flex;
-    align-items: center;
     gap: 1px;
+    display: flex;
     margin-top: 10px;
+    align-items: center;
   }
   
   .btn_edit_delete {
     width: 30px;
     height: 30px;
+    border: none;
+    display: flex;
+    color: white;
+    cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    color: white;
-    background-color: #ffa858;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background-color: #ffa858;
     transition: background-color 0.3s;
   }
   
@@ -146,3 +157,13 @@
     background-color: #e08a4f;
   }
   
+  .textQuantity{
+      width: 30px;
+      height: 30px;
+      display: flex;
+      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
+      background-color: #525252;
+      border: #333333 solid 1px;
+  }
