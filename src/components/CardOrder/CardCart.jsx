@@ -13,6 +13,7 @@ const CardCart = ({ cartItems, onCreateOrder, total }) => {
               <span className={styles.item_name}>{name}</span>
               <span className={styles.item_quantity}>Qtd: {quantity}</span>
               <span className={styles.item_price}>R$ {price * quantity},00</span>
+              <select name="selectMethodOfPayment" id=""></select>
             </div>
           ))
         ) : (

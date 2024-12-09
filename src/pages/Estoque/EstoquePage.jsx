@@ -93,9 +93,10 @@ const EstoquePage = () => {
                 description={repo.description}
                 price={repo.price}
                 image={repo.image}
+                warningQuantity={repo.warningQuantity}
                 category={repo.category}
                 quantity={repo.quantity}
-                expirationDate={repo.expirationDate}
+                expireDate={repo.expireDate}
               />
             ))}
           </div>
