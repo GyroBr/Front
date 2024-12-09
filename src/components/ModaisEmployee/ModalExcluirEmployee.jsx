@@ -3,15 +3,18 @@ import styles from "../ModaisEmployee/ModalExcluirEmployee.module.css";
 import { useState } from "react";
 import { deleteEmployee } from "../../services/Employee/employe";
 
-export default function ModalExcluir({ isOpen, setModalOpen, employeeId, onDeleteSuccess }) {
-  // Função para confirmar a exclusão
+export default function ModalExcluir({ isOpen, setModalOpen, employeeId }) {
+
+const token = sessionStorage.getItem("token")
+
   const handleConfirm = async () => {
     try {
-      const response = await deleteEmployee(employeeId); // Chama a função de exclusão do serviço
+      
+      const response = await deleteEmployee(employeeId,token); // Chama a função de exclusão do serviço
 
-      if (response.ok) {
+      if (response.status === 204) {
         alert("Funcionário excluído com sucesso!");
-        onDeleteSuccess(); 
+        window.location.reload()
       } else {
         throw new Error("Erro ao excluir o Funcionário."); 
       }

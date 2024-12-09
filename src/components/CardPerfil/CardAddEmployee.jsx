@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { registerEmployee, getEmployees } from "../../services/Employee/employe";
 
 
-const CardPerfil = ({handleClose}) => {
+const CardPerfil = ({ handleClose }) => {
     const [EmployeeData, setEmployeeData] = useState({
         name: "",
         email: "",
@@ -25,19 +25,21 @@ const CardPerfil = ({handleClose}) => {
 
             const response = await registerEmployee(token, dataToSend);
 
-            toast.success('Perfil atualizado com sucesso!', {
+            toast.success('Funcinário adicionado com sucesso!', {
                 autoClose: 1700,
             });
 
             window.location.reload();
 
         } catch (error) {
-            // setIsEditing(false);
 
-            toast.error('Erro ao atualizar perfil!', {
-                autoClose: 1700,
+            const errorMessages = error.response.data;
+            errorMessages.forEach((error) => {
+                toast.error(`Erro em ${error.field}: ${error.message}`, {
+                    autoClose: 4000,
+                });
             });
-            console.log("to na terceira");
+
         }
     };
 

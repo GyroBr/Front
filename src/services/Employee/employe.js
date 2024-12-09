@@ -13,6 +13,7 @@ export const registerEmployee = async (token, formData) => {
         // console.log(token, "token");
         const response = await api.post(`/admin/register-employee`, formData, {
             headers: {
+                "Content-type" : "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
@@ -57,9 +58,9 @@ export const updateEmployee = async (token, body, id) => {
 
 export const deleteEmployee = async (id, token) => {
     try {
-        const response = await api.delete(`/admin/delete-employee/${id}`, formData, {
+        const response = await api.delete(`/admin/delete-employee/${id}`, {
             headers: {
-                "Content-Type": "multipart/form-data",
+        
                 Authorization: `Bearer ${token}`,
             },
         });

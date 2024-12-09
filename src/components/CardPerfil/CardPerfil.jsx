@@ -52,7 +52,7 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
         console.log("senha: " , dataToSend.password)
         try {
             const token = sessionStorage.getItem('token');
-            console.log("token", token);
+           
 
             const response = await updateEmployee(token, dataToSend,id);
             toast.success('Funcionário atualizado com sucesso!', {
@@ -139,7 +139,6 @@ const CardPerfil = ({ id, nome, email, onDelete }) => {
                     isOpen={isModalDeleteOpen}
                     setModalOpen={closeModalDelete}
                     employeeId={id}
-                    onDeleteSuccess={() => onDelete(id)}
                 />
             )}
         </div>
