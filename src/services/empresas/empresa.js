@@ -11,7 +11,7 @@ export const registerEnterprise = async (empresa) => {
         });
         return response;
     } catch (error) {
-        throw new Error(error.response?.data?.message || "Erro ao cadastrar a empresa");
+        throw error ;
     }
 };
 
@@ -25,6 +25,6 @@ export const getEnterpriseById = async (token) => {
         });
         return response.data;
     } catch (error) {
-        throw new Error(error.response?.data?.message || "Erro ao buscar a empresa pelo ID");
+        throw error;
     }
 };

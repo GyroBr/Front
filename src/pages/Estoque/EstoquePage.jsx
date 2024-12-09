@@ -12,12 +12,12 @@ import {
 } from "../../services/produto/ProdutoService";
 
 const token = sessionStorage.getItem("token");
-console.log(token);
 
 const EstoquePage = () => {
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isFullHeight, setIsFullHeight] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null); // Novo estado
   const token = sessionStorage.getItem("token");
 
   useEffect(() => {
@@ -61,45 +61,55 @@ const EstoquePage = () => {
     fetchProducts();
   }, [token]);
 
+  // Função para atualizar a categoria selecionada
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  // Filtra os produtos pela categoria selecionada
+  const filteredRepositories = selectedCategory
+    ? repositories.filter((product) => product.category === selectedCategory)
+    : repositories;
+
   return (
     <div className={styles.body}>
       <div className={styles.sidebar_container}>
         <Sidebar />
       </div>
       <div className={`${styles.conteudo} ${
-          isFullHeight ? styles.autoHeight : styles.fullHeight
-        }`}>
+        isFullHeight ? styles.autoHeight : styles.fullHeight
+      }`}>
         <div className={styles.title_page}>
           <h1>Gestão de Estoque</h1>
         </div>
         <div className={styles.navIntern_top}>
-          <NavIntern />
+          <NavIntern onCategorySelect={handleCategorySelect} /> {/* Passa a função */}
         </div>
         <div className={styles.container_btn}>
           <BtnAddProduct />
         </div>
         <div className={styles.container}>
           {loading ? (
-          <p>Carregando produtos...</p>
-        ) : repositories.length === 0 ? (
-          <p>Nenhum produto encontrado.</p>
-        ) : (
-          <div className={styles.container}>
-            {repositories.map((repo) => (
-              <CardEstoque
-                key={`${repo.id}-${repo.name}`}
-                id={repo.productId}
-                name={repo.name}
-                description={repo.description}
-                price={repo.price}
-                image={repo.image}
-                category={repo.category}
-                quantity={repo.quantity}
-                expirationDate={repo.expirationDate}
-              />
-            ))}
-          </div>
-        )}
+            <p>Carregando produtos...</p>
+          ) : filteredRepositories.length === 0 ? (
+            <p>Nenhum produto encontrado.</p>
+          ) : (
+            <div className={styles.container}>
+              {filteredRepositories.map((repo) => (
+                <CardEstoque
+                  key={`${repo.id}-${repo.name}`}
+                  id={repo.productId}
+                  name={repo.name}
+                  description={repo.description}
+                  price={repo.price}
+                  image={repo.image}
+                  category={repo.category}
+                  quantity={repo.quantity}
+                  expirationDate={repo.expirationDate}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

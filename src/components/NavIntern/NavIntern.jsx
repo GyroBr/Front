@@ -1,65 +1,74 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./NavIntern.module.css";
+import { getAllCategories } from "../../services/produto/ProdutoService";
 
-const NavIntern = () => {
-    const menuRef = useRef(null);
+const NavIntern = ({ onCategorySelect }) => { // Recebe a função como prop
+  const [categories, setCategories] = useState([]);
+  const menuRef = useRef(null);
 
-    useEffect(() => {
-        const menuItem = menuRef.current.querySelectorAll(`.${styles.menu_top} ul li`);
+  const token = sessionStorage.getItem("token");
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getAllCategories(token);
+        setCategories(response.data || []);
+      } catch (error) {
+        console.error("Erro ao buscar categorias", error);
+        setCategories([]);
+      }
+    };
 
-        function selectLink(event) {
-            menuItem.forEach((item) => item.classList.remove(styles.ativo));
-            event.currentTarget.classList.add(styles.ativo);
-        }
+    fetchCategories();
+  }, []);
 
-        menuItem.forEach((item) => item.addEventListener('click', selectLink));
+  useEffect(() => {
+    const menuItem = menuRef.current?.querySelectorAll(`.${styles.menu_top} ul li`);
 
-        return () => {
-            menuItem.forEach((item) => item.removeEventListener('click', selectLink));
-        };
-    }, []);
+    function selectLink(event) {
+      if (menuItem) {
+        menuItem.forEach((item) => item.classList.remove(styles.ativo));
+        event.currentTarget.classList.add(styles.ativo);
+      }
+    }
 
-    return (
-        <nav className={styles.menu_top} ref={menuRef}>
-            <ul>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Sucos</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Refrigerantes</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Cervejas</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Vinhos</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Gelos</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Gin</span>
-                    </a>
-                </li>
-                <li className={styles.item_menu}>
-                    <a href="#">
-                        <span className={styles.txt_link}>Whiskey</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    );
+    if (menuItem) {
+      menuItem.forEach((item) => item.addEventListener('click', selectLink));
+    }
+
+    return () => {
+      if (menuItem) {
+        menuItem.forEach((item) => item.removeEventListener('click', selectLink));
+      }
+    };
+  }, [categories]);
+
+  return (
+    <nav className={styles.menu_top} ref={menuRef}>
+      <ul>
+        {categories.length > 0 ? (
+          categories.map((category, index) => (
+            <li key={index} className={styles.item_menu}>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onCategorySelect(category); // Chama a função com a categoria selecionada
+                }}
+              >
+                <span className={styles.txt_link}>{category}</span>
+              </a>
+            </li>
+          ))
+        ) : (
+          <li className={styles.item_menu}>
+            <a href="#">
+              <span className={styles.txt_link}>Nenhuma categoria disponível</span>
+            </a>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
 };
 
 export default NavIntern;
