@@ -4,13 +4,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Grafico = () => {
+const Grafico = ({ dataOrders }) => {
+
+    var orders = dataOrders.length;
+    console.log(orders);
+
     const data = {
         labels: ['Pedidos Completos', 'Pedidos Cancelados'],
         datasets: [
             {
                 label: 'Pedidos',
-                data: [116, 30],
+                data: [orders, 0],
                 backgroundColor: ['#FFA858', '#FFC36A'],
                 hoverBackgroundColor: ['#FFA34E', '#FFA34E'],
                 borderWith: 0,

@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import style from './BarChart.module.css';
 import PaymentChart from '../DashBoard/PaymentChart';
-import TopProducts from './TopProducts';
+// import TopProducts from './TopProducts';
 import CardTop from '../CadsTop/CardTop';
 import ProdutosMaisVendidos from '../ProdutosMaisVendidos';
+import {getAllOrders} from "../../../services/history/history";
+
 
 const BarChart = () => {
+
+    const [orders, setOrders] = useState([]);
+    const token = sessionStorage.getItem('token');
+
+    useEffect(() => {
+
+        const fetchOrders = async () => {
+            try {
+                const response = await getAllOrders(token); 
+                const data = response.data;
+                setOrders(data);
+                
+            } catch (error) {
+                console.error('Erro ao buscar orders:', error);
+            }
+        };
+
+        fetchOrders();
+    }, []);
+
+    console.log('tela dash => ', orders);
+    
+
     const data = [
         { day: 'Segunda', value: 60 },
         { day: 'Terça', value: 70 },
@@ -43,7 +68,7 @@ const BarChart = () => {
                             ))}
                         </div>
                     </div>
-                    <PaymentChart />
+                    <PaymentChart ordersData={orders}/>
                 </div>
                 <ProdutosMaisVendidos />
             </div>

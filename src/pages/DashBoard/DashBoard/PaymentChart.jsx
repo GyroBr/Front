@@ -3,12 +3,25 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './PaymentChart.css';
 
-const PaymentChart = () => {
-  const data = [
-    { value: 34, color: '#FFA726', label: 'Pix', pedidos: 17 },
-    { value: 70, color: '#FFD54F', label: 'Cartão crédito', pedidos: 35 },
-    { value: 30, color: '#FFB300', label: 'Cartão débito', pedidos: 15 },
-  ];
+const PaymentChart = ({ ordersData }) => {
+  const paymentMethods = {
+    PIX: { value: 0, color: '#FFA726', label: 'Pix' },
+    DEBIT: { value: 0, color: '#FFB300', label: 'Cartão Débito' },
+    CREDIT: { value: 0, color: '#FFD54F', label: 'Cartão Crédito' },
+    MONEY: { value: 0, color: '#4CAF50', label: 'Dinheiro' },
+  };
+
+  ordersData.forEach(order => {
+    if (paymentMethods[order.paymentMethod]) {
+      paymentMethods[order.paymentMethod].value++;
+    }
+  });
+
+  const totalOrders = ordersData.length;
+  const data = Object.values(paymentMethods).map(method => ({
+    ...method,
+    percentage: ((method.value / totalOrders) * 100) || 0, 
+  }));
 
   return (
     <div className="chart-container">
@@ -24,12 +37,12 @@ const PaymentChart = () => {
             }}
           >
             <CircularProgressbar
-              value={item.value}
+              value={item.percentage}
               maxValue={100}
               styles={buildStyles({
                 pathColor: item.color,
                 trailColor: '#333',
-                rotation: 0.75, // rotaciona os círculos para alinhar como no exemplo
+                rotation: 0.75, 
               })}
             />
           </div>
@@ -38,8 +51,12 @@ const PaymentChart = () => {
       <div className="legend">
         {data.map((item, index) => (
           <div key={index} className="legend-item">
-            <span className="legend-color" style={{ backgroundColor: item.color }}></span>
-            <span>{item.label}</span> - <span>{item.pedidos} Pedidos</span>
+            <span
+              className="legend-color"
+              style={{ backgroundColor: item.color }}>
+            </span>
+
+            <span>{item.label} - {item.value} Pedidos</span>
           </div>
         ))}
       </div>

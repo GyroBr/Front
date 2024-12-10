@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import Grafico from "../../components/graficos/grafico";
 import GraficoBar from "../../components/graficos/graficoBar";
 import Tabela from "../../components/Tabela/Tabela";
-import getOrders from "../../services/history/history"
+import {getOrders} from "../../services/history/history"
 
 const HistoryPage = () => {
 
@@ -45,26 +45,28 @@ const HistoryPage = () => {
                             <div className={styles.box_card}>
                                 <div className={styles.card}>
                                     <span className={styles.title_card}>Total de pedidos no dia</span>
-                                    <span className={styles.text_value}>119</span>
+                                    <span className={styles.text_value}>
+                                        {orders.length}
+                                        </span>
                                 </div>
                                 <div className={styles.card}>
                                     <span className={styles.title_card}>Total de pedidos cancelados</span>
-                                    <span className={styles.text_value}>03</span>
+                                    <span className={styles.text_value}>0</span>
                                 </div>
                             </div>
                             <div className={styles.box_pie}>
                                 <div className={styles.txt_pie}>
                                     <span>Funcionários</span>
-                                    <ul>
+                                    {/* <ul> */}
                                         {orders.length > 0 && orders.map((order, index) => (
-                                            <li key={`${order.employee.employeeId}-${index}`}>{order.employee.name}</li>
+                                            <li style={{listStyleType: 'none'}} key={`${order.employee.employeeId}-${index}`}>{order.employee.name}</li>
                                         ))}
-                                    </ul>
+                                    {/* </ul> */}
                                 </div>
-                                <Grafico />
+                                <Grafico dataOrders={orders} />
                             </div>
                             <div className={styles.box_bar}>
-                                <GraficoBar />
+                                <GraficoBar orders={orders} />
                             </div>
                         </div>
                         <div className={styles.container}>

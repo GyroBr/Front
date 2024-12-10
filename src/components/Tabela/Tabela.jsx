@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import styles from '../Tabela/Tabela.module.css'
-import { getOrders } from '../../services/history/history'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from '../Tabela/Tabela.module.css';
 
 function Tabela({ order }) {
-    const [orders, setOrders] = useState([]);
-
+    
     return (
         <div className={styles.tableContainer}>
             <table className={styles.table}>
@@ -20,15 +19,15 @@ function Tabela({ order }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map((order, index) => (
-                        <tr key={order.orderId || index}>
-                            <td>{order.orderId}</td>
-                            <td>{order.employeeName}</td>
-                            <td className={styles.descricao} title={order.productName}>{order.productName}</td>
-                            <td>{new Date(order.createdAt).toLocaleString()}</td>
-                            <td>{order.paymentMethod}</td>
-                            <td>{order.total}</td>
-                            <td>{order.status}</td>
+                    {order.map((o, index) => (
+                        <tr key={o.orderId || index}>
+                            <td>{o.orderId}</td>
+                            <td>{o.employee.name}</td>
+                            <td className={styles.descricao} title={o.productName}>{o.productName}</td>
+                            <td>{new Date(o.createdAt).toLocaleString()}</td>
+                            <td>{o.paymentMethod}</td>
+                            <td>{o.total}</td>
+                            <td>{o.status}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -37,4 +36,5 @@ function Tabela({ order }) {
     )
 }
 
-export default Tabela
+
+export default Tabela;

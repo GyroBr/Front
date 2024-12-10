@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-
-
+import {getBestSeller} from "../../services/history/history";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function ProdutosMaisVendidos() {
-    const produtos = [
-        'Produto tal',
-        'Produto taltal',
-        'Produto taldetal',
-        'Produto taltaltal',
-        'Produto taltal'
-    ];
 
+function ProdutosMaisVendidos() {
+
+    const token = sessionStorage.getItem('token');
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchBestSellers = async () => {
+            try {
+                const response = await getBestSeller(token);
+                const data = response.data;
+                setProducts(data);
+            } catch (error) {
+                console.error('Erro ao buscar os produtos mais vendidos:', error);
+            }
+        };
+
+        fetchBestSellers();
+    }, []);
+
+    // Mapeia os dados para os valores do gráfico
+    const labels = products.map((product) => product.productName);
+    const quantities = products.map((product) => product.totalQuantity);
 
     const data = {
-        labels: ['Produto A', 'Produto B', 'Produto C'],
+        labels: labels, // Nomes dos produtos
         datasets: [
             {
-                data: [30, 40, 30],
-                backgroundColor: ['#FFD700', '#FFA500', '#FF8C00'],
-                hoverBackgroundColor: ['#FFD700', '#FFA500', '#FF8C00'],
+                data: quantities, // Quantidade vendida
+                backgroundColor: ['#FFD700', '#FFA500', '#FF8C00', '#FF4500', '#FFA07A'], // Paleta de cores dinâmica
+                hoverBackgroundColor: ['#FFD700', '#FFA500', '#FF8C00', '#FF4500', '#FFA07A'],
             },
         ],
     };
@@ -58,8 +71,10 @@ function ProdutosMaisVendidos() {
                         }}>
                             <h2>Produtos mais vendidos</h2>
                             <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                                {produtos.map((produto, index) => (
-                                    <li key={index}>{produto}</li>
+                                {products.map((produto, index) => (
+                                    <li style={{listStyleType: 'none'}} key={index}>
+                                        {produto.productName} - {produto.totalQuantity} unidades
+                                    </li>
                                 ))}
                             </ul>
                         </div>

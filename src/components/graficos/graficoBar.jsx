@@ -4,16 +4,27 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const GraficoBar = () => {
+const GraficoBar = ({ orders }) => {
+
+    const horas = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
+    const pedidosPorHorario = new Array(horas.length).fill(0);
+
+    orders.forEach(order => {
+        const horaPedido = new Date(order.createdAt).getHours();
+        const indexHorario = Math.floor(horaPedido / 4);
+        if (indexHorario >= 0 && indexHorario < horas.length) {
+            pedidosPorHorario[indexHorario]++;
+        }
+    });
+
     const data = {
-        labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+        labels: horas,
         datasets: [
             {
-                label: 'Vendas durante o dia',
-                data: [12, 19, 6, 11, 5, 9],
+                label: 'Pedidos durante o dia',
+                data: pedidosPorHorario,
                 backgroundColor: '#FFA34E',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWith: 0,
+                borderWidth: 1,
                 borderColor: 'transparent',
                 borderRadius: 5,
             },

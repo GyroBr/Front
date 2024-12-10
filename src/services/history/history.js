@@ -15,6 +15,8 @@ export const getOrders = async (token) => {
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log("Dados dos produtos obtidos com sucesso", response.data);
+        
         return response;
     } catch (error) {
         console.error("Erro ao tentar obter dados dos produtos", error.response?.data || error.message);
@@ -22,4 +24,36 @@ export const getOrders = async (token) => {
     }
 };
 
-export default getOrders;
+export const getAllOrders = async (token) => {
+    try {
+        const response = await api.get(`/orders`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log("Dados dos produtos obtidos com sucesso", response.data);
+        
+        return response;
+    } catch (error) {
+        console.error("Erro ao tentar obter dados dos produtos", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+export const getBestSeller = async (token) => {
+    try {
+        const response = await api.get(`/products/bestSellers`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log("Dados dos produtos mais vendidos obtidos com sucesso", response.data);
+        
+        return response;
+    } catch (error) {
+        console.error("Erro ao tentar obter dados dos produtos", error.response?.data || error.message);
+        throw error;
+    }
+};
