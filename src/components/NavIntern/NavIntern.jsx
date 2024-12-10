@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./NavIntern.module.css";
 import { getAllCategories } from "../../services/produto/ProdutoService";
+import { FaFilterCircleXmark } from "react-icons/fa6";
 
 const NavIntern = ({ onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
@@ -33,15 +34,20 @@ const NavIntern = ({ onCategorySelect }) => {
     }
 
     if (menuItem) {
-      menuItem.forEach((item) => item.addEventListener('click', selectLink));
+      menuItem.forEach((item) => item.addEventListener("click", selectLink));
     }
 
     return () => {
       if (menuItem) {
-        menuItem.forEach((item) => item.removeEventListener('click', selectLink));
+        menuItem.forEach((item) => item.removeEventListener("click", selectLink));
       }
     };
   }, [categories]);
+
+  // Define a função reloadPage para recarregar a página
+  const reloadPage = () => {
+    window.location.reload();
+  };
 
   return (
     <nav className={styles.menu_top} ref={menuRef}>
@@ -53,7 +59,6 @@ const NavIntern = ({ onCategorySelect }) => {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log("Categoria clicada:", category); // Debug para verificar o valor
                   onCategorySelect(category);
                 }}
               >
@@ -68,7 +73,12 @@ const NavIntern = ({ onCategorySelect }) => {
             </a>
           </li>
         )}
+        <li>
+        </li>
       </ul>
+          <button className={styles.btn_add} onClick={reloadPage}>
+            Limpar filtro <FaFilterCircleXmark className={styles.icon} />
+          </button>
     </nav>
   );
 };

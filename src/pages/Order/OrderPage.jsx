@@ -13,7 +13,13 @@ const OrderPage = () => {
   const [cartItems, setCartItems] = useState({});
   const [loading, setLoading] = useState(true);
   const [isFullHeight, setIsFullHeight] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const token = sessionStorage.getItem("token");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [cashGiven, setCashGiven] = useState(0);
+
+const handlePaymentMethodChange = (method) => setPaymentMethod(method);
+const handleCashGivenChange = (amount) => setCashGiven(amount);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -45,6 +51,24 @@ const OrderPage = () => {
     fetchProducts();
   }, [token]);
 
+  const handleCategorySelect = (category) => {
+    console.log("Categoria selecionada:", category);
+    setSelectedCategory(category);
+  };
+
+  // Filtro por categoria
+  const filteredProducts = selectedCategory
+    ? products.filter((product) => {
+        console.log(
+          "Verificando produto:",
+          product.category,
+          "com categoria selecionada:",
+          selectedCategory
+        );
+        return product.category === selectedCategory;
+      })
+    : products;
+
   const updateCart = (id, quantity, name, price) => {
     setCartItems((prevItems) => {
       if (quantity > 0) {
@@ -61,41 +85,43 @@ const OrderPage = () => {
   };
 
   const calculateTotal = () =>
-    Object.values(cartItems).reduce((total, item) => total + item.quantity * item.price, 0);
+    Object.values(cartItems).reduce(
+      (total, item) => total + item.quantity * item.price,
+      0
+    );
 
-  const handleCreateOrder = async () => {
-    const orderData = {
-      paymentMethod: "PIX",
-      amountOfMoneyGiven: null,
-      orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
-        productId: parseInt(id, 10),
-        quantity,
-      })),
+    const handleCreateOrder = async () => {
+      const orderData = {
+        paymentMethod: paymentMethod, // Exemplo de valor padrão
+        amountOfMoneyGiven: paymentMethod === "MONEY" ? cashGiven : 0,
+        orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
+          productId: parseInt(id, 10),
+          quantity,
+        })),
+      };
+    console.log('order data: ', orderData.amountOfMoneyGiven);
+    
+      try {
+        const response = await createOrder(token, orderData);
+        console.log(response);
+        setCartItems({});
+        if (response.status === 200) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+          toast.success("Pedido criado com sucesso!", {
+            autoClose: 700,
+          });
+        }
+      } catch (error) {
+        const errorMessage = error.response?.data || error.message;
+        toast.error(`Erro ao tentar criar o pedido: ${errorMessage}`, {
+          autoClose: 1500,
+        });
+        console.error("Erro ao criar pedido:", errorMessage);
+      }
     };
-
-    try {
-      const response = await createOrder(token, orderData);
-      console.log(response)
-      setCartItems({});
-      if (response.status === 200) {
-        
-        setTimeout(() => {
-          window.location.reload();
-      }, 1000);
-      toast.success('Pedido criado com sucesso!', {
-        autoClose: 700,
-      })
-      
-    }} catch (error) {
-      const errorMessage = error.response.data;
-      toast.error(`Erro ao tentar criar o pedido:
-         ${errorMessage}`, {
-        autoClose:1500,
-      })
-      console.log(errorMessage)
-      console.error("Erro ao criar pedido:", error);
-    }
-  };
+    
 
   return (
     <div className={styles.body}>
@@ -111,16 +137,16 @@ const OrderPage = () => {
           <h1>Pedidos</h1>
         </div>
         <div className={styles.navIntern_top}>
-          <NavIntern />
+          <NavIntern onCategorySelect={handleCategorySelect} />
         </div>
         <div className={styles.containerDad}>
           <div className={styles.container}>
             {loading ? (
               <p>Carregando produtos...</p>
-            ) : products.length === 0 ? (
+            ) : filteredProducts.length === 0 ? (
               <p>Nenhum produto encontrado.</p>
             ) : (
-              products.map((product) => (
+              filteredProducts.map((product) => (
                 <CardOrder
                   key={product.productId}
                   id={product.productId}
@@ -133,7 +159,13 @@ const OrderPage = () => {
               ))
             )}
           </div>
-          <CardCart cartItems={cartItems} onCreateOrder={handleCreateOrder} total={calculateTotal()} />
+          <CardCart
+  cartItems={cartItems}
+  onCreateOrder={handleCreateOrder}
+  total={calculateTotal()}
+  onPaymentMethodChange={handlePaymentMethodChange}
+  onCashGivenChange={handleCashGivenChange}
+/>
         </div>
       </div>
     </div>

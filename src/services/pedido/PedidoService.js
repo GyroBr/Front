@@ -40,3 +40,24 @@ export const deleteOrder = async (token, orderId) => {
         throw error;
     }
 };
+
+
+export const getPaymentMethods = async (token, paymentMethod) => {
+    try {
+        console.log(token, "token que chegou");
+        console.log(APIBASEURL);
+        
+        const response = await axios.get(`${APIBASEURL}/${paymentMethod}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log(response);
+        
+        return response;
+    } catch (error) {
+        console.error("Erro ao tentar obter os métodos de pagamento:", error.response?.data || error.message);
+        throw error;
+    }
+};
+

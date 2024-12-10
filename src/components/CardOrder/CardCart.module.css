@@ -1,5 +1,5 @@
 .box_order {
-    width: 300px;
+    width: 380px;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -10,6 +10,7 @@
     background-color: #f0f0f0;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
   }
   
   .cart_tittle {
@@ -29,10 +30,18 @@
   .cart_item {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     align-items: center;
     margin-bottom: 12px;
+    flex-direction: colum
+    n;
   }
-  
+  .products_infos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .item_name {
     flex: 1;
     font-size: 14px;
@@ -77,5 +86,69 @@
   
   .btn_finalize:hover {
     background-color: #ffa14f;
+  }
+  
+  .selectBox {
+    appearance: none; /* Remove a aparência nativa do select */
+    border-radius: 4px; /* Cantos arredondados */
+    color: #333; /* Cor do texto */
+    cursor: pointer;
+    background-color: transparent;
+    border-top: none ;
+    border-left: none ;
+    border-right: none ;
+    border: 1px solid #ffa14f;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+  }
+  
+  .item_nameMethod {
+    flex: 1;
+    font-size: 14px;
+    color: #ec862c;
+  }
+
+  .payment_method {
+    display: flex;
+
+  }
+
+  .cash_input_container {
+    margin-top: 10px;
+  }
+  
+  .cash_label {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cash_input {
+    appearance: none; /* Remove a aparência nativa do select */
+    border-radius: 4px; /* Cantos arredondados */
+    color: #333; /* Cor do texto */
+    cursor: pointer;
+    background-color: transparent;
+    border-top: none ;
+    border-left: none ;
+    border-right: none ;
+    border: 1px solid #ffa14f;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    height: 25px;
+    width: 147px;
+  }
+  .cash_label:focus {
+    border: 1px solid #ffa14f;
+  }
+  
+  .change_label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
   }
   

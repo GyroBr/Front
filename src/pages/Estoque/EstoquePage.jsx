@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
 import BtnAddProduct from "../../components/Button/BtnAddProduct";
-import BtnAddBatch from "../../components/Button/BtnAddBatch";
-import BtnConfig from "../../components/Button/BtnConfig";
 import CardEstoque from "../../components/CardEstoque/CardEstoque";
 import styles from "./EstoquePage.module.css";
 import {
@@ -45,7 +43,6 @@ const EstoquePage = () => {
             };
           })
         );
-
         const validProducts = productsWithImages.filter(
           (product) => product !== null
         );

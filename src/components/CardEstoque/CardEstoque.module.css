@@ -79,6 +79,7 @@
 .text{
     color: aliceblue;
     font-size: 8px;
+    margin-left: 5px;
 }
 
 .box{
@@ -107,6 +108,18 @@
     margin: 0 1rem 0 1rem;
     border-radius: 1rem;
 }
+
+.red {
+    background-color: red;
+  }
+  
+  .yellow {
+    background-color: yellow;
+  }
+  
+  .green {
+    background-color: rgb(74, 255, 74);
+  }
 
 .box_intern{
     background-color: #131313;

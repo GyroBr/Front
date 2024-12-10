@@ -105,14 +105,14 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu}>
+                {/* <li className={styles.item_menu}>
                     <a href="/CardapioPage">
                         <span className={styles.icon}>
                             <MdOutlineMenuBook  />
                         </span>
                         <span className={styles.txt_link}>Menu</span>
                     </a>
-                </li>
+                </li> */}
 
                 <li className={styles.item_menu}>
                     <a href="/Employee">
