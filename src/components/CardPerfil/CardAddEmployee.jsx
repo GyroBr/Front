@@ -33,12 +33,21 @@ const CardPerfil = ({ handleClose }) => {
 
         } catch (error) {
 
-            const errorMessages = error.response.data;
-            errorMessages.forEach((error) => {
-                toast.error(`Erro em ${error.field}: ${error.message}`, {
+            if (error.response.status === 409) {
+                toast.error('Email já cadastrado!', {
                     autoClose: 4000,
                 });
-            });
+            } else {
+
+
+
+                const errorMessages = error.response.data;
+                errorMessages.forEach((error) => {
+                    toast.error(`Erro em ${error.field}: ${error.message}`, {
+                        autoClose: 4000,
+                    });
+                });
+            }
 
         }
     };
