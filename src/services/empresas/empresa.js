@@ -30,3 +30,18 @@ export const getEnterpriseById = async (token) => {
         throw error;
     }
 };
+
+export const isAdmin = async (token) =>{
+    try{
+        const response = await axios.get(`${apiURL}/get-role`,{
+            headers : {
+                "Authorization" : token
+            }
+        });
+
+        console.log(response)
+        return response
+    }catch(error){
+        throw error;
+    }
+}

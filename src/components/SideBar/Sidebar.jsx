@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../SideBar/Sidebar.module.css";
 import { CiLogout } from "react-icons/ci";
@@ -11,12 +11,13 @@ import {
     BsPerson,
     BsBoxArrowLeft,
 } from "react-icons/bs";
-import { MdOutlineMenuBook  } from "react-icons/md";
-import { getEnterpriseById } from "../../services/empresas/empresa";
+import { MdOutlineMenuBook } from "react-icons/md";
+import { getEnterpriseById, isAdmin } from "../../services/empresas/empresa";
 
 const Menu = () => {
     const navigate = useNavigate();
     const menuRef = useRef(null);
+    const [admin, setAdmin] = useState([]);
 
     useEffect(() => {
         const menuItem = menuRef.current.querySelectorAll(`.${styles.item_menu}`);
@@ -47,6 +48,29 @@ const Menu = () => {
         fetchEnterpriseData();
     }, []);
 
+
+    useEffect(() => {
+
+        const fetchIsAdmin = async () => {
+
+            const token = sessionStorage.getItem("token")
+            try {
+                const response = await isAdmin(token);
+                const data = response.data;
+
+                setAdmin(data)
+
+                
+
+            } catch (error) {
+                console.log("error from is admin" , error.response)
+            }
+
+        }
+
+        fetchIsAdmin()
+    }, [])
+
     useEffect(() => {
         const interval = setInterval(() => {
             const token = sessionStorage.getItem("token");
@@ -63,6 +87,8 @@ const Menu = () => {
         navigate("/"); // Redireciona para a página de login após o logout
     };
 
+   
+
     return (
         <nav className={styles.menu_lateral} ref={menuRef}>
             <div className={styles.btn_expandir}>
@@ -70,7 +96,7 @@ const Menu = () => {
             </div>
 
             <ul>
-                <li className={styles.item_menu}>
+                <li className={styles.item_menu} style={{display: admin ? "block" : "none"}}>
                     <a href="/DashPage">
                         <span className={styles.icon}>
                             <BsBarChartFill />
@@ -79,7 +105,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu}>
+                <li className={styles.item_menu} style={{display: admin ? "block" : "none"}}>
                     <a href="/History">
                         <span className={styles.icon}>
                             <BsReverseLayoutTextSidebarReverse />
@@ -88,7 +114,7 @@ const Menu = () => {
                     </a>
                 </li>
 
-                <li className={styles.item_menu}>
+                <li className={styles.item_menu} style={{display : admin ? "none" : "block"}}>
                     <a href="/Order">
                         <span className={styles.icon}>
                             <BsCart4 />
@@ -114,7 +140,7 @@ const Menu = () => {
                     </a>
                 </li> */}
 
-                <li className={styles.item_menu}>
+                <li className={styles.item_menu} style={{display: admin ? "block" : "none"}}>
                     <a href="/Employee">
                         <span className={styles.icon}>
                             <BsPerson />
