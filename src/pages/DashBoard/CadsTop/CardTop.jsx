@@ -1,5 +1,6 @@
 import React from 'react';
 import './CardTop.css';
+import { BsBasket, BsCartDash } from "react-icons/bs";
 
 const CardTop = () => {
   const cards = [

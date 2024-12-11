@@ -8,10 +8,10 @@ import './StyleGeral.css';
 const TelaCompleta = () => {
     return (
         <div className="dashboard">
-            <TopProducts />
-            <PieChart />
-            <RevenueAverage />
+            {/* <PieChart />   */}
             <BarChart/>
+            <RevenueAverage />
+            <TopProducts />
         </div>
     );
 };

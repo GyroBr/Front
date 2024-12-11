@@ -124,17 +124,3 @@
     font-size: 1.4rem;
     font-weight: 600;
 }
-
-.txt_pie.li{
-    list-style: none;
-}
-
-.employee-list-item {
-    margin-top: 3px;
-    font-size: 0.9rem; /* Diminui a fonte */
-    color: #f9ebdd; /* Mantém a cor do texto padrão */
-    list-style-type: none; /* Remove a marcação de lista */
-    text-decoration: underline; /* Adiciona o underline */
-    text-decoration-color: #F08615; /* Define a cor do underline */
-    text-underline-offset: 2px; /* Ajusta o espaçamento entre o texto e o underline */
-}

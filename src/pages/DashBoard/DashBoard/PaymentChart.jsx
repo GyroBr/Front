@@ -25,7 +25,10 @@ const PaymentChart = ({ ordersData }) => {
 
   return (
     <div className="chart-container">
-      <h3>Forma de Pagamento</h3>
+      <div className="div_tittle">
+        <h4>Forma de Pagamento</h4>
+      </div>
+      <div className="div_content">
       <div className="circle-wrapper">
         {data.map((item, index) => (
           <div
@@ -59,6 +62,7 @@ const PaymentChart = ({ ordersData }) => {
             <span>{item.label} - {item.value} Pedidos</span>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

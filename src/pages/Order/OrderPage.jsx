@@ -93,7 +93,7 @@ const handleCashGivenChange = (amount) => setCashGiven(amount);
     const handleCreateOrder = async () => {
       const orderData = {
         paymentMethod: paymentMethod, // Exemplo de valor padrão
-        amountOfMoneyGiven: paymentMethod === "MONEY" ? cashGiven : 0,
+        amountOfMoneyGiven: paymentMethod === "MONEY" ? cashGiven : null,
         orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
           productId: parseInt(id, 10),
           quantity,

@@ -3,7 +3,7 @@ import style from './BarChart.module.css';
 import PaymentChart from '../DashBoard/PaymentChart';
 // import TopProducts from './TopProducts';
 import CardTop from '../CadsTop/CardTop';
-import ProdutosMaisVendidos from '../ProdutosMaisVendidos';
+// import ProdutosMaisVendidos from '../ProdutosMaisVendidos';
 import {getAllOrders} from "../../../services/history/history";
 
 
@@ -45,7 +45,6 @@ const BarChart = () => {
         <>
             <div style={{
                 width:'100%',
-                height:'100vh'
             }}>
                 <CardTop />
                 <div className={style.bouth_dash}>
@@ -70,7 +69,7 @@ const BarChart = () => {
                     </div>
                     <PaymentChart ordersData={orders}/>
                 </div>
-                <ProdutosMaisVendidos />
+                {/* <ProdutosMaisVendidos /> */}
             </div>
         </>
     );

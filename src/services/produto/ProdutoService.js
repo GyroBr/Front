@@ -55,6 +55,8 @@ export const getProductImage = async (token, imageName) => {
 };
 
 export const editProduct = async (token, productId, productBody) => {
+
+    console.log(productBody, "aaaaaaaaaaaaaaaaaaaaaaaa")
     try {
         console.log(productBody, "dados para edição");
         console.log(token, "token que chegou");

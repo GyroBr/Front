@@ -6,6 +6,8 @@
 .body{
     display: flex;
     flex-direction: row;
+    background-color: #1C1D21;
+    height: 100%;
 }
 
 .sidebar_container{
@@ -14,7 +16,6 @@
 
 .conteudo {
     width: 100vw;
-    background-color: #1C1D21;
     transition: height 0.3s ease; /* Transição suave entre alturas */
 }
 

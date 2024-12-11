@@ -138,7 +138,7 @@ export function Home() {
                                 </div>
                                 <div className={styles.card_telephone}>
                                     <img className={styles.icon} src={telephoneIcon} alt="Location" />
-                                    <p>11 45338990</p>
+                                    <p>(11) 4533-8990</p>
                                 </div>
                             </div>
                             <div className={styles.card2}>

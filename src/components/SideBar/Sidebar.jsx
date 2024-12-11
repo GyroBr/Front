@@ -71,7 +71,7 @@ const Menu = () => {
 
             <ul>
                 <li className={styles.item_menu}>
-                    <a href="/Dashboard">
+                    <a href="/DashPage">
                         <span className={styles.icon}>
                             <BsBarChartFill />
                         </span>
