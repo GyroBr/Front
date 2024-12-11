@@ -61,3 +61,20 @@ export const getPaymentMethods = async (token, paymentMethod) => {
     }
 };
 
+export const getTotalSales = async (token) => {
+    try {
+        const response = await axios.get(`${APIBASEURL}/totalSales`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log("Dados dos produtos mais vendidos obtidos com sucesso", response.data);
+        
+        return response;
+    } catch (error) {
+        console.error("Erro ao tentar obter dados dos produtos", error.response?.data || error.message);
+        throw error;
+    }
+};
+

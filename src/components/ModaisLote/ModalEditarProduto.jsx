@@ -50,7 +50,7 @@ export default function ModalEditar({
       formData.append("category", product.category);
       formData.append("description", product.description);
       formData.append("quantity", product.quantity);
-      formData.append("WarningQuantity", product.WarningQuantity);
+      formData.append("warningQuantity", product.warningQuantity);
 
       const response = await editProduct(token, productId, formData);
       console.log(response)

@@ -35,7 +35,7 @@ const DashPage = () => {
       </div>
       <div className={styles.conteudo}>
         <div className={styles.title_page}>
-          <h1>Histórico de pedidos</h1>
+          <h1>Dashboard</h1>
         </div>
         <div className={styles.card_conteudo}>
           <TabelaCompleta />

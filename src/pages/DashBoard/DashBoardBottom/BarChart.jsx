@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import style from './BarChart.module.css';
 import PaymentChart from '../DashBoard/PaymentChart';
-// import TopProducts from './TopProducts';
 import CardTop from '../CadsTop/CardTop';
-// import ProdutosMaisVendidos from '../ProdutosMaisVendidos';
 import {getAllOrders} from "../../../services/history/history";
 
 
 const BarChart = () => {
 
     const [orders, setOrders] = useState([]);
-    const token = sessionStorage.getItem('token');
+    const [data, setData] = useState([
+        { day: 'Segunda', value: 20 },
+        { day: 'Terça', value: 10 },
+        { day: 'Quarta', value: 6 },
+        { day: 'Quinta', value: 20 },
+        { day: 'Sexta', value: 30 },
+        { day: 'Sábado', value: 1 },
+        { day: 'Domingo', value: 15 }
+    ]);
 
     useEffect(() => {
+        const token = sessionStorage.getItem('token');
 
         const fetchOrders = async () => {
             try {
@@ -26,25 +33,24 @@ const BarChart = () => {
         };
 
         fetchOrders();
+
+        // Atualiza os dados do gráfico a cada 3 segundos
+        const interval = setInterval(() => {
+            const updatedData = data.map(item => ({
+                ...item,
+                value: Math.floor(Math.random() * 50) // Valores aleatórios entre 0 e 100
+            }));
+            setData(updatedData);
+        }, 30000);
+
+        // Limpa o intervalo ao desmontar o componente
+        return () => clearInterval(interval);
     }, []);
-
-    // console.log('tela dash => ', orders);
-    
-
-    const data = [
-        { day: 'Segunda', value: 60 },
-        { day: 'Terça', value: 70 },
-        { day: 'Quarta', value: 65 },
-        { day: 'Quinta', value: 80 },
-        { day: 'Sexta', value: 90 },
-        { day: 'Sábado', value: 100 },
-        { day: 'Domingo', value: 50 }
-    ];
 
     return (
         <>
             <div style={{
-                width:'100%',
+                width: '100%',
             }}>
                 <CardTop />
                 <div className={style.bouth_dash}>
@@ -60,16 +66,18 @@ const BarChart = () => {
                                 <div key={index} className={style.barContainer}>
                                     <div
                                         className={style.bar}
-                                        style={{ height: `${item.value}px` }}
+                                        style={{
+                                            height: `${item.value}px`,
+                                            transition: 'height 0.5s ease-in-out'
+                                        }}
                                     ></div>
                                     <p>{item.day}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <PaymentChart ordersData={orders}/>
+                    <PaymentChart ordersData={orders} />
                 </div>
-                {/* <ProdutosMaisVendidos /> */}
             </div>
         </>
     );

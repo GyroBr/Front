@@ -9,7 +9,7 @@ const api = axios.create(
 
 export const getOrders = async (token) => {
     try {
-        const response = await api.get(`/orders`, {
+        const response = await api.get(`http://localhost:8080/orders`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
@@ -26,7 +26,7 @@ export const getOrders = async (token) => {
 
 export const getAllOrders = async (token) => {
     try {
-        const response = await api.get(`/orders`, {
+        const response = await api.get(`http://localhost:8080/orders`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
@@ -43,13 +43,31 @@ export const getAllOrders = async (token) => {
 
 export const getBestSeller = async (token) => {
     try {
-        const response = await api.get(`/products/bestSellers`, {
+        const response = await api.get(`http://localhost:8080/products/bestSellers`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
         console.log("Dados dos produtos mais vendidos obtidos com sucesso", response.data);
+        
+        return response;
+    } catch (error) {
+        console.error("Erro ao tentar obter dados dos produtos", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+//teste 
+export const getTotalSales = async (token) => {
+    try {
+        const response = await axios.get(`http://localhost:8080/orders/totalSales`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log("Dados dos produtos mais vendidos obtidos com sucesso 2", response.data);
         
         return response;
     } catch (error) {

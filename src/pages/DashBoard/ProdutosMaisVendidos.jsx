@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {getBestSeller} from "../../services/history/history";
+import {getTotalSales} from "../../services/history/history";
+// import {getTotalSales} from "../../services/pedido/PedidoService";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -10,9 +13,12 @@ function ProdutosMaisVendidos() {
 
     const token = sessionStorage.getItem('token');
     const [products, setProducts] = useState([]);
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         const fetchBestSellers = async () => {
+            console.log('teste 1');
+            
             try {
                 const response = await getBestSeller(token);
                 const data = response.data;
@@ -24,6 +30,26 @@ function ProdutosMaisVendidos() {
 
         fetchBestSellers();
     }, []);
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            console.log('teste');
+            
+            try {
+                const response = await getTotalSales(token);
+                const data = response.data;
+                setOrders(data);
+            } catch (error) {
+                console.error('Erro ao buscar orders:', error);
+            }
+        };
+
+        fetchOrders();
+    }, []);
+
+console.log('orders produtos mais vendidos => ', orders);
+
+
 
     // Mapeia os dados para os valores do gráfico
     const labels = products.map((product) => product.productName);
