@@ -5,7 +5,7 @@ import './StyleGeral.css';
 
 const PieChart = ({ data }) => {
     const chartData = {
-        labels: data.map(item => item.productName),
+        // labels: data.map(item => item.productName),
         datasets: [
             {
                 data: data.map(item => item.totalQuantity),

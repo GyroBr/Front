@@ -19,7 +19,7 @@ function Tabela({ order }) {
           </tr>
         </thead>
         <tbody>
-          {order.map((o, index) => (
+          {order.length >= 0 && order.map((o, index) => (
             <tr key={o.orderId || index}>
               <td>{o.orderId}</td>
               <td>{o.employee.name}</td>
@@ -34,7 +34,7 @@ function Tabela({ order }) {
               </td>
               <td>{new Date(o.createdAt).toLocaleString()}</td>
               <td>{o.paymentMethod}</td>
-              <td>R$ {o.total.toFixed(2)}</td>
+              <td>R$ {o.total != null && o.total.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
