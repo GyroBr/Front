@@ -3,6 +3,7 @@ import Sidebar from "../../components/SideBar/Sidebar";
 import NavIntern from "../../components/NavIntern/NavIntern";
 import BtnAddProduct from "../../components/Button/BtnAddProduct";
 import CardEstoque from "../../components/CardEstoque/CardEstoque";
+import CardShopList from "../../components/CardEstoque/CardShopList";
 import styles from "./EstoquePage.module.css";
 import {
   getProductImage,
@@ -65,7 +66,12 @@ const EstoquePage = () => {
 
   const filteredRepositories = selectedCategory
     ? repositories.filter((product) => {
-        console.log("Verificando produto:", product.category, "com categoria selecionada:", selectedCategory);
+        console.log(
+          "Verificando produto:",
+          product.category,
+          "com categoria selecionada:",
+          selectedCategory
+        );
         return product.category === selectedCategory;
       })
     : repositories;
@@ -75,7 +81,11 @@ const EstoquePage = () => {
       <div className={styles.sidebar_container}>
         <Sidebar />
       </div>
-      <div className={`${styles.conteudo} ${ isFullHeight ? styles.autoHeight : styles.fullHeight }`}>
+      <div
+        className={`${styles.conteudo} ${
+          isFullHeight ? styles.autoHeight : styles.fullHeight
+        }`}
+      >
         <div className={styles.title_page}>
           <h1>Gestão de Estoque</h1>
         </div>
@@ -109,6 +119,20 @@ const EstoquePage = () => {
             </div>
           )}
         </div>
+        <CardShopList
+          cartItems={repositories.filter(
+            (product) => product.quantity < product.warningQuantity
+          )}
+          onCreateOrder={null}
+          total={repositories
+            .filter((product) => product.quantity < product.warningQuantity)
+            .reduce(
+              (acc, product) => acc + product.price * product.quantity,
+              0
+            )} // Calcula o total dos produtos com status vermelho
+          onPaymentMethodChange={null}
+          onCashGivenChange={null}
+        />
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ const Card = ({
             <span className={styles.text}></span>
             <div className={styles.box_intern}>
               <GoAlert />
-              <span className={styles.text}>Qtd alerta: {warningQuantity}</span>
+              <span className={styles.text}>Qtd crítica: {warningQuantity}</span>
             </div>
           </div>
 

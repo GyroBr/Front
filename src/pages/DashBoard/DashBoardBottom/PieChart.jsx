@@ -9,8 +9,11 @@ const PieChart = ({ data }) => {
         datasets: [
             {
                 data: data.map(item => item.totalQuantity),
-                // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-                // hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                backgroundColor: ['#FFA726', '#FFB300', '#FFD54F', '#FF7043 ', '#FF5722', '#FF8A65', '#FF7043', '#FF3D00', '#F4511E', '#FF5722', '#FF6F00'],
+                hoverBackgroundColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
+                borderWith: 0,
+                borderColor: 'transparent',
+                borderRadius: 4,
             },
         ],
     };

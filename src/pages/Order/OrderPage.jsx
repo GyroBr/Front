@@ -4,7 +4,10 @@ import NavIntern from "../../components/NavIntern/NavIntern";
 import CardOrder from "../../components/CardOrder/CardOrder";
 import CardCart from "../../components/CardOrder/CardCart";
 import styles from "./OrderPage.module.css";
-import { getProductImage, getProducts } from "../../services/produto/ProdutoService";
+import {
+  getProductImage,
+  getProducts,
+} from "../../services/produto/ProdutoService";
 import { createOrder } from "../../services/pedido/PedidoService";
 import { toast } from "react-toastify";
 
@@ -18,8 +21,8 @@ const OrderPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [cashGiven, setCashGiven] = useState(0);
 
-const handlePaymentMethodChange = (method) => setPaymentMethod(method);
-const handleCashGivenChange = (amount) => setCashGiven(amount);
+  const handlePaymentMethodChange = (method) => setPaymentMethod(method);
+  const handleCashGivenChange = (amount) => setCashGiven(amount);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -90,38 +93,37 @@ const handleCashGivenChange = (amount) => setCashGiven(amount);
       0
     );
 
-    const handleCreateOrder = async () => {
-      const orderData = {
-        paymentMethod: paymentMethod, // Exemplo de valor padrão
-        amountOfMoneyGiven: paymentMethod === "MONEY" ? cashGiven : null,
-        orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
-          productId: parseInt(id, 10),
-          quantity,
-        })),
-      };
-    console.log('order data: ', orderData.amountOfMoneyGiven);
-    
-      try {
-        const response = await createOrder(token, orderData);
-        console.log(response);
-        setCartItems({});
-        if (response.status === 200) {
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-          toast.success("Pedido criado com sucesso!", {
-            autoClose: 700,
-          });
-        }
-      } catch (error) {
-        const errorMessage = error.response?.data || error.message;
-        toast.error(`Erro ao tentar criar o pedido: ${errorMessage}`, {
-          autoClose: 1500,
-        });
-        console.error("Erro ao criar pedido:", errorMessage);
-      }
+  const handleCreateOrder = async () => {
+    const orderData = {
+      paymentMethod: paymentMethod, // Exemplo de valor padrão
+      amountOfMoneyGiven: paymentMethod === "MONEY" ? cashGiven : null,
+      orderProduct: Object.entries(cartItems).map(([id, { quantity }]) => ({
+        productId: parseInt(id, 10),
+        quantity,
+      })),
     };
-    
+    console.log("order data: ", orderData.amountOfMoneyGiven);
+
+    try {
+      const response = await createOrder(token, orderData);
+      console.log(response);
+      setCartItems({});
+      if (response.status === 200) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+        toast.success("Pedido criado com sucesso!", {
+          autoClose: 700,
+        });
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data || error.message;
+      toast.error(`Erro ao tentar criar o pedido: ${errorMessage}`, {
+        autoClose: 1500,
+      });
+      console.error("Erro ao criar pedido:", errorMessage);
+    }
+  };
 
   return (
     <div className={styles.body}>
@@ -160,12 +162,12 @@ const handleCashGivenChange = (amount) => setCashGiven(amount);
             )}
           </div>
           <CardCart
-  cartItems={cartItems}
-  onCreateOrder={handleCreateOrder}
-  total={calculateTotal()}
-  onPaymentMethodChange={handlePaymentMethodChange}
-  onCashGivenChange={handleCashGivenChange}
-/>
+            cartItems={cartItems}
+            onCreateOrder={handleCreateOrder}
+            total={calculateTotal()}
+            onPaymentMethodChange={handlePaymentMethodChange}
+            onCashGivenChange={handleCashGivenChange}
+          />
         </div>
       </div>
     </div>

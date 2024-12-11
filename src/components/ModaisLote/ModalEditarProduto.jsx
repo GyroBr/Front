@@ -12,6 +12,7 @@ export default function ModalEditar({
   productId: initializeId,
   name: initialName,
   price: initialPrice,
+  quantity: initialQuantity,
   warningQuantity: initialWarningQuantity,
   category: initialCategory,
   description: initialDescription,
@@ -22,6 +23,7 @@ export default function ModalEditar({
     name: initialName || "",
     description: initialDescription || "",
     price: initialPrice || "",
+    quantity: initialQuantity || "",
     warningQuantity: initialWarningQuantity || "",
     category: initialCategory || "",
   });
@@ -47,6 +49,7 @@ export default function ModalEditar({
       formData.append("price", product.price);
       formData.append("category", product.category);
       formData.append("description", product.description);
+      formData.append("quantity", product.quantity);
       formData.append("WarningQuantity", product.WarningQuantity);
 
       const response = await editProduct(token, productId, formData);
@@ -110,6 +113,26 @@ export default function ModalEditar({
                 type="text"
                 name="category"
                 value={product.category}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <h6>Quantidade</h6>
+              <input
+                className={styles.inputs_square}
+                type="number"
+                name="quantity"
+                value={product.quantity}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <h6>Quantidade Crítica</h6>
+              <input
+                className={styles.inputs_square}
+                type="number"
+                name="warningQuantity"
+                value={product.warningQuantity}
                 onChange={handleInputChange}
               />
             </div>
