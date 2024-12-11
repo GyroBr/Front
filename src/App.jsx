@@ -19,7 +19,7 @@ import EstoquePage2 from "./pages/Estoque/EstoquePage";
 import Employee from "./pages/Employee/Employee";
 import History from "./pages/History/History";
 import Order from "./pages/Order/OrderPage";
-import DashPage from "./pages/DashBoard/DashPage"
+// import DashPage from "./pages/DashBoard/DashPage"
 // import { Pie } from 'react-chartjs-2';
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 

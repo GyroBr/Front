@@ -28,7 +28,7 @@ const BarChart = () => {
         fetchOrders();
     }, []);
 
-    console.log('tela dash => ', orders);
+    // console.log('tela dash => ', orders);
     
 
     const data = [

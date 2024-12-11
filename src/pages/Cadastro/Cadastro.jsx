@@ -96,21 +96,28 @@ export default function Cadastro() {
     } catch (error) {
       const errorMessages = error.response?.data || [];
       console.log(errorMessages);
-
+  
       if (errorMessages === "O setor da empresa precisa ser definido") {
         toast.error(`O setor em qual sua empresa atual precisa ser definido`, {
           autoClose: 7000,
         });
       }
-
+  
       errorMessages.forEach((error) => {
-        const fieldName = fieldNameMap[error.field] || error.field;
+        const fieldParts = error.field.split(".");
+        let fieldName = fieldNameMap;
+  
+        fieldParts.forEach((part) => {
+          fieldName = fieldName[part] || part;
+        });
+  
         toast.error(`Erro no campo ${fieldName}: ${error.message}`, {
           autoClose: 7000,
         });
       });
     }
   };
+  
 
   useEffect(() => {
     if (usuario.address.postalCode.length === 8) {

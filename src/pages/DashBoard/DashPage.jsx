@@ -5,7 +5,8 @@ import Grafico from "../../components/graficos/grafico";
 import GraficoBar from "../../components/graficos/graficoBar";
 import Tabela from "../../components/Tabela/Tabela";
 import TabelaCompleta from "../DashBoard/DashBoardBottom/TelaCompleta";
-import { getOrders } from "../../services/history/history";
+import { getOrders, getBestSeller } from "../../services/history/history";
+import { use } from "react";
 
 const DashPage = () => {
   const [orders, setOrders] = useState([]);
@@ -23,6 +24,7 @@ const DashPage = () => {
       }
     };
 
+   
     fetchOrders();
   }, []);
 

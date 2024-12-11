@@ -29,6 +29,12 @@ export default function Login() {
         navigate('/EstoquePage');
       }).catch((error) => {
         const errorMessages = error.response.data;
+
+        if(error.response.status === 401){
+
+          toast.error(errorMessages)
+        }
+       
         errorMessages.forEach((error) => {
           toast.error(`Erro em ${error.field}: ${error.message}`, {
             autoClose: 4000,
